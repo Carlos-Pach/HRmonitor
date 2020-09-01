@@ -130,6 +130,8 @@ int main(void)
 
   n_ir_buffer_length = 500 ;		// stores 100 values per second for 5 seconds
 
+  // TODO: finish consoleIO initialization
+
   // read first 500 samples
   for(i = 0; i < n_ir_buffer_length; i++){
 	  // wait until PTD1 asserts
