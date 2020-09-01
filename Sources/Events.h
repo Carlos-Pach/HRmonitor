@@ -38,6 +38,8 @@
 #include "MCUC1.h"
 #include "WAIT1.h"
 #include "CI2C1.h"
+#include "CsIO1.h"
+#include "IO1.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -23,6 +23,8 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1config.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CsIO1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/IO1.h \
  //Mac/Home/workspace.kds/HRmonitor/Sources/Events.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Error.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Const.h \
@@ -31,7 +33,9 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/MCUC1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C1.h
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CsIO1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/IO1.h
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Types.h:
 
@@ -81,6 +85,10 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1config.h:
 
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CsIO1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/IO1.h:
+
 //Mac/Home/workspace.kds/HRmonitor/Sources/Events.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Error.h:
@@ -98,3 +106,7 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CsIO1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/IO1.h:

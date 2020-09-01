@@ -54,6 +54,8 @@
 #include "MCUC1.h"
 #include "WAIT1.h"
 #include "CI2C1.h"
+#include "CsIO1.h"
+#include "IO1.h"
 #include "Events.h"
 
 #ifdef __cplusplus
@@ -141,7 +143,7 @@ extern "C" {
 #define VECTOR_75         (tIsrFunc)&Unhandled_ivINT_PORTA      /* 0x4B -    ivINT_PORTA                    unused by PE */
 #define VECTOR_76         (tIsrFunc)&Unhandled_ivINT_PORTB      /* 0x4C -    ivINT_PORTB                    unused by PE */
 #define VECTOR_77         (tIsrFunc)&Unhandled_ivINT_PORTC      /* 0x4D -    ivINT_PORTC                    unused by PE */
-#define VECTOR_78         (tIsrFunc)&Unhandled_ivINT_PORTD      /* 0x4E 0    ivINT_PORTD                    unused by PE */
+#define VECTOR_78         (tIsrFunc)&readIRQ                    /* 0x4E 0    ivINT_PORTD                    used by PE */
 #define VECTOR_79         (tIsrFunc)&Unhandled_ivINT_PORTE      /* 0x4F -    ivINT_PORTE                    unused by PE */
 #define VECTOR_80         (tIsrFunc)&Unhandled_ivINT_SWI        /* 0x50 -    ivINT_SWI                      unused by PE */
 #define VECTOR_81         (tIsrFunc)&Unhandled_ivINT_SPI2       /* 0x51 -    ivINT_SPI2                     unused by PE */

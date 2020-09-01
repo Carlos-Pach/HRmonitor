@@ -7,7 +7,7 @@
 **     Version     : Component 01.006, Driver 01.06, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-08-20, 19:28, # CodeGen: 25
+**     Date/Time   : 2020-09-01, 15:29, # CodeGen: 40
 **     Abstract    :
 **          This file implements the GPIO (PTD) module initialization
 **          according to the Peripheral Initialization settings, and
@@ -52,7 +52,7 @@
 **              Interrupt                                  : INT_PORTD
 **              Interrupt request                          : <Automatic>
 **              Interrupt priority                         : <Automatic>
-**              ISR Name                                   : <Automatic>
+**              ISR Name                                   : readIRQ
 **          Initialization                                 : 
 **            Call Init method                             : yes
 **            Utilize after reset values                   : default
@@ -121,6 +121,8 @@
 
 
 #define PTD_AUTOINIT
+
+#define INT_PORTD_ISR readIRQ
 
 /* END PTD. */
 #endif /* #ifndef __PTD_Config_H_ */

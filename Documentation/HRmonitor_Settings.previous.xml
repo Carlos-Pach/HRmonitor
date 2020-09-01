@@ -214,13 +214,13 @@
           <High_drive_select v="Disabled" />
           <Input_Glitch_filter v="0" />
         </group>
-        <Internal_frequency__multiplier_factor_ v="10.48576 MHz" />
-        <Bits_0_2_of_Frequency_divider_register v="100" />
-        <Bits_3_5_of_Frequency_divider_register v="110" />
-        <SCL_frequency v="9.102 kHz" />
-        <SDA_Hold v="18.406 us" />
-        <SCL_start_Hold v="54.741 us" />
-        <SCL_stop_Hold v="55.027 us" />
+        <Internal_frequency__multiplier_factor_ v="20.97152 MHz" />
+        <Bits_0_2_of_Frequency_divider_register v="111" />
+        <Bits_3_5_of_Frequency_divider_register v="011" />
+        <SCL_frequency v="87.381 kHz" />
+        <SDA_Hold v="1.574 us" />
+        <SCL_start_Hold v="5.627 us" />
+        <SCL_stop_Hold v="5.77 us" />
         <boolgroup name="Control acknowledge bit" v="Disabled" />
         <boolgroup name="Low timeout" v="Disabled" />
       </group>
@@ -355,6 +355,110 @@
     </Properties>
     <Methods>
       <Init v="generate code" />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="CsIO1" type="ConsoleIO">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="CsIO1" />
+      <inhrbean type="Serial_LDD">
+        <Enabled v="Y" />
+        <Template v="ConsoleIO_Serial_LDD" />
+        <Properties>
+          <Component_name v="IO1" />
+          <Device v="UART0" />
+          <boolgroup name="Interrupt service/event" v="Disabled" />
+          <group name="Settings">
+            <Data_width v="8 bits" />
+            <Parity v="None" />
+            <Stop_bits v="1" />
+            <Loop_mode v="Normal" />
+            <Baud_rate v="9600 baud" />
+            <Wakeup_condition v="Idle line wakeup" />
+            <Stop_in_wait_mode v="no" />
+            <Idle_line_mode v="Starts after start bit" />
+            <Transmitter_output v="Not inverted" />
+            <Receiver_input v="Not inverted" />
+            <Break_generation_length v="10/11 bits" />
+            <boolgroup name="Receiver" v="Enabled">
+              <RxD v="UART1_RX_TGTMCU" />
+            </boolgroup>
+            <boolgroup name="Transmitter" v="Enabled">
+              <TxD v="UART1_TX_TGTMCU" />
+            </boolgroup>
+            <enumgroup name="Flow control" v="None">
+              <EmptySection_DummyValue />
+            </enumgroup>
+          </group>
+          <group name="Initialization">
+            <Enabled_in_init__code v="yes" />
+            <group name="Event mask">
+              <OnBlockSent v="Disabled" />
+              <OnBlockReceived v="Disabled" />
+              <OnTxComplete v="Disabled" />
+              <OnError v="Disabled" />
+              <OnBreak v="Disabled" />
+            </group>
+          </group>
+        </Properties>
+        <Methods>
+          <Init v="generate code" />
+          <Deinit v="don&amp;apos;t generate code" />
+          <Enable v="don&amp;apos;t generate code" />
+          <Disable v="don&amp;apos;t generate code" />
+          <SendBlock v="don&amp;apos;t generate code" />
+          <ReceiveBlock v="don&amp;apos;t generate code" />
+          <CancelBlockTransmission v="don&amp;apos;t generate code" />
+          <CancelBlockReception v="don&amp;apos;t generate code" />
+          <GetError v="don&amp;apos;t generate code" />
+          <GetSentDataNum v="don&amp;apos;t generate code" />
+          <GetReceivedDataNum v="don&amp;apos;t generate code" />
+          <GetTxCompleteStatus v="don&amp;apos;t generate code" />
+          <SetEventMask v="don&amp;apos;t generate code" />
+          <GetEventMask v="don&amp;apos;t generate code" />
+          <SelectBaudRate v="don&amp;apos;t generate code" />
+          <GetSelectedBaudRate v="don&amp;apos;t generate code" />
+          <SetParity v="don&amp;apos;t generate code" />
+          <GetParity v="don&amp;apos;t generate code" />
+          <SetDataWidth v="don&amp;apos;t generate code" />
+          <GetDataWidth v="don&amp;apos;t generate code" />
+          <SetStopBitLength v="don&amp;apos;t generate code" />
+          <GetStopBitLength v="don&amp;apos;t generate code" />
+          <SetLoopMode v="don&amp;apos;t generate code" />
+          <GetLoopMode v="don&amp;apos;t generate code" />
+          <GetStats v="don&amp;apos;t generate code" />
+          <ClearStats v="don&amp;apos;t generate code" />
+          <SendBreak v="don&amp;apos;t generate code" />
+          <GetBreak v="don&amp;apos;t generate code" />
+          <TurnTxOn v="don&amp;apos;t generate code" />
+          <TurnTxOff v="don&amp;apos;t generate code" />
+          <TurnRxOn v="don&amp;apos;t generate code" />
+          <TurnRxOff v="don&amp;apos;t generate code" />
+          <ConnectPin v="don&amp;apos;t generate code" />
+          <Main v="generate code" />
+          <SetOperationMode v="don&amp;apos;t generate code" />
+          <GetDriverState v="don&amp;apos;t generate code" />
+        </Methods>
+        <Events>
+          <Event_module_name v="Events" />
+          <event name="OnBlockReceived" v="don&amp;apos;t generate code" />
+          <event name="OnBlockSent" v="don&amp;apos;t generate code" />
+          <event name="OnBreak" v="don&amp;apos;t generate code" />
+          <event name="OnError" v="don&amp;apos;t generate code" />
+          <event name="OnTxComplete" v="don&amp;apos;t generate code" />
+        </Events>
+      </inhrbean>
+      <Wait_until_at_least_one_char_is_received v="yes" />
+      <group name="New line sequence settings">
+        <Rx_new_line_sequence_ v="CR" />
+        <Tx_new_line_sequence_ v="CRLF" />
+      </group>
+    </Properties>
+    <Methods>
+      <EmptySection_DummyValue />
     </Methods>
     <Events>
       <EmptySection_DummyValue />

@@ -53,6 +53,6 @@ Bool maxim_max30102_read_fifo(uint32_t *pun_red_led, uint32_t *pun_ir_led) ;
 void initLED(void) ;
 void lightUpLED(void) ;
 // create ISR function
-Bool readIRQ(void) ;
+void readIRQ(void) ;
 
 #endif

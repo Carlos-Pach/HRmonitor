@@ -57,7 +57,9 @@
     <GeneratedCs>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CI2C1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Cpu.c</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CsIO1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C1.c</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\IO1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\MCUC1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PE_LDD.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Pins1.c</PathName>
@@ -76,8 +78,10 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CI2C1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CPU_Config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Cpu.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CsIO1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C1config.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\IO1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\IO_Map.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Init_Config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\MCUC1.h</PathName>

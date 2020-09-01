@@ -6,7 +6,9 @@
 C_SRCS += \
 ../Generated_Code/CI2C1.c \
 ../Generated_Code/Cpu.c \
+../Generated_Code/CsIO1.c \
 ../Generated_Code/GI2C1.c \
+../Generated_Code/IO1.c \
 ../Generated_Code/MCUC1.c \
 ../Generated_Code/PE_LDD.c \
 ../Generated_Code/Pins1.c \
@@ -15,7 +17,9 @@ C_SRCS += \
 OBJS += \
 ./Generated_Code/CI2C1.o \
 ./Generated_Code/Cpu.o \
+./Generated_Code/CsIO1.o \
 ./Generated_Code/GI2C1.o \
+./Generated_Code/IO1.o \
 ./Generated_Code/MCUC1.o \
 ./Generated_Code/PE_LDD.o \
 ./Generated_Code/Pins1.o \
@@ -24,7 +28,9 @@ OBJS += \
 C_DEPS += \
 ./Generated_Code/CI2C1.d \
 ./Generated_Code/Cpu.d \
+./Generated_Code/CsIO1.d \
 ./Generated_Code/GI2C1.d \
+./Generated_Code/IO1.d \
 ./Generated_Code/MCUC1.d \
 ./Generated_Code/PE_LDD.d \
 ./Generated_Code/Pins1.d \

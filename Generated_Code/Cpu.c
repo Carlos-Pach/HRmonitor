@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K64P144M120SF5RM, Rev.2, January 2014
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-08-20, 19:28, # CodeGen: 25
+**     Date/Time   : 2020-09-01, 14:41, # CodeGen: 39
 **     Abstract    :
 **
 **     Settings    :
@@ -159,6 +159,8 @@ void Components_Init(void)
   MCUC1_Init(); /* ### McuLibConfig "MCUC1" init code ... */
   WAIT1_Init(); /* ### Wait "WAIT1" init code ... */
   GI2C1_Init(); /* ### GenericI2C "GI2C1" init code ... */
+  /* ### Serial_LDD "IO1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)IO1_Init(NULL);
 }
 #endif /* CPU_COMPONENTS_INIT */
 

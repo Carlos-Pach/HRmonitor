@@ -29,6 +29,8 @@ Sources/Events.o: ../Sources/Events.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1config.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CsIO1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/IO1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Init_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/System/PDD_Includes.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/ADC_PDD.h \
@@ -131,6 +133,10 @@ Sources/Events.o: ../Sources/Events.c \
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1config.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CsIO1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/IO1.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Init_Config.h:
 

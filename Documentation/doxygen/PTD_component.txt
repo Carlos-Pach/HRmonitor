@@ -204,7 +204,7 @@ registers of the peripheral(s) configured by the component.
 **              Interrupt                                  : INT_PORTD
 **              Interrupt request                          : <Automatic>
 **              Interrupt priority                         : <Automatic>
-**              ISR Name                                   : <Automatic>
+**              ISR Name                                   : readIRQ
 **          Initialization                                 : 
 **            Call Init method                             : yes
 **            Utilize after reset values                   : default

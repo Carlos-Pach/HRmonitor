@@ -35,6 +35,8 @@
 #include "MCUC1.h"
 #include "WAIT1.h"
 #include "CI2C1.h"
+#include "CsIO1.h"
+#include "IO1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -83,17 +85,21 @@ void lightUpLED(void){
 	Delay(delay) ;
 }
 
-Bool readIRQ(void){
+void readIRQ(void){
 	unsigned char readPortD ;
-	readPortD = GPIOD_PDIR & 0x01 ;
-	// return 1 while being read
-	if(readPortD == 0x01){
-		return true ;
-	}
-	else{
-		return false ;
+	readPortD = 0x01 & GPIOD_PDIR ;
+	while(readPortD == 0x01){
+		__asm("nop") ;
 	}
 }
+
+/*
+ *	///////////////////////////////
+ *	TODO:
+ *		1. fix IRQ function
+ *		2. fix algorithm function to correctly display HR and SpO2
+ *  ///////////////////////////////
+*/
 
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
@@ -104,6 +110,7 @@ int main(void)
   int32_t n_brightness ;
   int i ;
   float f_temp ;
+  int len ;		// length of string
 
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
@@ -130,12 +137,13 @@ int main(void)
 
   n_ir_buffer_length = 500 ;		// stores 100 values per second for 5 seconds
 
-  // TODO: finish consoleIO initialization
+  // print test to console
+  printf("Hello ... test\n") ;
 
   // read first 500 samples
   for(i = 0; i < n_ir_buffer_length; i++){
 	  // wait until PTD1 asserts
-	  //while(readIRQ() == true) ;
+	  //readIRQ() ;
 
 	  // read from FIFO
 	  maxim_max30102_read_fifo((aun_red_buffer + i), (aun_ir_buffer + i)) ;
@@ -179,7 +187,7 @@ int main(void)
 	  for(i = 400 ; i < 500; i++){
 		  un_prev_data = aun_red_buffer[i - 1] ;
 		  // interrupt function
-		  //while(readIRQ() == 0x01) ;
+		  //readIRQ() ;
 
 		  maxim_max30102_read_fifo((aun_red_buffer + i), (aun_ir_buffer + i)) ;
 
@@ -202,6 +210,10 @@ int main(void)
 				  n_brightness = MAX_BRIGHTNESS ;
 			  }
 		  }
+		  // print heart rate and SpO2 to terminal
+		  printf("Heart rate: %i", n_heart_rate) ;
+		  printf("	SpO2: %i\n", n_sp02) ;
+		  Delay(delay) ;
 	  }
 
 	  // call heart rate and oxygen saturation function
