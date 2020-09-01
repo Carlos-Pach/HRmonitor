@@ -7,7 +7,7 @@
 **     Version     : Component 01.016, Driver 01.07, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-08-24, 04:50, # CodeGen: 36
+**     Date/Time   : 2020-08-31, 17:51, # CodeGen: 37
 **     Abstract    :
 **          This component encapsulates the internal I2C communication
 **          interface. The implementation of the interface is based
@@ -45,13 +45,13 @@
 **                SCL pin                                  : J2_18/I2C1_SCL
 **              High drive select                          : Disabled
 **              Input Glitch filter                        : 0
-**            Internal frequency (multiplier factor)       : 10.48576 MHz
-**            Bits 0-2 of Frequency divider register       : 100
-**            Bits 3-5 of Frequency divider register       : 110
-**            SCL frequency                                : 9.102 kHz
-**            SDA Hold                                     : 18.406 us
-**            SCL start Hold                               : 54.741 us
-**            SCL stop Hold                                : 55.027 us
+**            Internal frequency (multiplier factor)       : 20.97152 MHz
+**            Bits 0-2 of Frequency divider register       : 111
+**            Bits 3-5 of Frequency divider register       : 011
+**            SCL frequency                                : 87.381 kHz
+**            SDA Hold                                     : 1.574 us
+**            SCL start Hold                               : 5.627 us
+**            SCL stop Hold                                : 5.77 us
 **            Control acknowledge bit                      : Disabled
 **            Low timeout                                  : Disabled
 **          Initialization                                 : 
@@ -363,8 +363,8 @@ LDD_TDeviceData* CI2C1_Init(LDD_TUserData *UserDataPtr)
   I2C0_FLT = I2C_FLT_FLT(0x00);        /* Set glitch filter register */
   /* I2C0_SMB: FACK=0,ALERTEN=0,SIICAEN=0,TCKSEL=0,SLTF=1,SHTF1=0,SHTF2=0,SHTF2IE=0 */
   I2C0_SMB = I2C_SMB_SLTF_MASK;
-  /* I2C0_F: MULT=0,ICR=0x34 */
-  I2C0_F = (I2C_F_MULT(0x00) | I2C_F_ICR(0x34)); /* Set prescaler bits */
+  /* I2C0_F: MULT=0,ICR=0x1F */
+  I2C0_F = (I2C_F_MULT(0x00) | I2C_F_ICR(0x1F)); /* Set prescaler bits */
   CI2C1_SetClockConfiguration(DeviceDataPrv, Cpu_GetClockConfiguration()); /* Set Initial according speed CPU mode */
   /* Registration of the device structure */
   PE_LDD_RegisterDeviceStructure(PE_LDD_COMPONENT_CI2C1_ID,DeviceDataPrv);
@@ -723,7 +723,7 @@ void CI2C1_SetClockConfiguration(LDD_TDeviceData *DeviceDataPtr, LDD_TClockConfi
   switch (ClockConfiguration) {
     case CPU_CLOCK_CONFIG_0:
       DeviceDataPrv->EnMode = TRUE;    /* Set the flag "device enabled" in the actual speed CPU mode */
-      I2C_PDD_SetFrequencyMultiplier(I2C0_BASE_PTR, 0x01U); /* Set value of I2C multiplier */
+      I2C_PDD_SetFrequencyMultiplier(I2C0_BASE_PTR, 0x00U); /* Set value of I2C multiplier */
       break;
     default:
       DeviceDataPrv->EnMode = FALSE;   /* Set the flag "device disabled" in the actual speed CPU mode */

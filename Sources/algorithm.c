@@ -15,8 +15,6 @@ const uint8_t uch_spo2_table[184]={ 95, 95, 95, 96, 96, 96, 97, 97, 97, 97, 97, 
 									98, 98, 98, 98, 99, 99, 99, 99,
                              	  } ;
 
-// TODO: solve makefile problem ... "multiple definition of x first defined here"
-
 /*
  *	=======================================================
  *	Function name: maxim_heart_rate_and_oxygen_saturation
@@ -141,7 +139,7 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 	for(k = 0; k<n_npks; k++){
 		un_only_once = 1 ;
 		m = an_ir_valley_locs[k] ;
-		n_c_min = 16777216;//2^24;
+		n_c_min = 16777216;			//2^24;
 		if((m+5 <  BUFFER_SIZE-HAMMING_SIZE) && (m-5 > 0)){
 			for(i = m-5; i < m+5; i++){
 				if (an_x[i]<n_c_min){

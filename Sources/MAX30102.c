@@ -84,8 +84,8 @@ Bool maxim_max30102_write_reg(uint8_t uch_addr, uint8_t uch_data) {
 	ach_i2c_data[0] = uch_addr ;
 	ach_i2c_data[1] = uch_data ;
 
-	// TODO: change I2C_WRITE_ADDR --> I2C_ADDR_7BITS
-	if(GI2C1_WriteAddress((I2C_WRITE_ADDR >> 1), &ach_i2c_data[0], 1, &ach_i2c_data[1], 1) == 0x00){	// 3rd and 5th arguments changed to 1 byte
+	// 3rd and 5th arguments are number of bytes being written
+	if(GI2C1_WriteAddress(I2C_ADDR_7BITS, &ach_i2c_data[0], 1, &ach_i2c_data[1], 1) == 0x00){
 		return true ;
 	}
 	return false ;
@@ -132,13 +132,14 @@ Bool maxim_max30102_reset(void){
  */
 Bool maxim_max30102_read_reg(uint8_t uch_addr, uint8_t *puch_data){
 	char ch_i2c_data ;
-	uint8_t *var ;				// var --> *var
+	uint8_t *var ;				// change: var --> *var
 	ch_i2c_data = uch_addr ;
 	var = puch_data ;
 
 	if(GI2C1_WriteAddress(I2C_ADDR_7BITS, &ch_i2c_data , 1, &var , 1) != 0x00){
 		return false ;
 	}
+	// return value for function should be RES_OK (0x00) if address is read correctly
 	if(GI2C1_ReadAddress(I2C_ADDR_7BITS, &ch_i2c_data, 1, &var, 1) == 0x00){
 		*puch_data = (uint8_t)ch_i2c_data ;
 		return true ;
@@ -182,8 +183,9 @@ Bool maxim_max30102_read_fifo(uint32_t *pun_red_led, uint32_t *pun_ir_led){
 	if(GI2C1_WriteAddress(I2C_ADDR_7BITS, &ach_i2c_data, 1, &ach_i2c_data[1], 1) != 0x00){	// change: &ach_i2c_data[0] --> &ach_i2c_data[1]
 		return false ;
 	}
-	// NOTE TO SELF: using for loop to write into ach_i2c_data from [1, 5] did not work
-	if(GI2C1_ReadAddress(I2C_ADDR_7BITS, &ach_i2c_data, 1, &ach_i2c_data[1], 5) != 0x00){	// 3rd and 5th arguments changed to 1 and 5 respectively ... 4th argument changed to &data[1]
+	// 3rd and 5th arguments changed to 1 and 5 respectively, 4th argument changed to &data[1]
+	// &ach_i2c_data[0] reads from max30102 and &ach_i2c_data[1] begins reading (5) bytes
+	if(GI2C1_ReadAddress(I2C_ADDR_7BITS, &ach_i2c_data, 1, &ach_i2c_data[1], 5) != 0x00){
 		return false ;
 	}
 

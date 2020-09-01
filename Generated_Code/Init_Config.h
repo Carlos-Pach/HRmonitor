@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K64P144M120SF5RM, Rev.2, January 2014
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-08-16, 18:25, # CodeGen: 17
+**     Date/Time   : 2020-08-31, 17:51, # CodeGen: 37
 **     Abstract    :
 **         This file collects Processor Expert components configuration 
 **         and interface files.
@@ -291,48 +291,48 @@
 **                __SYSTEM_OSC                             : 8
 **                __RTC_OSC                                : 0.032768
 **                Very low power mode                      : Disabled
-**                Clock source setting                     : configuration 3
-**                  MCG mode                               : BLPE
-**                  MCG output [MHz]                       : 0.032768
-**                  MCGIRCLK clock [MHz]                   : 2
+**                Clock source setting                     : configuration 0
+**                  MCG mode                               : FEI
+**                  MCG output [MHz]                       : 20.97152
+**                  MCGIRCLK clock [MHz]                   : 0.032768
 **                  OSCERCLK clock [MHz]                   : 0
 **                  ERCLK32K. clock [kHz]                  : 0.032768
-**                  MCGFFCLK [kHz]                         : 0
+**                  MCGFFCLK [kHz]                         : 32.768
 **                System clocks                            : 
 **                  Core clock prescaler                   : Auto select
-**                  Core clock                             : 0.032768
+**                  Core clock                             : 20.97152
 **                  Bus clock prescaler                    : Auto select
-**                  Bus clock                              : 0.032768
+**                  Bus clock                              : 20.97152
 **                  External clock prescaler               : Auto select
-**                  External bus clock                     : 0.032768
+**                  External bus clock                     : 10.48576
 **                  Flash clock prescaler                  : Auto select
-**                  Flash clock                            : 0.032768
+**                  Flash clock                            : 10.48576
 **                  PLL/FLL clock selection                : Auto select
-**                    Clock frequency [MHz]                : 48
+**                    Clock frequency [MHz]                : 20.97152
 **              Clock configuration 4                      : 
 **                __IRC_32kHz                              : 0.032768
 **                __IRC_4MHz                               : 2
 **                __SYSTEM_OSC                             : 8
 **                __RTC_OSC                                : 0.032768
 **                Very low power mode                      : Disabled
-**                Clock source setting                     : configuration 4
-**                  MCG mode                               : PEE
-**                  MCG output [MHz]                       : 120
+**                Clock source setting                     : configuration 0
+**                  MCG mode                               : FEI
+**                  MCG output [MHz]                       : 20.97152
 **                  MCGIRCLK clock [MHz]                   : 0.032768
-**                  OSCERCLK clock [MHz]                   : 8
+**                  OSCERCLK clock [MHz]                   : 0
 **                  ERCLK32K. clock [kHz]                  : 0.032768
-**                  MCGFFCLK [kHz]                         : 31.25
+**                  MCGFFCLK [kHz]                         : 32.768
 **                System clocks                            : 
 **                  Core clock prescaler                   : Auto select
-**                  Core clock                             : 120
+**                  Core clock                             : 20.97152
 **                  Bus clock prescaler                    : Auto select
-**                  Bus clock                              : 60
+**                  Bus clock                              : 20.97152
 **                  External clock prescaler               : Auto select
-**                  External bus clock                     : 60
+**                  External bus clock                     : 10.48576
 **                  Flash clock prescaler                  : Auto select
-**                  Flash clock                            : 24
-**                  PLL/FLL clock selection                : PLL clock
-**                    Clock frequency [MHz]                : 120
+**                  Flash clock                            : 10.48576
+**                  PLL/FLL clock selection                : Auto select
+**                    Clock frequency [MHz]                : 20.97152
 **          Low power mode settings                        : 
 **            Allowed power modes                          : 
 **              Very low power modes                       : Allowed

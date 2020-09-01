@@ -32,9 +32,9 @@ const uint8_t uch_spo2_table[184]={ 95, 95, 95, 96, 96, 96, 97, 97, 97, 97, 97, 
 									98, 98, 98, 98, 99, 99, 99, 99,
                              	  } ;*/
 
-static  int32_t an_dx[ BUFFER_SIZE-MA4_SIZE]; // delta
-static  int32_t an_x[ BUFFER_SIZE]; //ir
-static  int32_t an_y[ BUFFER_SIZE]; //red
+static  int32_t an_dx[BUFFER_SIZE - MA4_SIZE]; // delta
+static  int32_t an_x[BUFFER_SIZE]; //ir
+static  int32_t an_y[BUFFER_SIZE]; //red
 
 
 void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n_ir_buffer_length, uint32_t *pun_red_buffer ,   int32_t *pn_spo2, int8_t *pch_spo2_valid ,  int32_t *pn_heart_rate , int8_t  *pch_hr_valid);
