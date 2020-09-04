@@ -92,7 +92,7 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 	for (i = 0; i < (BUFFER_SIZE - HAMMING_SIZE - MA4_SIZE - 2); i++){
 		s = 0;
 
-		for(k = i; k < (i+ HAMMING_SIZE); k++){
+		for(k = i; k < (i + HAMMING_SIZE); k++){
 			s -= an_dx[k] *auw_hamm[k-i] ;
 		}
 
@@ -110,8 +110,8 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 	maxim_find_peaks(an_dx_peak_locs, &n_npks, an_dx, (BUFFER_SIZE - HAMMING_SIZE), n_th1, 8, 5);//peak_height, peak_distance, max_num_peaks
 
 	n_peak_interval_sum = 0;
-	if (n_npks>=2){
-		for (k=1; k<n_npks; k++){
+	if (n_npks >= 2){
+		for (k = 1; k < n_npks; k++){
 			n_peak_interval_sum += (an_dx_peak_locs[k] - an_dx_peak_locs[k - 1]) ;
 		}
 		n_peak_interval_sum = n_peak_interval_sum/(n_npks - 1) ;
@@ -129,14 +129,14 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 
 	// raw value : RED(=y) and IR(=X)
 	// we need to assess DC and AC value of ir and red PPG.
-	for (k=0 ; k<n_ir_buffer_length ; k++ )  {
+	for (k = 0 ; k < n_ir_buffer_length ; k++ )  {
 		an_x[k] =  pun_ir_buffer[k] ;
 		an_y[k] =  pun_red_buffer[k] ;
 	}
 
 	// find precise min near an_ir_valley_locs
 	n_exact_ir_valley_locs_count =0;
-	for(k = 0; k<n_npks; k++){
+	for(k = 0; k < n_npks; k++){
 		un_only_once = 1 ;
 		m = an_ir_valley_locs[k] ;
 		n_c_min = 16777216;			//2^24;
@@ -189,7 +189,7 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 		n_y_dc_max = -16777216 ;
 		n_x_dc_max = -16777216 ;
 
-		if (an_exact_ir_valley_locs[k+1] - an_exact_ir_valley_locs[k] > 10){
+		if ((an_exact_ir_valley_locs[k+1] - an_exact_ir_valley_locs[k]) > 10){
 			for (i = an_exact_ir_valley_locs[k]; i < an_exact_ir_valley_locs[k+1]; i++){
 				if(an_x[i] > n_x_dc_max){
 					n_x_dc_max = an_x[i] ;
@@ -200,7 +200,7 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 					n_y_dc_max_idx = i ;
 				}
 			}
-			n_y_ac = (an_y[an_exact_ir_valley_locs[k+1]] - an_y[an_exact_ir_valley_locs[k] ] )*(n_y_dc_max_idx -an_exact_ir_valley_locs[k]); //red
+			n_y_ac = (an_y[an_exact_ir_valley_locs[k+1]] - an_y[an_exact_ir_valley_locs[k]]) * (n_y_dc_max_idx -an_exact_ir_valley_locs[k]); //red
 			n_y_ac =  an_y[an_exact_ir_valley_locs[k]] + n_y_ac/ (an_exact_ir_valley_locs[k+1] - an_exact_ir_valley_locs[k])  ;
 
 

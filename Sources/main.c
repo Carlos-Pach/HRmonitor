@@ -50,9 +50,9 @@
 
 #define MAX_BRIGHTNESS	255
 
-uint32_t aun_ir_buffer[500] ;		// IR LED sensor data
+uint32_t aun_ir_buffer[BUFFER_SIZE] ;	// IR LED sensor data
 int32_t n_ir_buffer_length ;		// data length
-uint32_t aun_red_buffer[500] ;		// red LED sensor data
+uint32_t aun_red_buffer[BUFFER_SIZE] ;	// red LED sensor data
 int32_t n_sp02 ;					// SPO2 value
 int8_t ch_spo2_valid ;				// indicator to show if SPO02 calculation is valid
 int32_t n_heart_rate ;				// heart rate value
@@ -70,12 +70,12 @@ void initLED(void){
   SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK; /*Enable Port B Clock Gate Control*/
   //SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK ;
   //PORTD_GPCLR = 0x000101000 ;	// set up PORTD 1 for GPIO
-  PORTB_PCR21 = 0x100;/*Blue Led, configured as Alternative 1 (GPIO)*/
-  PORTB_PCR22 = 0x100;/*Red Led, configured as Alternative 1 (GPIO)*/
-  GPIOB_PDDR |= (1 << 21);/*Setting the bit 21 of the port B as Output*/
-  GPIOB_PDDR |= (1 << 22);/*Setting the bit 22 of the port B as Output*/
-  GPIOB_PDOR |= (1 << 21);/*Turn Off Blue Led*/
-  GPIOB_PDOR |= (1 << 22);/*Turn Off Red Led*/
+  PORTB_PCR21 = 0x100 ; /*Blue Led, configured as Alternative 1 (GPIO)*/
+  PORTB_PCR22 = 0x100 ;	/*Red Led, configured as Alternative 1 (GPIO)*/
+  GPIOB_PDDR |= (1 << 21) ; /*Setting the bit 21 of the port B as Output*/
+  GPIOB_PDDR |= (1 << 22) ; /*Setting the bit 22 of the port B as Output*/
+  GPIOB_PDOR |= (1 << 21) ; /*Turn Off Blue Led*/
+  GPIOB_PDOR |= (1 << 22) ; /*Turn Off Red Led*/
 }
 
 void lightUpLED(void){
@@ -211,9 +211,10 @@ int main(void)
 			  }
 		  }
 		  // print heart rate and SpO2 to terminal
-		  printf("Heart rate: %i", n_heart_rate) ;
-		  printf("	SpO2: %i\n", n_sp02) ;
-		  Delay(delay) ;
+		  if(i == 499){
+			  printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ;
+		  }
+		  //Delay(delay) ;
 	  }
 
 	  // call heart rate and oxygen saturation function
