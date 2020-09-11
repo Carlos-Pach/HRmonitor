@@ -79,7 +79,7 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 
 	// difference of smoothed IR signal
 	for(k = 0; k < (BUFFER_SIZE - MA4_SIZE - 1); k++){
-		an_dx[k]= (an_x[k + 1]- an_x[k]) ;
+		an_dx[k]= an_x[k + 1] - an_x[k] ;
 	}
 
 	// 2-pt Moving Average to an_dx
@@ -111,11 +111,10 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 
 	n_peak_interval_sum = 0;
 	if (n_npks >= 2){
-		for (k = 1; k < n_npks; k++){
-			n_peak_interval_sum += (an_dx_peak_locs[k] - an_dx_peak_locs[k - 1]) ;
-		}
-		n_peak_interval_sum = n_peak_interval_sum/(n_npks - 1) ;
-		*pn_heart_rate = (int32_t)(6000/n_peak_interval_sum) ;	// beats per minutes
+		for (k=1; k<n_npks; k++)
+			n_peak_interval_sum += (an_dx_peak_locs[k]-an_dx_peak_locs[k -1]) ;
+		n_peak_interval_sum = n_peak_interval_sum/(n_npks-1) ;
+		*pn_heart_rate = (int32_t)(6000/n_peak_interval_sum);// beats per minutes
 		*pch_hr_valid  = 1 ;
 	}
 	else{
@@ -124,7 +123,7 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 	}
 
 	for(k = 0; k < n_npks; k++){
-		an_ir_valley_locs[k] = an_dx_peak_locs[k]+HAMMING_SIZE/2;
+		an_ir_valley_locs[k] = an_dx_peak_locs[k] + HAMMING_SIZE/2;
 	}
 
 	// raw value : RED(=y) and IR(=X)
@@ -135,11 +134,11 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 	}
 
 	// find precise min near an_ir_valley_locs
-	n_exact_ir_valley_locs_count =0;
+	n_exact_ir_valley_locs_count = 0 ;
 	for(k = 0; k < n_npks; k++){
 		un_only_once = 1 ;
 		m = an_ir_valley_locs[k] ;
-		n_c_min = 16777216;			//2^24;
+		n_c_min = 16777216 ;			//2^24;
 		if((m+5 <  BUFFER_SIZE-HAMMING_SIZE) && (m-5 > 0)){
 			for(i = m-5; i < m+5; i++){
 				if (an_x[i]<n_c_min){
@@ -157,11 +156,11 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 
 	if (n_exact_ir_valley_locs_count < 2){
 	   *pn_spo2 =  -999 ; // do not use SPO2 since signal ratio is out of range
-	   *pch_spo2_valid  = 0;
+	   *pch_spo2_valid  = 0 ;
 	   return;
 	}
 	// 4 pt MA
-	for(k=0; k < BUFFER_SIZE-MA4_SIZE; k++){
+	for(k = 0; k < (BUFFER_SIZE-MA4_SIZE); k++){
 		an_x[k]=( an_x[k]+an_x[k+1]+ an_x[k+2]+ an_x[k+3])/(int32_t)4;
 		an_y[k]=( an_y[k]+an_y[k+1]+ an_y[k+2]+ an_y[k+3])/(int32_t)4;
 	}
@@ -200,8 +199,8 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer ,  int32_t n
 					n_y_dc_max_idx = i ;
 				}
 			}
-			n_y_ac = (an_y[an_exact_ir_valley_locs[k+1]] - an_y[an_exact_ir_valley_locs[k]]) * (n_y_dc_max_idx -an_exact_ir_valley_locs[k]); //red
-			n_y_ac =  an_y[an_exact_ir_valley_locs[k]] + n_y_ac/ (an_exact_ir_valley_locs[k+1] - an_exact_ir_valley_locs[k])  ;
+			n_y_ac = (an_y[an_exact_ir_valley_locs[k+1]] - an_y[an_exact_ir_valley_locs[k]]) *(n_y_dc_max_idx -an_exact_ir_valley_locs[k]); //red
+			n_y_ac =  (an_y[an_exact_ir_valley_locs[k]] + n_y_ac)/ (an_exact_ir_valley_locs[k+1] - an_exact_ir_valley_locs[k])  ;
 
 
 			n_y_ac =  an_y[n_y_dc_max_idx] - n_y_ac;    // subracting linear DC compoenents from raw

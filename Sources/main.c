@@ -138,7 +138,7 @@ int main(void)
   n_ir_buffer_length = 500 ;		// stores 100 values per second for 5 seconds
 
   // print test to console
-  printf("Hello ... test\n") ;
+  printf("\nHello ... test\n") ;
 
   // read first 500 samples
   for(i = 0; i < n_ir_buffer_length; i++){
@@ -211,9 +211,7 @@ int main(void)
 			  }
 		  }
 		  // print heart rate and SpO2 to terminal
-		  if(i == 499){
-			  printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ;
-		  }
+		  if(i == 499){ printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ; }
 		  //Delay(delay) ;
 	  }
 

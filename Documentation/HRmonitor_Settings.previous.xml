@@ -216,11 +216,11 @@
         </group>
         <Internal_frequency__multiplier_factor_ v="20.97152 MHz" />
         <Bits_0_2_of_Frequency_divider_register v="111" />
-        <Bits_3_5_of_Frequency_divider_register v="100" />
-        <SCL_frequency v="43.691 kHz" />
-        <SDA_Hold v="3.099 us" />
-        <SCL_start_Hold v="11.349 us" />
-        <SCL_stop_Hold v="11.492 us" />
+        <Bits_3_5_of_Frequency_divider_register v="011" />
+        <SCL_frequency v="87.381 kHz" />
+        <SDA_Hold v="1.574 us" />
+        <SCL_start_Hold v="5.627 us" />
+        <SCL_stop_Hold v="5.77 us" />
         <boolgroup name="Control acknowledge bit" v="Disabled" />
         <boolgroup name="Low timeout" v="Disabled" />
       </group>
