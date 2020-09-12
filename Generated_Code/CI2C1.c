@@ -7,7 +7,7 @@
 **     Version     : Component 01.016, Driver 01.07, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-09-07, 18:37, # CodeGen: 45
+**     Date/Time   : 2020-09-11, 13:48, # CodeGen: 46
 **     Abstract    :
 **          This component encapsulates the internal I2C communication
 **          interface. The implementation of the interface is based
@@ -45,13 +45,13 @@
 **                SCL pin                                  : J2_18/I2C1_SCL
 **              High drive select                          : Disabled
 **              Input Glitch filter                        : 0
-**            Internal frequency (multiplier factor)       : 10.48576 MHz
+**            Internal frequency (multiplier factor)       : 20.97152 MHz
 **            Bits 0-2 of Frequency divider register       : 111
 **            Bits 3-5 of Frequency divider register       : 011
-**            SCL frequency                                : 43.691 kHz
-**            SDA Hold                                     : 3.147 us
-**            SCL start Hold                               : 11.253 us
-**            SCL stop Hold                                : 11.539 us
+**            SCL frequency                                : 87.381 kHz
+**            SDA Hold                                     : 1.574 us
+**            SCL start Hold                               : 5.627 us
+**            SCL stop Hold                                : 5.77 us
 **            Control acknowledge bit                      : Disabled
 **            Low timeout                                  : Disabled
 **          Initialization                                 : 
@@ -723,7 +723,7 @@ void CI2C1_SetClockConfiguration(LDD_TDeviceData *DeviceDataPtr, LDD_TClockConfi
   switch (ClockConfiguration) {
     case CPU_CLOCK_CONFIG_0:
       DeviceDataPrv->EnMode = TRUE;    /* Set the flag "device enabled" in the actual speed CPU mode */
-      I2C_PDD_SetFrequencyMultiplier(I2C0_BASE_PTR, 0x01U); /* Set value of I2C multiplier */
+      I2C_PDD_SetFrequencyMultiplier(I2C0_BASE_PTR, 0x00U); /* Set value of I2C multiplier */
       break;
     default:
       DeviceDataPrv->EnMode = FALSE;   /* Set the flag "device disabled" in the actual speed CPU mode */
