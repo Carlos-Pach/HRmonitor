@@ -31,6 +31,24 @@ Sources/Events.o: ../Sources/Events.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CsIO1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/IO1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/BT1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CLS1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CLS1config.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/UTIL1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/UTIL1config.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1config.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1config.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CLS1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/UTIL1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Init_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/System/PDD_Includes.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/ADC_PDD.h \
@@ -137,6 +155,42 @@ Sources/Events.o: ../Sources/Events.c \
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CsIO1.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/IO1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/BT1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CLS1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CLS1config.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/UTIL1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/UTIL1config.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1config.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1config.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CLS1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/UTIL1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Init_Config.h:
 

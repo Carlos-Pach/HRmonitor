@@ -25,7 +25,7 @@
     <Compiler v="GNU C Compiler" />
     <CompilerProperties>
       <Compiler v="GNU C Compiler" />
-      <enumgroup name="Unhandled vectors" v="Own handler for every">
+      <enumgroup name="Unhandled vectors" v="One handler for all">
         <EmptySection_DummyValue />
       </enumgroup>
       <boolgroup name="Generate debugger files" v="no" />
@@ -459,6 +459,462 @@
     </Properties>
     <Methods>
       <EmptySection_DummyValue />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="BT1" type="Bluetooth_EGBT">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="BT1" />
+      <Firmware v="HC05" />
+      <Response_timeout__ms_ v="650" />
+      <boolgroup name="CMD Pin" v="Disabled" />
+      <boolgroup name="State Pin" v="Disabled" />
+      <boolgroup name="Rx Pull-Up" v="Disabled" />
+      <group name="Interfaces">
+        <Shell v="CLS1" />
+        <Utility v="UTIL1" />
+        <Wait v="WAIT1" />
+        <inhrbean type="AsynchroSerial">
+          <Enabled v="Y" />
+          <Template v="Serial" />
+          <Properties>
+            <Component_name v="Serial1" />
+            <Channel v="UART1" />
+            <boolgroup name="Interrupt service/event" v="Enabled">
+              <Interrupt_RxD v="INT_UART1_RX_TX" />
+              <Interrupt_RxD_priority v="medium priority" />
+              <Interrupt_TxD v="INT_UART1_RX_TX" />
+              <Interrupt_TxD_priority v="medium priority" />
+              <Interrupt_Error v="INT_UART1_ERR" />
+              <Interrupt_Error_priority v="medium priority" />
+              <Input_buffer_size v="64" />
+              <Output_buffer_size v="64" />
+              <group name="Handshake">
+                <boolgroup name="CTS" v="Disabled" />
+                <boolgroup name="RTS" v="Disabled" />
+              </group>
+            </boolgroup>
+            <group name="Settings">
+              <Parity v="none" />
+              <Width v="8 bits" />
+              <Stop_bit v="1" />
+              <boolgroup name="Receiver" v="Enabled">
+                <RxD v="CMP0_output" />
+              </boolgroup>
+              <boolgroup name="Transmitter" v="Enabled">
+                <TxD v="SD_CARD_DAT1" />
+              </boolgroup>
+              <Baud_rate v="9600 baud" />
+              <Break_signal v="Disabled" />
+              <Wakeup_condition v="Idle line wakeup" />
+              <Transmitter_output v="Not inverted" />
+              <Receiver_input v="Not inverted" />
+              <Stop_in_wait_mode v="no" />
+              <Idle_line_mode v="starts after start bit" />
+              <Break_generation_length v="Short" />
+            </group>
+            <group name="Initialization">
+              <Enabled_in_init__code v="yes" />
+              <Events_enabled_in_init_ v="yes" />
+            </group>
+            <group name="CPU clock/speed selection">
+              <High_speed_mode v="This component enabled" />
+              <Low_speed_mode v="This component disabled" />
+              <Slow_speed_mode v="This component disabled" />
+            </group>
+            <group name="Referenced components">
+              <inhrbean type="Serial_LDD">
+                <Enabled v="Y" />
+                <Properties>
+                  <Component_name v="ASerialLdd1" />
+                  <Device v="UART1" />
+                  <boolgroup name="Interrupt service/event" v="Enabled">
+                    <Interrupt_RxD v="INT_UART1_RX_TX" />
+                    <Interrupt_RxD_priority v="medium priority" />
+                    <Interrupt_TxD v="INT_UART1_RX_TX" />
+                    <Interrupt_TxD_priority v="medium priority" />
+                    <Interrupt_Error v="INT_UART1_ERR" />
+                    <Interrupt_Error_priority v="medium priority" />
+                  </boolgroup>
+                  <group name="Settings">
+                    <Data_width v="8 bits" />
+                    <Parity v="None" />
+                    <Stop_bits v="1" />
+                    <Loop_mode v="Normal" />
+                    <Baud_rate v="9600 baud" />
+                    <Wakeup_condition v="Idle line wakeup" />
+                    <Stop_in_wait_mode v="no" />
+                    <Idle_line_mode v="Starts after start bit" />
+                    <Transmitter_output v="Not inverted" />
+                    <Receiver_input v="Not inverted" />
+                    <Break_generation_length v="10/11 bits" />
+                    <boolgroup name="Receiver" v="Enabled">
+                      <RxD v="CMP0_output" />
+                    </boolgroup>
+                    <boolgroup name="Transmitter" v="Enabled">
+                      <TxD v="SD_CARD_DAT1" />
+                    </boolgroup>
+                    <enumgroup name="Flow control" v="None">
+                      <EmptySection_DummyValue />
+                    </enumgroup>
+                  </group>
+                  <group name="Initialization">
+                    <Enabled_in_init__code v="yes" />
+                    <group name="Event mask">
+                      <OnBlockSent v="Enabled" />
+                      <OnBlockReceived v="Enabled" />
+                      <OnTxComplete v="Disabled" />
+                      <OnError v="Enabled" />
+                      <OnBreak v="Enabled" />
+                    </group>
+                  </group>
+                </Properties>
+                <Methods>
+                  <Init v="generate code" />
+                  <Deinit v="don&amp;apos;t generate code" />
+                  <Enable v="generate code" />
+                  <Disable v="generate code" />
+                  <SendBlock v="generate code" />
+                  <ReceiveBlock v="generate code" />
+                  <CancelBlockTransmission v="don&amp;apos;t generate code" />
+                  <CancelBlockReception v="don&amp;apos;t generate code" />
+                  <GetError v="generate code" />
+                  <GetSentDataNum v="don&amp;apos;t generate code" />
+                  <GetReceivedDataNum v="don&amp;apos;t generate code" />
+                  <GetTxCompleteStatus v="don&amp;apos;t generate code" />
+                  <SetEventMask v="don&amp;apos;t generate code" />
+                  <GetEventMask v="don&amp;apos;t generate code" />
+                  <SelectBaudRate v="don&amp;apos;t generate code" />
+                  <GetSelectedBaudRate v="don&amp;apos;t generate code" />
+                  <SetParity v="don&amp;apos;t generate code" />
+                  <GetParity v="don&amp;apos;t generate code" />
+                  <SetDataWidth v="don&amp;apos;t generate code" />
+                  <GetDataWidth v="don&amp;apos;t generate code" />
+                  <SetStopBitLength v="don&amp;apos;t generate code" />
+                  <GetStopBitLength v="don&amp;apos;t generate code" />
+                  <SetLoopMode v="don&amp;apos;t generate code" />
+                  <GetLoopMode v="don&amp;apos;t generate code" />
+                  <GetStats v="don&amp;apos;t generate code" />
+                  <ClearStats v="don&amp;apos;t generate code" />
+                  <SendBreak v="don&amp;apos;t generate code" />
+                  <GetBreak v="don&amp;apos;t generate code" />
+                  <TurnTxOn v="don&amp;apos;t generate code" />
+                  <TurnTxOff v="don&amp;apos;t generate code" />
+                  <TurnRxOn v="don&amp;apos;t generate code" />
+                  <TurnRxOff v="don&amp;apos;t generate code" />
+                  <ConnectPin v="don&amp;apos;t generate code" />
+                  <Main v="don&amp;apos;t generate code" />
+                  <SetOperationMode v="don&amp;apos;t generate code" />
+                  <GetDriverState v="don&amp;apos;t generate code" />
+                </Methods>
+                <Events>
+                  <Event_module_name v="Events" />
+                  <event name="OnBlockReceived" v="generate code">
+                    <Event_procedure_name v="ASerialLdd1_OnBlockReceived" />
+                  </event>
+                  <event name="OnBlockSent" v="generate code">
+                    <Event_procedure_name v="ASerialLdd1_OnBlockSent" />
+                  </event>
+                  <event name="OnBreak" v="generate code">
+                    <Event_procedure_name v="ASerialLdd1_OnBreak" />
+                  </event>
+                  <event name="OnError" v="generate code">
+                    <Event_procedure_name v="ASerialLdd1_OnError" />
+                  </event>
+                  <event name="OnTxComplete" v="don&amp;apos;t generate code" />
+                </Events>
+              </inhrbean>
+            </group>
+          </Properties>
+          <Methods>
+            <Enable v="don&amp;apos;t generate code" />
+            <Disable v="don&amp;apos;t generate code" />
+            <EnableEvent v="don&amp;apos;t generate code" />
+            <DisableEvent v="don&amp;apos;t generate code" />
+            <RecvChar v="generate code" />
+            <SendChar v="generate code" />
+            <RecvBlock v="generate code" />
+            <SendBlock v="generate code" />
+            <ClearRxBuf v="generate code" />
+            <ClearTxBuf v="generate code" />
+            <CharsInRxBuf v="don&amp;apos;t generate code" />
+            <GetCharsInRxBuf v="generate code" />
+            <CharsInTxBuf v="don&amp;apos;t generate code" />
+            <GetCharsInTxBuf v="generate code" />
+            <SetBaudRateMode v="don&amp;apos;t generate code" />
+            <GetError v="don&amp;apos;t generate code" />
+            <GetBreak v="don&amp;apos;t generate code" />
+            <SetBreak v="don&amp;apos;t generate code" />
+            <TurnTxOn v="don&amp;apos;t generate code" />
+            <TurnTxOff v="don&amp;apos;t generate code" />
+            <TurnRxOn v="don&amp;apos;t generate code" />
+            <TurnRxOff v="don&amp;apos;t generate code" />
+            <LoopMode v="don&amp;apos;t generate code" />
+            <ConnectPin v="don&amp;apos;t generate code" />
+          </Methods>
+          <Events>
+            <Event_module_name v="Events" />
+            <event name="BeforeNewSpeed" v="don&amp;apos;t generate code" />
+            <event name="AfterNewSpeed" v="don&amp;apos;t generate code" />
+            <event name="OnError" v="don&amp;apos;t generate code" />
+            <event name="OnRxChar" v="don&amp;apos;t generate code" />
+            <event name="OnRxCharExt" v="don&amp;apos;t generate code" />
+            <event name="OnTxChar" v="don&amp;apos;t generate code" />
+            <event name="OnFullRxBuf" v="don&amp;apos;t generate code" />
+            <event name="OnFreeTxBuf" v="don&amp;apos;t generate code" />
+            <event name="OnBreak" v="don&amp;apos;t generate code" />
+            <event name="OnTxComplete" v="don&amp;apos;t generate code" />
+          </Events>
+        </inhrbean>
+      </group>
+    </Properties>
+    <Methods>
+      <Init v="generate code" />
+      <Deinit v="generate code" />
+      <GetLastError v="generate code" />
+      <GetErrorString v="generate code" />
+      <SendATCommand v="generate code" />
+      <StdCmd v="generate code" />
+      <StdOKCmd v="generate code" />
+      <QueryString v="generate code" />
+      <btTestUART v="generate code" />
+      <btResetDevice v="generate code" />
+      <btQueryFirmwareVersionStr v="generate code" />
+      <btRestoreFactoryDefault v="generate code" />
+      <btQueryBluetoothAddressStr v="generate code" />
+      <btQueryDeviceName v="generate code" />
+      <btSetDeviceName v="generate code" />
+      <btQueryRemoteBluetoothDeviceName v="generate code" />
+      <btQueryRole v="generate code" />
+      <btSetRole v="generate code" />
+      <btQueryCoDStr v="generate code" />
+      <btSetCoDStr v="generate code" />
+      <btQueryIACStr v="generate code" />
+      <btSetIACStr v="generate code" />
+      <btQueryIAMStr v="generate code" />
+      <btSetIAMStr v="generate code" />
+      <btQueryPairingPasskey v="generate code" />
+      <btSetPairingPasskey v="generate code" />
+      <btQueryUARTParametersStr v="generate code" />
+      <btSetUARTParameterStr v="generate code" />
+      <btSetBaud v="generate code" />
+      <btQueryConnectionMethod v="generate code" />
+      <btSetConnectionMethod v="generate code" />
+      <btQueryBindingBluetoothAddress v="generate code" />
+      <btSetBindingBluetoothStr v="generate code" />
+      <btQueryLEDOutputPolarityStr v="generate code" />
+      <btSetLEDOutputPolarityStr v="generate code" />
+      <btSetUserPinIO v="generate code" />
+      <btSetMultipleUserIOPins v="generate code" />
+      <btQueryMultipleUserIOPinsStr v="generate code" />
+      <btQueryMultipleUserIOPins v="generate code" />
+      <btQueryScanningParametersStr v="generate code" />
+      <btSetScanningParameterStr v="generate code" />
+      <btQuerySNIFFParametersStr v="generate code" />
+      <btSetSNIFFParameterStr v="generate code" />
+      <btQuerySecurityEncryptionModesStr v="generate code" />
+      <btSetSecurityEncryptionModesStr v="generate code" />
+      <btDeleteAuthenticatedDeviceFromListStr v="generate code" />
+      <btFindDeviceFromAuthenticatedDeviceListStr v="generate code" />
+      <btQueryTotalNumberOfDeviceFromAuthenticationListStr v="generate code" />
+      <btQueryTotalNumberOfDeviceFromAuthenticationList v="generate code" />
+      <btQueryMostRecentlyUsedAuthenticatedDevice v="generate code" />
+      <btQueryCurrentStateOfDeviceStr v="generate code" />
+      <ParseCommand v="generate code" />
+      <RecvChar v="generate code" />
+      <SendChar v="generate code" />
+      <GetCharsInRxBuf v="generate code" />
+      <StdIOKeyPressed v="generate code" />
+      <StdIOReadChar v="generate code" />
+      <StdIOSendChar v="generate code" />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="CLS1" type="Shell">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="CLS1" />
+      <Echo v="no" />
+      <Prompt v="&amp;quot;CMD&amp;gt; &amp;quot;" />
+      <Project_Name v="My Project Name" />
+      <Silent_Mode_Prefix v="#" />
+      <Buffer_Size v="48" />
+      <boolgroup name="Blocking Send" v="Disabled" />
+      <Status_Colon_Pos v="13" />
+      <Help_Semicolon_Pos v="26" />
+      <boolgroup name="Multi Command" v="Disabled" />
+      <boolgroup name="History" v="no" />
+      <Mutex v="no" />
+      <SDK v="MCUC1" />
+      <boolgroup name="Default Serial" v="Disabled" />
+      <Utility v="UTIL1" />
+      <XFormat v="XF1" />
+      <Critical_Section v="CS1" />
+    </Properties>
+    <Methods>
+      <PrintPrompt v="generate code" />
+      <SendNum8u v="generate code" />
+      <SendNum8s v="generate code" />
+      <SendNum16u v="generate code" />
+      <SendNum16s v="generate code" />
+      <SendNum32u v="generate code" />
+      <SendNum32s v="generate code" />
+      <SendCh v="generate code" />
+      <SendStr v="generate code" />
+      <PrintMemory v="generate code" />
+      <printfIO v="generate code" />
+      <printf v="generate code" />
+      <SendData v="generate code" />
+      <PrintStatus v="generate code" />
+      <ParseCommand v="generate code" />
+      <IsHistoryCharacter v="generate code" />
+      <ReadLine v="generate code" />
+      <PrintCommandFailed v="generate code" />
+      <IterateTable v="generate code" />
+      <SetStdio v="generate code" />
+      <GetStdio v="generate code" />
+      <RequestSerial v="generate code" />
+      <ReleaseSerial v="generate code" />
+      <ReadAndParseWithCommandTable v="generate code" />
+      <ParseWithCommandTable v="generate code" />
+      <GetSemaphore v="generate code" />
+      <SendStatusStr v="generate code" />
+      <SendHelpStr v="generate code" />
+      <ReadChar v="generate code" />
+      <SendChar v="generate code" />
+      <KeyPressed v="generate code" />
+      <SendCharFct v="generate code" />
+      <Init v="generate code" />
+      <Deinit v="generate code" />
+    </Methods>
+    <Events>
+      <Event_module_name v="Events" />
+      <event name="OnBeforeIterateCmd" v="don&amp;apos;t generate code" />
+      <event name="OnAfterIterateCmd" v="don&amp;apos;t generate code" />
+    </Events>
+  </Bean>
+  <Bean name="UTIL1" type="Utility">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="UTIL1" />
+      <SDK v="MCUC1" />
+    </Properties>
+    <Methods>
+      <strcpy v="generate code" />
+      <strcat v="generate code" />
+      <strcatPad v="generate code" />
+      <chcat v="generate code" />
+      <Num8sToStr v="generate code" />
+      <Num8uToStr v="generate code" />
+      <Num16sToStr v="generate code" />
+      <Num16uToStr v="generate code" />
+      <Num32uToStr v="generate code" />
+      <Num32sToStr v="generate code" />
+      <NumFloatToStr v="generate code" />
+      <Num16sToStrFormatted v="generate code" />
+      <Num16uToStrFormatted v="generate code" />
+      <Num32uToStrFormatted v="generate code" />
+      <Num32sToStrFormatted v="generate code" />
+      <strcatNum8u v="generate code" />
+      <strcatNum8s v="generate code" />
+      <strcatNum16u v="generate code" />
+      <strcatNum16s v="generate code" />
+      <strcatNum32u v="generate code" />
+      <strcatNum32s v="generate code" />
+      <strcatNum16uFormatted v="generate code" />
+      <strcatNum16sFormatted v="generate code" />
+      <strcatNum32uFormatted v="generate code" />
+      <strcatNum32sFormatted v="generate code" />
+      <strcatNumHex v="generate code" />
+      <strcatNum8Hex v="generate code" />
+      <strcatNum16Hex v="generate code" />
+      <strcatNum24Hex v="generate code" />
+      <strcatNum32Hex v="generate code" />
+      <strcatNum32sDotValue100 v="generate code" />
+      <strcatNumFloat v="generate code" />
+      <IsLeapYear v="generate code" />
+      <WeekDay v="generate code" />
+      <ReadEscapedName v="generate code" />
+      <xatoi v="generate code" />
+      <ScanDate v="generate code" />
+      <ScanTime v="generate code" />
+      <ScanDecimal8uNumber v="generate code" />
+      <ScanDecimal8sNumber v="generate code" />
+      <ScanDecimal16uNumber v="generate code" />
+      <ScanDecimal16sNumber v="generate code" />
+      <ScanDecimal32uNumber v="generate code" />
+      <ScanDecimal32sNumber v="generate code" />
+      <ScanDecimal32sDotNumber v="generate code" />
+      <ScanHex8uNumber v="generate code" />
+      <ScanHex8uNumberNoPrefix v="generate code" />
+      <ScanHex16uNumber v="generate code" />
+      <ScanHex32uNumber v="generate code" />
+      <ScanSeparatedNumbers v="generate code" />
+      <ScanDoubleQuotedString v="generate code" />
+      <strcmp v="generate code" />
+      <strncmp v="generate code" />
+      <strFind v="generate code" />
+      <strtailcmp v="generate code" />
+      <strlen v="generate code" />
+      <strCutTail v="generate code" />
+      <GetValue16LE v="generate code" />
+      <GetValue24LE v="generate code" />
+      <GetValue32LE v="generate code" />
+      <SetValue16LE v="generate code" />
+      <SetValue24LE v="generate code" />
+      <SetValue32LE v="generate code" />
+      <map v="generate code" />
+      <map64 v="generate code" />
+      <constrain v="generate code" />
+      <random v="generate code" />
+      <randomSetSeed v="generate code" />
+      <Deinit v="generate code" />
+      <Init v="generate code" />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="CS1" type="CriticalSection">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="CS1" />
+      <SDK v="MCUC1" />
+      <Use_Processor_Expert_Default v="no" />
+      <Use_FreeRTOS v="no" />
+    </Properties>
+    <Methods>
+      <CriticalVariable v="generate code" />
+      <EnterCritical v="generate code" />
+      <ExitCritical v="generate code" />
+      <Deinit v="generate code" />
+      <Init v="generate code" />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="XF1" type="XFormat">
+    <Enabled v="Y" />
+    <Template v="XFormat" />
+    <Properties>
+      <Component_name v="XF1" />
+      <SDK v="MCUC1" />
+      <Floating_Point v="no" />
+      <Static v="no" />
+    </Properties>
+    <Methods>
+      <xvformat v="generate code" />
+      <xformat v="generate code" />
+      <xsprintf v="generate code" />
+      <xsnprintf v="generate code" />
+      <Deinit v="generate code" />
+      <Init v="generate code" />
     </Methods>
     <Events>
       <EmptySection_DummyValue />

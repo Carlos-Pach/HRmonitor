@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K64P144M120SF5RM, Rev.2, January 2014
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-09-01, 14:41, # CodeGen: 39
+**     Date/Time   : 2020-09-14, 02:40, # CodeGen: 50
 **     Abstract    :
 **
 **     Settings    :
@@ -161,6 +161,14 @@ void Components_Init(void)
   GI2C1_Init(); /* ### GenericI2C "GI2C1" init code ... */
   /* ### Serial_LDD "IO1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)IO1_Init(NULL);
+  UTIL1_Init(); /* ### Utility "UTIL1" init code ... */
+  CS1_Init(); /* ### CriticalSection "CS1" init code ... */
+  XF1_Init(); /* ### XFormat "XF1" init code ... */
+  CLS1_Init(); /* ### Shell "CLS1" init code ... */
+  /* ### Asynchro serial "Serial1" init code ... */
+  Serial1_Init();
+  /* ### Bluetooth_EGBT "BT1" init code ... */
+  BT1_Init();
 }
 #endif /* CPU_COMPONENTS_INIT */
 

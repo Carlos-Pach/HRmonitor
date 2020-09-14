@@ -37,6 +37,13 @@
 #include "CI2C1.h"
 #include "CsIO1.h"
 #include "IO1.h"
+#include "BT1.h"
+#include "Serial1.h"
+#include "ASerialLdd1.h"
+#include "CLS1.h"
+#include "UTIL1.h"
+#include "CS1.h"
+#include "XF1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -98,6 +105,7 @@ void readIRQ(void){
  *	TODO:
  *		1. fix IRQ function
  *		2. fix algorithm function to correctly display HR and SpO2
+ *		3. connect hc-05 to phone for bluetooth connection
  *  ///////////////////////////////
 */
 

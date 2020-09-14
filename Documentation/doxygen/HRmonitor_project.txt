@@ -29,6 +29,7 @@
 - \subpage CI2C1
 - \subpage PTD
 - \subpage IO1
+- \subpage ASerialLdd1
 
 */
 
@@ -64,6 +65,7 @@
 - \subpage CI2C1
 - \subpage PTD
 - \subpage IO1
+- \subpage ASerialLdd1
 
 */
 
