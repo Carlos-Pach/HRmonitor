@@ -211,7 +211,8 @@ int main(void)
 			  }
 		  }
 		  // print heart rate and SpO2 to terminal
-		  if(i == 499){ printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ; }
+          printf("Heart rate at: %i SpO2 at %i ", aun_red_buffer[i], aun_ir_buffer[i]) ;
+		  /*if(i == 499){ */printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ; /* } */
 		  //Delay(delay) ;
 	  }
 
