@@ -4,12 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Static_Code/Peripherals/PTB_Init.c \
 ../Static_Code/Peripherals/PTD_Init.c 
 
 OBJS += \
+./Static_Code/Peripherals/PTB_Init.o \
 ./Static_Code/Peripherals/PTD_Init.o 
 
 C_DEPS += \
+./Static_Code/Peripherals/PTB_Init.d \
 ./Static_Code/Peripherals/PTD_Init.d 
 
 

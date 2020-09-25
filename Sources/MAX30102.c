@@ -152,6 +152,27 @@ Bool maxim_max30102_read_reg(uint8_t uch_addr, uint8_t *puch_data){
 
 /*
  *  ========================================================
+ *  Function Name: maxim_max30102_mode_change
+ *
+ *  Purpose: Changes modes based on user input from switch
+ *  Details: This function changes LED modes (red or multiLED)
+ *
+ *  Parameters:
+ *		NAME					DESCRIPTION
+ *		[In] maxim_addr		- register address
+ *		[In] maxim_data		- register data
+ *
+ *  Return Value:
+ *  	none
+ *  ========================================================
+ */
+void maxim_max30102_mode_change(uint8_t maxim_addr, uint8_t maxim_data){
+	// write to maxim_max30102_write_reg
+	maxim_max30102_write_reg(maxim_addr, maxim_data) ;
+}
+
+/*
+ *  ========================================================
  *  Function Name: maxim_max30102_read_fifo
  *
  *  Purpose: Reads a set of samples from the MAX30102 FIFO register

@@ -37,9 +37,6 @@
 #include "CI2C1.h"
 #include "CsIO1.h"
 #include "IO1.h"
-#include "BT1.h"
-#include "Serial1.h"
-#include "ASerialLdd1.h"
 #include "CLS1.h"
 #include "UTIL1.h"
 #include "CS1.h"
@@ -100,12 +97,66 @@ void readIRQ(void){
 	}
 }
 
+void PORTB_ISR(void){
+	uint8_t readPortB ;
+	readPortB = 0x04 & GPIOB_PDIR ;	// 0x04 --> 0xFF
+
+	// if switch is ON, turn on red LED and HR mode only
+	// if switch is OFF, turn on multiLED and HR + SPO2 mode only
+	/*switch(readPortB){
+		case 0x04:
+			maxim_max30102_mode_change(0x09, 0x02) ;	// 0x02 red only
+			printf("Mode: Red\n") ;
+			break ;
+		case 0x00:
+			maxim_max30102_mode_change(0x09, 0x07) ;	// 0x07 multiLED only
+			printf("Mode: MultiLED\n") ;
+			lightUpLED() ;
+			Delay(5 * delay) ;
+			break ;
+		default:
+			maxim_max30102_mode_change(0x09, 0x02) ;	// 0x02 red only
+			printf("Mode: Red\n") ;
+			break ;
+	}*/
+
+	switch(readPortB){
+		case 0x04:
+			GPIOB_PDOR = (1 << 22) ;
+			Delay(delay) ;
+			GPIOB_PDOR = (0 << 21) ;	// turn on blue LED
+			GPIOB_PDOR = (0 << 22) ;
+			printf("Switch mode: 1\n") ;
+			break ;
+		case 0x00 :
+			GPIOB_PDOR = (1 << 21) ;
+			Delay(delay) ;
+			GPIOB_PDOR = (0 << 21) ;
+			//GPIOB_PDOR = (0 << 22) ;	// turn on blue LED
+			printf("Switch mode: 0\n") ;
+			break ;
+		default:
+			GPIOB_PDOR = (1 << 22) ;
+			Delay(delay) ;
+			GPIOB_PDOR = (0 << 21) ;
+			GPIOB_PDOR = (0 << 22) ;
+			printf("Switch mode: 1\n") ;
+			break ;
+	}
+}
+
 /*
  *	///////////////////////////////
  *	TODO:
- *		1. fix IRQ function
+ *		1. fix IRQ functions
+ *			a. fix for INT pin on max30102
+ *			b. fix for INT pin on switch
  *		2. fix algorithm function to correctly display HR and SpO2
+ *			a. Displays correct values when finger is placed
  *		3. connect hc-05 to phone for bluetooth connection
+ *			a. connects but doesn't pair
+ *		4. fix debug hard fault stop
+ *			a. if PTB2 is set on Pins1, hard fault will occur ... only set PTB2 on PTB:Init_GPIO
  *  ///////////////////////////////
 */
 
@@ -177,6 +228,8 @@ int main(void)
 	  un_min = 0x3FFFF ;
 	  un_max = 0 ;
 
+	  //PORTB_ISR() ;		// see if switch is flipped
+
 	  // erase first 100 sets of data
 	  for(i = 100; i < 500; i++){
 		  aun_red_buffer[i - 100] = aun_red_buffer[i] ;
@@ -196,6 +249,7 @@ int main(void)
 		  un_prev_data = aun_red_buffer[i - 1] ;
 		  // interrupt function
 		  //readIRQ() ;
+		  PORTB_ISR() ;
 
 		  maxim_max30102_read_fifo((aun_red_buffer + i), (aun_ir_buffer + i)) ;
 
@@ -220,6 +274,7 @@ int main(void)
 		  }
 		  // print heart rate and SpO2 to terminal
           printf("Heart rate at: %i SpO2 at %i ", aun_red_buffer[i], aun_ir_buffer[i]) ;
+          printf("HR valid: %i SpO2 valid: %i ", ch_hr_valid, ch_spo2_valid) ;
 		  /*if(i == 499){ */printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ; /* } */
 		  //Delay(delay) ;
 	  }

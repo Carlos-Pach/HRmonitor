@@ -55,8 +55,6 @@
   </PATHS>
   <FILES>
     <GeneratedCs>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\ASerialLdd1.c</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\BT1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CI2C1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CLS1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CS1.c</PathName>
@@ -67,7 +65,6 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\MCUC1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PE_LDD.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Pins1.c</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Serial1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\UTIL1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\WAIT1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\XF1.c</PathName>
@@ -76,14 +73,13 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\MAX30102.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\algorithm.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\main.c</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\PTB_Init.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\PTD_Init.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\CPU_Init.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\Peripherals_Init.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\Vectors.c</PathName>
     </GeneratedCs>
     <GeneratedHs>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\ASerialLdd1.h</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\BT1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CI2C1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CLS1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CLS1config.h</PathName>
@@ -103,10 +99,11 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PE_Error.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PE_LDD.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PE_Types.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PTB.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PTB_Config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PTD.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PTD_Config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Pins1.h</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Serial1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\UTIL1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\UTIL1config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Vectors_Config.h</PathName>
@@ -158,6 +155,7 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\PDD\USB_PDD.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\PDD\VREF_PDD.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\PDD\WDOG_PDD.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\PTB_Init.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\PTD_Init.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\CPU_Init.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\PDD_Includes.h</PathName>

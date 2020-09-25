@@ -4,8 +4,6 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Generated_Code/ASerialLdd1.c \
-../Generated_Code/BT1.c \
 ../Generated_Code/CI2C1.c \
 ../Generated_Code/CLS1.c \
 ../Generated_Code/CS1.c \
@@ -16,14 +14,11 @@ C_SRCS += \
 ../Generated_Code/MCUC1.c \
 ../Generated_Code/PE_LDD.c \
 ../Generated_Code/Pins1.c \
-../Generated_Code/Serial1.c \
 ../Generated_Code/UTIL1.c \
 ../Generated_Code/WAIT1.c \
 ../Generated_Code/XF1.c 
 
 OBJS += \
-./Generated_Code/ASerialLdd1.o \
-./Generated_Code/BT1.o \
 ./Generated_Code/CI2C1.o \
 ./Generated_Code/CLS1.o \
 ./Generated_Code/CS1.o \
@@ -34,14 +29,11 @@ OBJS += \
 ./Generated_Code/MCUC1.o \
 ./Generated_Code/PE_LDD.o \
 ./Generated_Code/Pins1.o \
-./Generated_Code/Serial1.o \
 ./Generated_Code/UTIL1.o \
 ./Generated_Code/WAIT1.o \
 ./Generated_Code/XF1.o 
 
 C_DEPS += \
-./Generated_Code/ASerialLdd1.d \
-./Generated_Code/BT1.d \
 ./Generated_Code/CI2C1.d \
 ./Generated_Code/CLS1.d \
 ./Generated_Code/CS1.d \
@@ -52,7 +44,6 @@ C_DEPS += \
 ./Generated_Code/MCUC1.d \
 ./Generated_Code/PE_LDD.d \
 ./Generated_Code/Pins1.d \
-./Generated_Code/Serial1.d \
 ./Generated_Code/UTIL1.d \
 ./Generated_Code/WAIT1.d \
 ./Generated_Code/XF1.d 

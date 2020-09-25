@@ -54,5 +54,6 @@ void initLED(void) ;
 void lightUpLED(void) ;
 // create ISR function
 void readIRQ(void) ;
+void maxim_max30102_mode_change(uint8_t maxim_addr, uint8_t maxim_data) ;
 
 #endif

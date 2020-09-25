@@ -6,7 +6,7 @@
 **     Version     : Component 01.046, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-09-14, 02:40, # CodeGen: 50
+**     Date/Time   : 2020-09-19, 14:15, # CodeGen: 52
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -63,8 +63,7 @@
 ** Array of initialized device structures of LDD components.
 ** ===========================================================================
 */
-LDD_TDeviceData *PE_LDD_DeviceDataList[3] = {
-    NULL,
+LDD_TDeviceData *PE_LDD_DeviceDataList[2] = {
     NULL,
     NULL
   };
@@ -192,8 +191,6 @@ bool PE_PeripheralUsed(uint32_t PrphBaseAddress)
     case 0x40066000UL:
     /* Base address allocated by peripheral(s) UART0 */
     case 0x4006A000UL:
-    /* Base address allocated by peripheral(s) UART1 */
-    case 0x4006B000UL:
       result = TRUE;
       break;
     default:
@@ -224,11 +221,6 @@ void LDD_SetClockConfiguration(LDD_TClockConfiguration ClockConfiguration)
   if (PE_LDD_DeviceDataList[PE_LDD_COMPONENT_IO1_ID] != NULL) {
     IO1_SetClockConfiguration(PE_LDD_DeviceDataList[PE_LDD_COMPONENT_IO1_ID], ClockConfiguration);
   }
-  /* Component ASerialLdd1 (Serial_LDD). */
-  if (PE_LDD_DeviceDataList[PE_LDD_COMPONENT_ASerialLdd1_ID] != NULL) {
-    ASerialLdd1_SetClockConfiguration(PE_LDD_DeviceDataList[PE_LDD_COMPONENT_ASerialLdd1_ID], ClockConfiguration);
-  }
-  Serial1_SetClockConfiguration(ClockConfiguration);
 }
 
 /* END PE_LDD. */

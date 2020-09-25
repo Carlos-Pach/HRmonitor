@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K64P144M120SF5RM, Rev.2, January 2014
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-09-14, 02:40, # CodeGen: 50
+**     Date/Time   : 2020-09-24, 19:41, # CodeGen: 64
 **     Abstract    :
 **
 **     Settings    :
@@ -97,13 +97,29 @@ void Common_Init(void)
      Optimizations\Utilize after reset values property or enabled processor 
      component Common settings\Utilize after reset values property) */
   /* Enable clock gate of peripherals initialized in Common_Init() */
-  /* SIM_SCGC5: PORTE=1,PORTD=1 */
-  SIM_SCGC5 |= (SIM_SCGC5_PORTE_MASK | SIM_SCGC5_PORTD_MASK);
+  /* SIM_SCGC5: PORTE=1,PORTD=1,PORTB=1 */
+  SIM_SCGC5 |= SIM_SCGC5_PORTE_MASK |
+               SIM_SCGC5_PORTD_MASK |
+               SIM_SCGC5_PORTB_MASK;
 
-  /* SIM_SCGC5: PORTD=1 */
-  SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK;
+  /* SIM_SCGC5: PORTD=1,PORTB=1 */
+  SIM_SCGC5 |= (SIM_SCGC5_PORTD_MASK | SIM_SCGC5_PORTB_MASK);
+  /* NVICIP60: PRI60=0 */
+  NVICIP60 = NVIC_IP_PRI60(0x00);
   /* NVICIP62: PRI62=0 */
   NVICIP62 = NVIC_IP_PRI62(0x00);
+  /* NVICISER1: SETENA|=0x10000000 */
+  NVICISER1 |= NVIC_ISER_SETENA(0x10000000);
+  /* PORTB_PCR2: ISF=0,IRQC=9,LK=0,PE=0,PS=1 */
+  PORTB_PCR2 = (uint32_t)((PORTB_PCR2 & (uint32_t)~(uint32_t)(
+                PORT_PCR_ISF_MASK |
+                PORT_PCR_IRQC(0x06) |
+                PORT_PCR_LK_MASK |
+                PORT_PCR_PE_MASK
+               )) | (uint32_t)(
+                PORT_PCR_IRQC(0x09) |
+                PORT_PCR_PS_MASK
+               ));
   /* PORTD_DFCR: CS=0 */
   PORTD_DFCR &= (uint32_t)~(uint32_t)(PORT_DFCR_CS_MASK);
   /* PORTD_DFWR: FILT=0 */
@@ -165,10 +181,6 @@ void Components_Init(void)
   CS1_Init(); /* ### CriticalSection "CS1" init code ... */
   XF1_Init(); /* ### XFormat "XF1" init code ... */
   CLS1_Init(); /* ### Shell "CLS1" init code ... */
-  /* ### Asynchro serial "Serial1" init code ... */
-  Serial1_Init();
-  /* ### Bluetooth_EGBT "BT1" init code ... */
-  BT1_Init();
 }
 #endif /* CPU_COMPONENTS_INIT */
 
