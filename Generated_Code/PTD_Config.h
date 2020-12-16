@@ -7,7 +7,7 @@
 **     Version     : Component 01.006, Driver 01.06, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-09-01, 15:29, # CodeGen: 40
+**     Date/Time   : 2020-12-15, 15:02, # CodeGen: 78
 **     Abstract    :
 **          This file implements the GPIO (PTD) module initialization
 **          according to the Peripheral Initialization settings, and
@@ -22,8 +22,8 @@
 **              Pin direction                              : Input
 **              Output value                               : 1
 **              Open drain                                 : <Automatic>
-**              Pull resistor                              : Enabled
-**              Pull selection                             : Pull Up
+**              Pull resistor                              : Disabled
+**              Pull selection                             : Pull Down
 **              Slew rate                                  : <Automatic>
 **              Drive strength                             : <Automatic>
 **              Interrupt/DMA request                      : Disabled
@@ -40,7 +40,8 @@
 **            Digital filter width                         : <Automatic>
 **          Pin selection/routing                          : 
 **            Pin 0                                        : Disabled
-**            Pin 1                                        : Disabled
+**            Pin 1                                        : Enabled
+**              Pin                                        : J2_12
 **            Pin 2                                        : Disabled
 **            Pin 3                                        : Disabled
 **            Pin 4                                        : Disabled
@@ -50,9 +51,9 @@
 **          Interrupts                                     : 
 **            Port interrupt                               : Enabled
 **              Interrupt                                  : INT_PORTD
-**              Interrupt request                          : <Automatic>
+**              Interrupt request                          : Enabled
 **              Interrupt priority                         : <Automatic>
-**              ISR Name                                   : readIRQ
+**              ISR Name                                   : PORTD_ISR
 **          Initialization                                 : 
 **            Call Init method                             : yes
 **            Utilize after reset values                   : default
@@ -122,7 +123,7 @@
 
 #define PTD_AUTOINIT
 
-#define INT_PORTD_ISR readIRQ
+#define INT_PORTD_ISR PORTD_ISR
 
 /* END PTD. */
 #endif /* #ifndef __PTD_Config_H_ */

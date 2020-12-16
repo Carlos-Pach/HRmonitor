@@ -221,10 +221,27 @@ Module "XF1"       (component XFormat)
    - XF1_Deinit -Driver de-initialization routine
    - XF1_Init -Driver initialization routine
 
-Module "PTB"       (component Init_GPIO_VAR0)
-   - PTB_Init -This method initializes registers of the GPIO module according to the Peripheral Initialization settings. Call 
-                this method in user code to initialize the module. By default, the method is called by PE automatically; see 
-                "Call Init method" property of the component for more details.
+Module "BT1"       (component Bluetooth_EGBT)
+   - BT1_Init -Initializes the module
+   - BT1_Deinit -Deinitializes the module
+   - BT1_GetLastError -Returns the last error reported by the device.
+   - BT1_GetErrorString -Returns for a given error code the error string describing the problem.
+   - BT1_SendATCommand -Sends an AT command string (with the AT in it) to the module.
+   - BT1_StdCmd -Send standard command: "<cmd>\r   " ==> "<expectedResponse>"
+   - BT1_StdOKCmd -Send standard command: "<cmd>\r   " ==> "OK\r   "
+   - BT1_QueryString -get string from device: "<cmd>\r   " ==> "<response><string>\r   OK\r   "
+   - BT1_btTestUART -Tests the UAR connection with AT
+   - BT1_btQueryFirmwareVersionStr -Queries the firmware version
+   - BT1_btSetDeviceName -Sets the device name
+   - BT1_btSetPairingPasskey -Sets the pairing passkey
+   - BT1_btSetBaud -Sets the baud rate of the device.
+   - BT1_ParseCommand -Shell Command Line parser. Method is only available if Shell is enabled in the component properties.
+   - BT1_RecvChar -Receives a character from the Bluetooth serial bridge
+   - BT1_SendChar -Sends a character to the Bluetooth serial bridge
+   - BT1_GetCharsInRxBuf -Returns the numbers of character in the receiver buffer.
+   - BT1_StdIOKeyPressed -StdIO handler for Shell
+   - BT1_StdIOReadChar -StdIO Handler for reading a character. It reads a zero byte if there is no character.
+   - BT1_StdIOSendChar -StdIO handler to sends a character
 
 Module "Cpu"       (component MK64FN1M0LL12)
    - Cpu_SetClockConfiguration -Calling of this method will cause the clock configuration change and reconfiguration of all 

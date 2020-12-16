@@ -17,9 +17,6 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/Cpu.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB_Config.h \
- //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTB_Init.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/MCUC1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/MCUC1config.h \
@@ -46,6 +43,13 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/Cpu.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/UTIL1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/BT1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CLS1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h \
  ../Generated_Code/Init_Config.h
 
 ../Generated_Code/Cpu.h:
@@ -89,12 +93,6 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/Cpu.h \
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB_Config.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTB_Init.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C1.h:
 
@@ -147,5 +145,19 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/Cpu.h \
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/BT1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CLS1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/WAIT1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h:
 
 ../Generated_Code/Init_Config.h:

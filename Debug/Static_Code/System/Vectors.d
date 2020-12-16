@@ -8,9 +8,6 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB_Config.h \
- //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTB_Init.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Vectors_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Cpu.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Error.h \
@@ -36,6 +33,9 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1config.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1config.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/BT1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h \
  //Mac/Home/workspace.kds/HRmonitor/Sources/Events.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Error.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Const.h \
@@ -50,7 +50,10 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CLS1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/UTIL1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1.h
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/BT1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Types.h:
 
@@ -69,12 +72,6 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB_Config.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTB_Init.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Vectors_Config.h:
 
@@ -126,6 +123,12 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1config.h:
 
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/BT1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h:
+
 //Mac/Home/workspace.kds/HRmonitor/Sources/Events.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Error.h:
@@ -155,3 +158,9 @@ Static_Code/System/Vectors.o: ../Static_Code/System/Vectors.c \
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CS1.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/XF1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/BT1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h:

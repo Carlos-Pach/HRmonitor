@@ -7,7 +7,7 @@
 **     Version     : Component 01.100, Driver 1.1, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-09-24, 19:41, # CodeGen: 64
+**     Date/Time   : 2020-12-15, 15:30, # CodeGen: 79
 **     Abstract    :
 **
 **     Settings    :
@@ -398,8 +398,8 @@
 **                  Direction                              : <Automatic>
 **                  Pin 1                                  : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 2                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 2                                  : J26_2
+**                  Direction                              : Input
 **                  Pin 3                                  : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 9                                  : <Automatic>
@@ -694,10 +694,10 @@
 **                  TX - Transmit data                     : <Automatic>
 **                Custom name                              : UART3
 **                UART3                                    : 
-**                  CTS - Clear to send                    : <Automatic>
-**                  RTS - Request to send                  : <Automatic>
-**                  RX - Receive data                      : <Automatic>
-**                  TX - Transmit data                     : <Automatic>
+**                  CTS - Clear to send                    : J1_6
+**                  RTS - Request to send                  : J6_8
+**                  RX - Receive data                      : J1_2
+**                  TX - Transmit data                     : J1_4
 **                Custom name                              : UART4
 **                UART4                                    : 
 **                  CTS - Clear to send                    : <Automatic>

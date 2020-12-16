@@ -8,10 +8,7 @@ Static_Code/Peripherals/PTD_Init.o: ../Static_Code/Peripherals/PTD_Init.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Init_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB_Config.h \
- //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTB_Init.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB.h
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h
 
 ../Static_Code/Peripherals/PTD_Init.h:
 
@@ -32,9 +29,3 @@ Static_Code/Peripherals/PTD_Init.o: ../Static_Code/Peripherals/PTD_Init.c \
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB_Config.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTB_Init.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTB.h:

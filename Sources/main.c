@@ -41,6 +41,9 @@
 #include "UTIL1.h"
 #include "CS1.h"
 #include "XF1.h"
+#include "BT1.h"
+#include "Serial1.h"
+#include "ASerialLdd1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -53,6 +56,10 @@
 #include "MAX30102.h"
 
 #define MAX_BRIGHTNESS	255
+#define BAUD_RATE 		38400
+
+/* declare function prototypes */
+void initBT(void) ;
 
 uint32_t aun_ir_buffer[BUFFER_SIZE] ;	// IR LED sensor data
 int32_t n_ir_buffer_length ;		// data length
@@ -63,24 +70,44 @@ int32_t n_heart_rate ;				// heart rate value
 int8_t ch_hr_valid ;				// indicator to show if heart rate calculation is valid
 uint8_t uch_dummy ;					// char used to get keyboard input ... might remove
 
-unsigned long delay = 0x10000 ;
+volatile unsigned char readPortD ;
+
+volatile unsigned long delay = 0x10000 ;
 
 void Delay(unsigned long delay){
 	while(delay > 0) delay-- ;
 }
 
+
+/*
+ *	Function name: initBT
+ *	Purpose: Initializes the BT module
+ *
+ *	Parameters: None
+ *	Return values: None
+*/
+void initBT(void){
+	/* init the BT module */
+	//BT1_Init() ;
+	/* declare baud rate for BT module */
+	BT1_btSetBaud(BAUD_RATE) ;
+	/* send char to BT module */
+	BT1_SendChar('C') ;
+}
+
+
 void initLED(void){
   // set up on-board LED for testing
   SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK; /*Enable Port B Clock Gate Control*/
-  //SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK ;
-  //PORTD_GPCLR = 0x000101000 ;	// set up PORTD 1 for GPIO
-  PORTB_PCR21 = 0x100 ; /*Blue Led, configured as Alternative 1 (GPIO)*/
-  PORTB_PCR22 = 0x100 ;	/*Red Led, configured as Alternative 1 (GPIO)*/
-  GPIOB_PDDR |= (1 << 21) ; /*Setting the bit 21 of the port B as Output*/
-  GPIOB_PDDR |= (1 << 22) ; /*Setting the bit 22 of the port B as Output*/
-  GPIOB_PDOR |= (1 << 21) ; /*Turn Off Blue Led*/
-  GPIOB_PDOR |= (1 << 22) ; /*Turn Off Red Led*/
+  SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK ; /* Enable Port D Clock Gate Control*/
+
+  // set up PORTB[22:21, 1] for GPIO
+  PORTB_GPCLR = 0x00040100 ; 	// set up PORTB[2] as GPIO
+  PORTB_GPCHR = 0x00C00100 ;	// set up PORTB[22:21] as GPIO
+  // set up PORTB[22:21] as output
+  GPIOB_PDDR = 0x00600000 ;	// 0x00C... --> 0x006
 }
+
 
 void lightUpLED(void){
 	GPIOB_PDOR = (1 << 22);/*Turn On Blue Led*/
@@ -89,74 +116,53 @@ void lightUpLED(void){
 	Delay(delay) ;
 }
 
-void readIRQ(void){
-	unsigned char readPortD ;
-	readPortD = 0x01 & GPIOD_PDIR ;
-	while(readPortD == 0x01){
-		__asm("nop") ;
-	}
+
+void PORTD_ISR(void){
+	__asm("nop") ;
 }
+
 
 void PORTB_ISR(void){
+	// turn off LEDs
+	GPIOB_PDOR |= (1 << 22);
+	GPIOB_PDOR |= (1 << 21) ;
+	// create var to read from PORTB[1]
 	uint8_t readPortB ;
-	readPortB = 0x04 & GPIOB_PDIR ;	// 0x04 --> 0xFF
+	readPortB = 0x0F & GPIOB_PDIR ;	// 0x04 --> 0x0F
 
-	// if switch is ON, turn on red LED and HR mode only
-	// if switch is OFF, turn on multiLED and HR + SPO2 mode only
-	/*switch(readPortB){
-		case 0x04:
-			maxim_max30102_mode_change(0x09, 0x02) ;	// 0x02 red only
-			printf("Mode: Red\n") ;
-			break ;
-		case 0x00:
-			maxim_max30102_mode_change(0x09, 0x07) ;	// 0x07 multiLED only
-			printf("Mode: MultiLED\n") ;
-			lightUpLED() ;
-			Delay(5 * delay) ;
-			break ;
-		default:
-			maxim_max30102_mode_change(0x09, 0x02) ;	// 0x02 red only
-			printf("Mode: Red\n") ;
-			break ;
-	}*/
-
+	/* 		Switch statement conditions:
+	 * 			a. DIP switch is an open circuit/off: output red-LED on console
+	 * 			b. DIP switch is a closed circuit/on: output multi-LED on console
+	 * 			c. default it to off
+	 */
 	switch(readPortB){
-		case 0x04:
-			GPIOB_PDOR = (1 << 22) ;
-			Delay(delay) ;
-			GPIOB_PDOR = (0 << 21) ;	// turn on blue LED
-			GPIOB_PDOR = (0 << 22) ;
-			printf("Switch mode: 1\n") ;
+		case 0x04:	/* turn on/off red LED on board */
+			maxim_max30102_mode_change(0x09, 0x02) ;	// 0x02 red only
+			printf("Switch mode: red-LED\n") ;
 			break ;
-		case 0x00 :
-			GPIOB_PDOR = (1 << 21) ;
-			Delay(delay) ;
-			GPIOB_PDOR = (0 << 21) ;
-			//GPIOB_PDOR = (0 << 22) ;	// turn on blue LED
-			printf("Switch mode: 0\n") ;
+		case 0x00 :	/* turn on/off blue LED on board */
+			maxim_max30102_mode_change(0x09, 0x07) ;	// 0x07 multiLED only
+			printf("Switch mode: multi-LED\n") ;
 			break ;
-		default:
-			GPIOB_PDOR = (1 << 22) ;
-			Delay(delay) ;
-			GPIOB_PDOR = (0 << 21) ;
-			GPIOB_PDOR = (0 << 22) ;
-			printf("Switch mode: 1\n") ;
+		default:	/* turn on/off red LED on board */
+			maxim_max30102_mode_change(0x09, 0x02) ;	// 0x02 red only
+			printf("Switch mode: red-LED\n") ;
 			break ;
 	}
+	for(int i = 0; i < 10; i++) ;	// simple debounce code
 }
+
 
 /*
  *	///////////////////////////////
  *	TODO:
  *		1. fix IRQ functions
  *			a. fix for INT pin on max30102
- *			b. fix for INT pin on switch
+ *				x. INT pin from MAX30102 always outputting ~3.1 [V]
  *		2. fix algorithm function to correctly display HR and SpO2
- *			a. Displays correct values when finger is placed
- *		3. connect hc-05 to phone for bluetooth connection
- *			a. connects but doesn't pair
- *		4. fix debug hard fault stop
- *			a. if PTB2 is set on Pins1, hard fault will occur ... only set PTB2 on PTB:Init_GPIO
+ *			a. Displays incorrect values when finger is placed
+ *		3. connect hc-06 to phone for bluetooth connection
+ *			a. connects but doesn't send data
  *  ///////////////////////////////
 */
 
@@ -180,6 +186,8 @@ int main(void)
 
   // initialize on board LED
   initLED() ;
+  /* init the BT module */
+  initBT() ;
 
   // restart the MAX30102
    maxim_max30102_reset() ;
@@ -198,11 +206,14 @@ int main(void)
 
   // print test to console
   printf("\nHello ... test\n") ;
+  PORTB_ISR() ;
 
   // read first 500 samples
   for(i = 0; i < n_ir_buffer_length; i++){
+	  // read PORTD[1]
+	  readPortD = GPIOD_PDIR & 0x0F ;
 	  // wait until PTD1 asserts
-	  //readIRQ() ;
+	  //while(readPortD == 0x02){ PORTD_ISR() ; }
 
 	  // read from FIFO
 	  maxim_max30102_read_fifo((aun_red_buffer + i), (aun_ir_buffer + i)) ;
@@ -223,7 +234,8 @@ int main(void)
   // continuously take samples from MAX30102. Heart rate and SpO2 calculated every second
   while(1){
 	  lightUpLED() ;
-
+	  /* continuously test the BT module */
+	  BT1_SendChar('C') ;
 	  i = 0 ;
 	  un_min = 0x3FFFF ;
 	  un_max = 0 ;
@@ -247,9 +259,13 @@ int main(void)
 	  // take 100 sets of samples before calculating heart rate
 	  for(i = 400 ; i < 500; i++){
 		  un_prev_data = aun_red_buffer[i - 1] ;
-		  // interrupt function
-		  //readIRQ() ;
-		  PORTB_ISR() ;
+
+		  // read PORTD[1]
+		  readPortD = GPIOD_PDIR & 0x0F ;	/* GPIOD_PDIR[1]: 0b0010 if reading */
+		  // wait until PTD1 asserts
+		  //while(readPortD == 0x02){ PORTD_ISR() ; }
+
+		  //PORTB_ISR() ; 	/* check if switch is flipped */
 
 		  maxim_max30102_read_fifo((aun_red_buffer + i), (aun_ir_buffer + i)) ;
 
@@ -274,14 +290,16 @@ int main(void)
 		  }
 		  // print heart rate and SpO2 to terminal
           printf("Heart rate at: %i SpO2 at %i ", aun_red_buffer[i], aun_ir_buffer[i]) ;
-          printf("HR valid: %i SpO2 valid: %i ", ch_hr_valid, ch_spo2_valid) ;
-		  /*if(i == 499){ */printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ; /* } */
+          //printf("HR valid: %i SpO2 valid: %i ", ch_hr_valid, ch_spo2_valid) ;
+		  /*if(i == 499){ *///printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ; /* } */
 		  //Delay(delay) ;
 	  }
 
 	  // call heart rate and oxygen saturation function
 	  maxim_heart_rate_and_oxygen_saturation(aun_ir_buffer, n_ir_buffer_length, aun_red_buffer,
 			  	  	  	  	  	  	  	  	 &n_sp02, &ch_spo2_valid, &n_heart_rate, &ch_hr_valid) ;
+	  printf("HR valid: %i SpO2 valid: %i ", ch_hr_valid, ch_spo2_valid) ;
+	  printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ;
   }
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/

@@ -174,8 +174,8 @@ registers of the peripheral(s) configured by the component.
 **              Pin direction                              : Input
 **              Output value                               : 1
 **              Open drain                                 : <Automatic>
-**              Pull resistor                              : Enabled
-**              Pull selection                             : Pull Up
+**              Pull resistor                              : Disabled
+**              Pull selection                             : Pull Down
 **              Slew rate                                  : <Automatic>
 **              Drive strength                             : <Automatic>
 **              Interrupt/DMA request                      : Disabled
@@ -192,7 +192,8 @@ registers of the peripheral(s) configured by the component.
 **            Digital filter width                         : <Automatic>
 **          Pin selection/routing                          : 
 **            Pin 0                                        : Disabled
-**            Pin 1                                        : Disabled
+**            Pin 1                                        : Enabled
+**              Pin                                        : J2_12
 **            Pin 2                                        : Disabled
 **            Pin 3                                        : Disabled
 **            Pin 4                                        : Disabled
@@ -202,9 +203,9 @@ registers of the peripheral(s) configured by the component.
 **          Interrupts                                     : 
 **            Port interrupt                               : Enabled
 **              Interrupt                                  : INT_PORTD
-**              Interrupt request                          : <Automatic>
+**              Interrupt request                          : Enabled
 **              Interrupt priority                         : <Automatic>
-**              ISR Name                                   : readIRQ
+**              ISR Name                                   : PORTD_ISR
 **          Initialization                                 : 
 **            Call Init method                             : yes
 **            Utilize after reset values                   : default
