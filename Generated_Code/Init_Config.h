@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K64P144M120SF5RM, Rev.2, January 2014
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-09-28, 13:28, # CodeGen: 69
+**     Date/Time   : 2020-12-19, 17:14, # CodeGen: 106
 **     Abstract    :
 **         This file collects Processor Expert components configuration 
 **         and interface files.
@@ -445,13 +445,6 @@
 
 /* PinSettings component header file */
 #include "Pins1.h"
-  
-/* Initialization component configuration header file */
-#include "PTD_Config.h"
-/* Initialization component static header file */
-#include "PTD_Init.h"
-/* Initialization component generated header file */
-#include "PTD.h"
   
   
 #endif /* __Init_Config_H */

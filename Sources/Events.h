@@ -47,6 +47,8 @@
 #include "BT1.h"
 #include "Serial1.h"
 #include "ASerialLdd1.h"
+#include "EInt1.h"
+#include "ExtIntLdd1.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -67,6 +69,20 @@ extern "C" {
 /* ===================================================================*/
 void Cpu_OnNMI(void);
 
+
+void EInt1_OnInterrupt(void);
+/*
+** ===================================================================
+**     Event       :  EInt1_OnInterrupt (module Events)
+**
+**     Component   :  EInt1 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
 
 /* END Events */
 

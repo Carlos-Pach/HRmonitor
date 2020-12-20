@@ -6,7 +6,7 @@
 **     Component   : Bluetooth_EGBT
 **     Version     : Component 01.053, Driver 01.00, CPU db: 3.00.000
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-15, 15:30, # CodeGen: 79
+**     Date/Time   : 2020-12-17, 14:35, # CodeGen: 81
 **     Abstract    :
 **          Driver for e-Gizmo Bluetooth module
 **     Settings    :

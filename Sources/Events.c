@@ -53,7 +53,30 @@ extern "C" {
 /* ===================================================================*/
 void Cpu_OnNMI(void)
 {
+	/* If interrupt is entered, stay here until rising edge */
+	__asm("nop") ;
+	printf("Interrupt on\n") ;
+}
+
+/*
+** ===================================================================
+**     Event       :  EInt1_OnInterrupt (module Events)
+**
+**     Component   :  EInt1 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void EInt1_OnInterrupt(void)
+{
   /* Write your code here ... */
+	printf("test\n\n") ;
+	/* check if mode switch is flipped */
+	WAIT1_Waitms(500) ;
+	PORTB_ISR() ;
 }
 
 /* END Events */

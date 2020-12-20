@@ -40,8 +40,8 @@ Bool maxim_max30102_init(){
     if(!maxim_max30102_write_reg(REG_FIFO_CONFIG, 0x0F)){  //sample avg = 1, fifo rollover=false, fifo almost full = 17
     	return false;
     }
-    // 0x02 --> 0x07 --> 0x02
-    if(!maxim_max30102_write_reg(REG_MODE_CONFIG, 0x02)){  //0x02 for Red only, 0x03 for SpO2 mode 0x07 multimode LED
+    // 0x02 --> 0x07 --> 0x02 --> 0x07
+    if(!maxim_max30102_write_reg(REG_MODE_CONFIG, 0x03)){  //0x02 for Red only, 0x03 for SpO2 mode 0x07 multimode LED
     	return false;
     }
     // 0x27 --> 0x2B (ADC: 4096 [nA], SPO2: 200 [samples/s], LED pulse width: [400 us]) --> 0x27

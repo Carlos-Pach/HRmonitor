@@ -40,7 +40,6 @@
       <Path>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\</Path>
       <Path>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\PDD\</Path>
       <Path>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\IO_Map\</Path>
-      <Path>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\</Path>
       <Path>C:\Freescale\KDSK_1.3.0\eclipse\ProcessorExpert\lib\Kinetis\pdd\inc\</Path>
       <Path>\\Mac\Home\workspace.kds\HRmonitor\Sources\</Path>
       <Path>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\</Path>
@@ -49,7 +48,6 @@
       <Path>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\</Path>
       <Path>\\Mac\Home\workspace.kds\HRmonitor\Project_Settings\Startup_Code\</Path>
       <Path>\\Mac\Home\workspace.kds\HRmonitor\Sources\</Path>
-      <Path>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\</Path>
       <Path>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\</Path>
     </SourceCodePaths>
   </PATHS>
@@ -62,6 +60,8 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CS1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Cpu.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CsIO1.c</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\EInt1.c</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\ExtIntLdd1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\IO1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\MCUC1.c</PathName>
@@ -76,8 +76,6 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\MAX30102.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\algorithm.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\main.c</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\PTB_Init.c</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\PTD_Init.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\CPU_Init.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\Peripherals_Init.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\Vectors.c</PathName>
@@ -93,6 +91,8 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CS1config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Cpu.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CsIO1.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\EInt1.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\ExtIntLdd1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C1config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\IO1.h</PathName>
@@ -104,8 +104,6 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PE_Error.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PE_LDD.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PE_Types.h</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PTD.h</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\PTD_Config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Pins1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Serial1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\UTIL1.h</PathName>
@@ -159,8 +157,6 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\PDD\USB_PDD.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\PDD\VREF_PDD.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\PDD\WDOG_PDD.h</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\PTB_Init.h</PathName>
-      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\Peripherals\PTD_Init.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\CPU_Init.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\PDD_Includes.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\Peripherals_Init.h</PathName>

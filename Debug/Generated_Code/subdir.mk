@@ -11,6 +11,8 @@ C_SRCS += \
 ../Generated_Code/CS1.c \
 ../Generated_Code/Cpu.c \
 ../Generated_Code/CsIO1.c \
+../Generated_Code/EInt1.c \
+../Generated_Code/ExtIntLdd1.c \
 ../Generated_Code/GI2C1.c \
 ../Generated_Code/IO1.c \
 ../Generated_Code/MCUC1.c \
@@ -29,6 +31,8 @@ OBJS += \
 ./Generated_Code/CS1.o \
 ./Generated_Code/Cpu.o \
 ./Generated_Code/CsIO1.o \
+./Generated_Code/EInt1.o \
+./Generated_Code/ExtIntLdd1.o \
 ./Generated_Code/GI2C1.o \
 ./Generated_Code/IO1.o \
 ./Generated_Code/MCUC1.o \
@@ -47,6 +51,8 @@ C_DEPS += \
 ./Generated_Code/CS1.d \
 ./Generated_Code/Cpu.d \
 ./Generated_Code/CsIO1.d \
+./Generated_Code/EInt1.d \
+./Generated_Code/ExtIntLdd1.d \
 ./Generated_Code/GI2C1.d \
 ./Generated_Code/IO1.d \
 ./Generated_Code/MCUC1.d \
@@ -62,7 +68,7 @@ C_DEPS += \
 Generated_Code/%.o: ../Generated_Code/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"//Mac/Home/workspace.kds/HRmonitor/Static_Code/System" -I"//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD" -I"//Mac/Home/workspace.kds/HRmonitor/Static_Code/IO_Map" -I"C:\Freescale\KDSK_1.3.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"//Mac/Home/workspace.kds/HRmonitor/Sources" -I"//Mac/Home/workspace.kds/HRmonitor/Generated_Code" -I"//Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"//Mac/Home/workspace.kds/HRmonitor/Static_Code/System" -I"//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD" -I"//Mac/Home/workspace.kds/HRmonitor/Static_Code/IO_Map" -I"C:\Freescale\KDSK_1.3.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"//Mac/Home/workspace.kds/HRmonitor/Sources" -I"//Mac/Home/workspace.kds/HRmonitor/Generated_Code" -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

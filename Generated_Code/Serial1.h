@@ -7,7 +7,7 @@
 **     Version     : Component 02.611, Driver 01.01, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-15, 14:03, # CodeGen: 75
+**     Date/Time   : 2020-12-19, 20:54, # CodeGen: 111
 **     Abstract    :
 **         This component "AsynchroSerial" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -17,13 +17,13 @@
 **         The component requires one on-chip asynchronous serial channel.
 **     Settings    :
 **          Component name                                 : Serial1
-**          Channel                                        : UART1
+**          Channel                                        : UART4
 **          Interrupt service/event                        : Enabled
-**            Interrupt RxD                                : INT_UART1_RX_TX
+**            Interrupt RxD                                : INT_UART4_RX_TX
 **            Interrupt RxD priority                       : medium priority
-**            Interrupt TxD                                : INT_UART1_RX_TX
+**            Interrupt TxD                                : INT_UART4_RX_TX
 **            Interrupt TxD priority                       : medium priority
-**            Interrupt Error                              : INT_UART1_ERR
+**            Interrupt Error                              : INT_UART4_ERR
 **            Interrupt Error priority                     : medium priority
 **            Input buffer size                            : 64
 **            Output buffer size                           : 64
@@ -35,9 +35,9 @@
 **            Width                                        : 8 bits
 **            Stop bit                                     : 1
 **            Receiver                                     : Enabled
-**              RxD                                        : CMP0_output
+**              RxD                                        : J199_3
 **            Transmitter                                  : Enabled
-**              TxD                                        : SD_CARD_DAT1
+**              TxD                                        : J199_4
 **            Baud rate                                    : 9600 baud
 **            Break signal                                 : Disabled
 **            Wakeup condition                             : Idle line wakeup

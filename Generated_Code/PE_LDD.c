@@ -6,7 +6,7 @@
 **     Version     : Component 01.046, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-15, 14:03, # CodeGen: 75
+**     Date/Time   : 2020-12-19, 17:14, # CodeGen: 106
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -63,7 +63,8 @@
 ** Array of initialized device structures of LDD components.
 ** ===========================================================================
 */
-LDD_TDeviceData *PE_LDD_DeviceDataList[3] = {
+LDD_TDeviceData *PE_LDD_DeviceDataList[4] = {
+    NULL,
     NULL,
     NULL,
     NULL
@@ -192,8 +193,10 @@ bool PE_PeripheralUsed(uint32_t PrphBaseAddress)
     case 0x40066000UL:
     /* Base address allocated by peripheral(s) UART0 */
     case 0x4006A000UL:
-    /* Base address allocated by peripheral(s) UART1 */
-    case 0x4006B000UL:
+    /* Base address allocated by peripheral(s) UART4 */
+    case 0x400EA000UL:
+    /* Base address allocated by peripheral(s) PTD */
+    case 0x400FF0C0UL:
       result = TRUE;
       break;
     default:

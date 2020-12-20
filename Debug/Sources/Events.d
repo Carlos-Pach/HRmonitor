@@ -16,9 +16,6 @@ Sources/Events.o: ../Sources/Events.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Init_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CPU_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Pins1.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD_Config.h \
- //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/MCUC1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/MCUC1config.h \
@@ -49,10 +46,15 @@ Sources/Events.o: ../Sources/Events.c \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/EInt1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/GPIO_PDD.h \
+ //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDD_Types.h \
+ //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Init_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/System/PDD_Includes.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/ADC_PDD.h \
- //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDD_Types.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/CAN_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/CMP_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/CMT_PDD.h \
@@ -65,7 +67,6 @@ Sources/Events.o: ../Sources/Events.c \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/FMC_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/FTFE_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/FTM_PDD.h \
- //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/GPIO_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/I2C_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/LLWU_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/LPTMR_PDD.h \
@@ -75,7 +76,6 @@ Sources/Events.o: ../Sources/Events.c \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDB_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PIT_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PMC_PDD.h \
- //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/RCM_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/RNGA_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/RTC_PDD.h \
@@ -125,12 +125,6 @@ Sources/Events.o: ../Sources/Events.c \
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CPU_Config.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Pins1.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD_Config.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C1.h:
 
@@ -192,13 +186,23 @@ Sources/Events.o: ../Sources/Events.c \
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h:
 
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/EInt1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/GPIO_PDD.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDD_Types.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h:
+
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Init_Config.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/System/PDD_Includes.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/ADC_PDD.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDD_Types.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/CAN_PDD.h:
 
@@ -224,8 +228,6 @@ Sources/Events.o: ../Sources/Events.c \
 
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/FTM_PDD.h:
 
-//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/GPIO_PDD.h:
-
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/I2C_PDD.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/LLWU_PDD.h:
@@ -243,8 +245,6 @@ Sources/Events.o: ../Sources/Events.c \
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PIT_PDD.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PMC_PDD.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/RCM_PDD.h:
 

@@ -7,7 +7,7 @@
 **     Version     : Component 01.100, Driver 1.1, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-15, 15:30, # CodeGen: 79
+**     Date/Time   : 2020-12-19, 17:14, # CodeGen: 106
 **     Abstract    :
 **
 **     Settings    :
@@ -468,12 +468,12 @@
 **                PTD                                      : 
 **                  Pin 0                                  : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 1                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 1                                  : J2_12
+**                  Direction                              : Input
 **                  Pin 2                                  : <Automatic>
 **                  Direction                              : <Automatic>
-**                  Pin 3                                  : <Automatic>
-**                  Direction                              : <Automatic>
+**                  Pin 3                                  : J2_10
+**                  Direction                              : Input
 **                  Pin 4                                  : <Automatic>
 **                  Direction                              : <Automatic>
 **                  Pin 5                                  : <Automatic>
@@ -694,10 +694,10 @@
 **                  TX - Transmit data                     : <Automatic>
 **                Custom name                              : UART3
 **                UART3                                    : 
-**                  CTS - Clear to send                    : J1_6
-**                  RTS - Request to send                  : J6_8
-**                  RX - Receive data                      : J1_2
-**                  TX - Transmit data                     : J1_4
+**                  CTS - Clear to send                    : <Automatic>
+**                  RTS - Request to send                  : <Automatic>
+**                  RX - Receive data                      : <Automatic>
+**                  TX - Transmit data                     : <Automatic>
 **                Custom name                              : UART4
 **                UART4                                    : 
 **                  CTS - Clear to send                    : <Automatic>

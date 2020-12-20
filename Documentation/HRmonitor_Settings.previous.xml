@@ -300,68 +300,6 @@
       <event name="OnBusStopDetected" v="don&amp;apos;t generate code" />
     </Events>
   </Bean>
-  <Bean name="PTD" type="Init_GPIO">
-    <Enabled v="Y" />
-    <Properties>
-      <Component_name v="PTD" />
-      <Device v="PTD" />
-      <group name="Settings">
-        <Clock_gate v="Enabled" />
-        <boolgroup name="Pin 0" v="Do not initialize" />
-        <boolgroup name="Pin 1" v="Initialize">
-          <Pin_direction v="Input" />
-          <Output_value v="1" />
-          <Open_drain v="&amp;lt;Automatic&amp;gt;" />
-          <Pull_resistor v="Disabled" />
-          <Pull_selection v="Pull Down" />
-          <Slew_rate v="&amp;lt;Automatic&amp;gt;" />
-          <Drive_strength v="&amp;lt;Automatic&amp;gt;" />
-          <Interrupt_DMA_request v="Disabled" />
-          <Digital_filter v="&amp;lt;Automatic&amp;gt;" />
-          <Passive_filter v="&amp;lt;Automatic&amp;gt;" />
-          <Lock v="&amp;lt;Automatic&amp;gt;" />
-        </boolgroup>
-        <boolgroup name="Pin 2" v="Do not initialize" />
-        <boolgroup name="Pin 3" v="Do not initialize" />
-        <boolgroup name="Pin 4" v="Do not initialize" />
-        <boolgroup name="Pin 5" v="Do not initialize" />
-        <boolgroup name="Pin 6" v="Do not initialize" />
-        <boolgroup name="Pin 7" v="Do not initialize" />
-        <Digital_filter_clock_source v="&amp;lt;Automatic&amp;gt;" />
-        <Digital_filter_width v="0" />
-      </group>
-      <group name="Pin selection/routing">
-        <boolgroup name="Pin 0" v="Disabled" />
-        <boolgroup name="Pin 1" v="Enabled">
-          <Pin v="J2_12" />
-        </boolgroup>
-        <boolgroup name="Pin 2" v="Disabled" />
-        <boolgroup name="Pin 3" v="Disabled" />
-        <boolgroup name="Pin 4" v="Disabled" />
-        <boolgroup name="Pin 5" v="Disabled" />
-        <boolgroup name="Pin 6" v="Disabled" />
-        <boolgroup name="Pin 7" v="Disabled" />
-      </group>
-      <group name="Interrupts">
-        <boolgroup name="Port interrupt" v="Enabled">
-          <Interrupt v="INT_PORTD" />
-          <Interrupt_request v="Enabled" />
-          <Interrupt_priority v="&amp;lt;Automatic&amp;gt;" />
-          <ISR_Name v="PORTD_ISR" />
-        </boolgroup>
-      </group>
-      <group name="Initialization">
-        <Call_Init_method v="yes" />
-        <Utilize_after_reset_values v="default" />
-      </group>
-    </Properties>
-    <Methods>
-      <Init v="generate code" />
-    </Methods>
-    <Events>
-      <EmptySection_DummyValue />
-    </Events>
-  </Bean>
   <Bean name="CsIO1" type="ConsoleIO">
     <Enabled v="Y" />
     <Properties>
@@ -659,10 +597,7 @@
       <Response_timeout__ms_ v="650" />
       <boolgroup name="CMD Pin" v="Disabled" />
       <boolgroup name="State Pin" v="Disabled" />
-      <boolgroup name="Rx Pull-Up" v="Enabled">
-        <Pin_Name v="C" />
-        <Pin_Number v="17" />
-      </boolgroup>
+      <boolgroup name="Rx Pull-Up" v="Disabled" />
       <group name="Interfaces">
         <Shell v="CLS1" />
         <Utility v="UTIL1" />
@@ -672,13 +607,13 @@
           <Template v="Serial" />
           <Properties>
             <Component_name v="Serial1" />
-            <Channel v="UART1" />
+            <Channel v="UART4" />
             <boolgroup name="Interrupt service/event" v="Enabled">
-              <Interrupt_RxD v="INT_UART1_RX_TX" />
+              <Interrupt_RxD v="INT_UART4_RX_TX" />
               <Interrupt_RxD_priority v="medium priority" />
-              <Interrupt_TxD v="INT_UART1_RX_TX" />
+              <Interrupt_TxD v="INT_UART4_RX_TX" />
               <Interrupt_TxD_priority v="medium priority" />
-              <Interrupt_Error v="INT_UART1_ERR" />
+              <Interrupt_Error v="INT_UART4_ERR" />
               <Interrupt_Error_priority v="medium priority" />
               <Input_buffer_size v="64" />
               <Output_buffer_size v="64" />
@@ -692,12 +627,12 @@
               <Width v="8 bits" />
               <Stop_bit v="1" />
               <boolgroup name="Receiver" v="Enabled">
-                <RxD v="CMP0_output" />
+                <RxD v="J199_3" />
               </boolgroup>
               <boolgroup name="Transmitter" v="Enabled">
-                <TxD v="SD_CARD_DAT1" />
+                <TxD v="J199_4" />
               </boolgroup>
-              <Baud_rate v="9600 baud" />
+              <Baud_rate v="38400 baud" />
               <Break_signal v="Disabled" />
               <Wakeup_condition v="Idle line wakeup" />
               <Transmitter_output v="Not inverted" />
@@ -720,13 +655,13 @@
                 <Enabled v="Y" />
                 <Properties>
                   <Component_name v="ASerialLdd1" />
-                  <Device v="UART1" />
+                  <Device v="UART4" />
                   <boolgroup name="Interrupt service/event" v="Enabled">
-                    <Interrupt_RxD v="INT_UART1_RX_TX" />
+                    <Interrupt_RxD v="INT_UART4_RX_TX" />
                     <Interrupt_RxD_priority v="medium priority" />
-                    <Interrupt_TxD v="INT_UART1_RX_TX" />
+                    <Interrupt_TxD v="INT_UART4_RX_TX" />
                     <Interrupt_TxD_priority v="medium priority" />
-                    <Interrupt_Error v="INT_UART1_ERR" />
+                    <Interrupt_Error v="INT_UART4_ERR" />
                     <Interrupt_Error_priority v="medium priority" />
                   </boolgroup>
                   <group name="Settings">
@@ -734,7 +669,7 @@
                     <Parity v="None" />
                     <Stop_bits v="1" />
                     <Loop_mode v="Normal" />
-                    <Baud_rate v="9600 baud" />
+                    <Baud_rate v="38400 baud" />
                     <Wakeup_condition v="Idle line wakeup" />
                     <Stop_in_wait_mode v="no" />
                     <Idle_line_mode v="Starts after start bit" />
@@ -742,10 +677,10 @@
                     <Receiver_input v="Not inverted" />
                     <Break_generation_length v="10/11 bits" />
                     <boolgroup name="Receiver" v="Enabled">
-                      <RxD v="CMP0_output" />
+                      <RxD v="J199_3" />
                     </boolgroup>
                     <boolgroup name="Transmitter" v="Enabled">
-                      <TxD v="SD_CARD_DAT1" />
+                      <TxD v="J199_4" />
                     </boolgroup>
                     <enumgroup name="Flow control" v="None">
                       <EmptySection_DummyValue />
@@ -923,6 +858,74 @@
     </Methods>
     <Events>
       <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="EInt1" type="ExtInt">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="EInt1" />
+      <Pin v="J2_10" />
+      <inhrbean type="ExtInt_LDD">
+        <Enabled v="Y" />
+        <Template v="ExtInt_LDD" />
+        <Properties>
+          <Component_name v="ExtIntLdd1" />
+          <Pin v="J2_10" />
+          <Generate_interrupt_on sel_value="rising edge">
+            
+rising or falling edge
+
+            <EmptySection_DummyValue />
+          </Generate_interrupt_on>
+          <Interrupt v="INT_PORTD" />
+          <Interrupt_priority v="medium priority" />
+          <group name="Initialization">
+            <Enabled_in_init__code v="yes" />
+          </group>
+        </Properties>
+        <Methods>
+          <Init v="generate code" />
+          <Deinit v="don&amp;apos;t generate code" />
+          <Enable v="don&amp;apos;t generate code" />
+          <Disable v="don&amp;apos;t generate code" />
+          <GetVal v="generate code" />
+          <SetEdge v="don&amp;apos;t generate code" />
+          <SetOperationMode v="don&amp;apos;t generate code" />
+          <GetDriverState v="don&amp;apos;t generate code" />
+          <ConnectPin v="don&amp;apos;t generate code" />
+        </Methods>
+        <Events>
+          <Event_module_name v="Events" />
+          <event name="OnInterrupt" v="generate code">
+            <Event_procedure_name v="ExtIntLdd1_OnInterrupt" />
+          </event>
+        </Events>
+      </inhrbean>
+      <Generate_interrupt_on sel_value="rising edge">
+        
+rising or falling edge
+
+        <EmptySection_DummyValue />
+      </Generate_interrupt_on>
+      <Interrupt v="INT_PORTD" />
+      <Interrupt_priority v="medium priority" />
+      <group name="Initialization">
+        <Enabled_in_init__code v="yes" />
+      </group>
+    </Properties>
+    <Methods>
+      <Enable v="don&amp;apos;t generate code" />
+      <Disable v="don&amp;apos;t generate code" />
+      <GetVal v="generate code" />
+      <SetEdge v="don&amp;apos;t generate code" />
+      <ConnectPin v="don&amp;apos;t generate code" />
+    </Methods>
+    <Events>
+      <Event_module_name v="Events" />
+      <event name="OnInterrupt" v="generate code">
+        <Event_procedure_name v="EInt1_OnInterrupt" />
+        <Priority v="same as interrupt" />
+      </event>
     </Events>
   </Bean>
 </PE_PROJECT_SETTINGS_DOCUMENTATION>

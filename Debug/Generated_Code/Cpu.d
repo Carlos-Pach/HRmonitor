@@ -14,9 +14,6 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/Cpu.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PE_Types.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CPU_Config.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Pins1.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD_Config.h \
- //Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h \
- //Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/MCUC1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/MCUC1config.h \
@@ -50,6 +47,12 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/Cpu.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/EInt1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/GPIO_PDD.h \
+ //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDD_Types.h \
+ //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h \
  ../Generated_Code/Init_Config.h
 
 ../Generated_Code/Cpu.h:
@@ -87,12 +90,6 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/Cpu.h \
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CPU_Config.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Pins1.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD_Config.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Static_Code/Peripherals/PTD_Init.h:
-
-//Mac/Home/workspace.kds/HRmonitor/Generated_Code/PTD.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C1.h:
 
@@ -159,5 +156,17 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/Cpu.h \
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/Serial1.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ASerialLdd1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/EInt1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/GPIO_PDD.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDD_Types.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h:
 
 ../Generated_Code/Init_Config.h:
