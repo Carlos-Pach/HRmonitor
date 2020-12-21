@@ -7,7 +7,7 @@
 **     Version     : Component 01.053, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-17, 14:35, # CodeGen: 81
+**     Date/Time   : 2020-12-20, 14:30, # CodeGen: 115
 **     Abstract    :
 **          Driver for e-Gizmo Bluetooth module
 **     Settings    :
@@ -16,7 +16,9 @@
 **          Response timeout (ms)                          : 650
 **          CMD Pin                                        : Disabled
 **          State Pin                                      : Disabled
-**          Rx Pull-Up                                     : Disabled
+**          Rx Pull-Up                                     : Enabled
+**            Pin Name                                     : C
+**            Pin Number                                   : 14
 **          Interfaces                                     : 
 **            Shell                                        : CLS1
 **            Utility                                      : UTIL1
@@ -496,9 +498,17 @@ BT1_TConstStringPtr BT1_GetErrorString(BT1_TEnumErrors errorNo)
 **     Returns     : Nothing
 ** ===================================================================
 */
+#include "PORT_PDD.h" /* include PDD macro header file */
+
+#define BT1_RX_PULLUP_PIN    14                            /* pin number */
+#define BT1_RX_PULLUP_PORT   PORT##C##_BASE_PTR            /* port name */
+
 void BT1_Init(void)
 {
   BT1_lastErr = BT1_NO_ERROR; /* reset error */
+  /* Enable internal pull up for Rx (microcontroller side), see http://mcuoneclipse.com/2014/03/30/getting-bluetooth-working-with-jy-mcu-bt_board-v1-06/ */
+  PORT_PDD_SetPinPullSelect(BT1_RX_PULLUP_PORT, BT1_RX_PULLUP_PIN, PORT_PDD_PULL_UP); /* configure for pull-up */
+  PORT_PDD_SetPinPullEnable(BT1_RX_PULLUP_PORT, BT1_RX_PULLUP_PIN, PORT_PDD_PULL_ENABLE); /* enable pull-up */
 }
 
 /*

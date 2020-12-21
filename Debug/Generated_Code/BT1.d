@@ -11,7 +11,9 @@ Generated_Code/BT1.o: ../Generated_Code/BT1.c ../Generated_Code/BT1.h \
  ../Generated_Code/XF1config.h ../Generated_Code/CS1.h \
  ../Generated_Code/CS1config.h ../Generated_Code/WAIT1.h \
  ../Generated_Code/WAIT1config.h ../Generated_Code/Serial1.h \
- ../Generated_Code/ASerialLdd1.h
+ ../Generated_Code/ASerialLdd1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h \
+ //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDD_Types.h
 
 ../Generated_Code/BT1.h:
 
@@ -58,3 +60,7 @@ Generated_Code/BT1.o: ../Generated_Code/BT1.c ../Generated_Code/BT1.h \
 ../Generated_Code/Serial1.h:
 
 ../Generated_Code/ASerialLdd1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDD_Types.h:

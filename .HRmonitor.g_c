@@ -68,7 +68,7 @@
       <XtraAge12>1368623585</XtraAge12>
       <XtraAge14>1358463266</XtraAge14>
       <XtraAge15>1368623585</XtraAge15>
-      <XtraAge16>1368631001</XtraAge16>
+      <XtraAge16>1368685436</XtraAge16>
       <XtraAge17>1368623585</XtraAge17>
       <GenExtraFileType21>5</GenExtraFileType21>
       <GenExtraFileType20>4</GenExtraFileType20>
@@ -569,7 +569,7 @@
     </GenFiles>
     <SignalListFile />
     <DestinationCompiler>GNUC</DestinationCompiler>
-    <ProjectModificationStamp>91</ProjectModificationStamp>
+    <ProjectModificationStamp>97</ProjectModificationStamp>
   </Options>
   <CpuID_1>
     <Generated>true</Generated>
@@ -3511,8 +3511,8 @@
     <GenComponentVersion>01.053</GenComponentVersion>
     <GenDriverVersion>01.00</GenDriverVersion>
     <GenEventModule />
-    <HeaderAge>1368487053</HeaderAge>
-    <CodeAge>1368487053</CodeAge>
+    <HeaderAge>1368683501</HeaderAge>
+    <CodeAge>1368683502</CodeAge>
     <AsemblAge>-1</AsemblAge>
     <GenNumMethods>58</GenNumMethods>
     <Init>true</Init>
@@ -3582,284 +3582,284 @@
       <MethodPos0>GetLastError</MethodPos0>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>171</LineBeg>
-      <LineEnd>182</LineEnd>
+      <LineBeg>173</LineBeg>
+      <LineEnd>184</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos1>GetErrorString</MethodPos1>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>183</LineBeg>
-      <LineEnd>197</LineEnd>
+      <LineBeg>185</LineBeg>
+      <LineEnd>199</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos2>Init</MethodPos2>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>198</LineBeg>
-      <LineEnd>208</LineEnd>
+      <LineBeg>200</LineBeg>
+      <LineEnd>210</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos3>Deinit</MethodPos3>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>209</LineBeg>
-      <LineEnd>219</LineEnd>
+      <LineBeg>211</LineBeg>
+      <LineEnd>221</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos4>btTestUART</MethodPos4>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>220</LineBeg>
-      <LineEnd>231</LineEnd>
+      <LineBeg>222</LineBeg>
+      <LineEnd>233</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos5>StdCmd</MethodPos5>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>232</LineBeg>
-      <LineEnd>250</LineEnd>
+      <LineBeg>234</LineBeg>
+      <LineEnd>252</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos6>StdOKCmd</MethodPos6>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>251</LineBeg>
-      <LineEnd>266</LineEnd>
+      <LineBeg>253</LineBeg>
+      <LineEnd>268</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos7>QueryString</MethodPos7>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>267</LineBeg>
-      <LineEnd>288</LineEnd>
+      <LineBeg>269</LineBeg>
+      <LineEnd>290</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos8>btQueryFirmwareVersionStr</MethodPos8>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>289</LineBeg>
-      <LineEnd>303</LineEnd>
+      <LineBeg>291</LineBeg>
+      <LineEnd>305</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos9>btSetDeviceName</MethodPos9>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>304</LineBeg>
-      <LineEnd>317</LineEnd>
+      <LineBeg>306</LineBeg>
+      <LineEnd>319</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos10>btSetPairingPasskey</MethodPos10>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>318</LineBeg>
-      <LineEnd>331</LineEnd>
+      <LineBeg>320</LineBeg>
+      <LineEnd>333</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos11>SendATCommand</MethodPos11>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>332</LineBeg>
-      <LineEnd>355</LineEnd>
+      <LineBeg>334</LineBeg>
+      <LineEnd>357</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos12>ParseCommand</MethodPos12>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>356</LineBeg>
-      <LineEnd>373</LineEnd>
+      <LineBeg>358</LineBeg>
+      <LineEnd>375</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos13>RecvChar</MethodPos13>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>374</LineBeg>
-      <LineEnd>388</LineEnd>
+      <LineBeg>376</LineBeg>
+      <LineEnd>390</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos14>SendChar</MethodPos14>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>389</LineBeg>
-      <LineEnd>403</LineEnd>
+      <LineBeg>391</LineBeg>
+      <LineEnd>405</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos15>GetCharsInRxBuf</MethodPos15>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>404</LineBeg>
-      <LineEnd>416</LineEnd>
+      <LineBeg>406</LineBeg>
+      <LineEnd>418</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos16>StdIOKeyPressed</MethodPos16>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>417</LineBeg>
-      <LineEnd>429</LineEnd>
+      <LineBeg>419</LineBeg>
+      <LineEnd>431</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos17>StdIOReadChar</MethodPos17>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>430</LineBeg>
-      <LineEnd>443</LineEnd>
+      <LineBeg>432</LineBeg>
+      <LineEnd>445</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos18>StdIOSendChar</MethodPos18>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>444</LineBeg>
-      <LineEnd>456</LineEnd>
+      <LineBeg>446</LineBeg>
+      <LineEnd>458</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos19>btSetBaud</MethodPos19>
       <MethodType>method</MethodType>
       <ModuleType>Header</ModuleType>
-      <LineBeg>457</LineBeg>
-      <LineEnd>471</LineEnd>
+      <LineBeg>459</LineBeg>
+      <LineEnd>473</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos20>SendATCommand</MethodPos20>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>302</LineBeg>
-      <LineEnd>338</LineEnd>
+      <LineBeg>304</LineBeg>
+      <LineEnd>340</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos21>StdCmd</MethodPos21>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>339</LineBeg>
-      <LineEnd>376</LineEnd>
+      <LineBeg>341</LineBeg>
+      <LineEnd>378</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos22>StdOKCmd</MethodPos22>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>377</LineBeg>
-      <LineEnd>399</LineEnd>
+      <LineBeg>379</LineBeg>
+      <LineEnd>401</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos23>QueryString</MethodPos23>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>400</LineBeg>
-      <LineEnd>449</LineEnd>
+      <LineBeg>402</LineBeg>
+      <LineEnd>451</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos24>GetLastError</MethodPos24>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>450</LineBeg>
-      <LineEnd>467</LineEnd>
+      <LineBeg>452</LineBeg>
+      <LineEnd>469</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos25>GetErrorString</MethodPos25>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>468</LineBeg>
-      <LineEnd>488</LineEnd>
+      <LineBeg>470</LineBeg>
+      <LineEnd>490</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos26>Init</MethodPos26>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>489</LineBeg>
-      <LineEnd>502</LineEnd>
+      <LineBeg>491</LineBeg>
+      <LineEnd>512</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos27>Deinit</MethodPos27>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>503</LineBeg>
-      <LineEnd>516</LineEnd>
+      <LineBeg>513</LineBeg>
+      <LineEnd>526</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos28>btTestUART</MethodPos28>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>517</LineBeg>
-      <LineEnd>536</LineEnd>
+      <LineBeg>527</LineBeg>
+      <LineEnd>546</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos29>btQueryFirmwareVersionStr</MethodPos29>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>537</LineBeg>
-      <LineEnd>555</LineEnd>
+      <LineBeg>547</LineBeg>
+      <LineEnd>565</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos30>btSetDeviceName</MethodPos30>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>556</LineBeg>
-      <LineEnd>581</LineEnd>
+      <LineBeg>566</LineBeg>
+      <LineEnd>591</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos31>btSetPairingPasskey</MethodPos31>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>582</LineBeg>
-      <LineEnd>607</LineEnd>
+      <LineBeg>592</LineBeg>
+      <LineEnd>617</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos32>btSetBaud</MethodPos32>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>608</LineBeg>
-      <LineEnd>682</LineEnd>
+      <LineBeg>618</LineBeg>
+      <LineEnd>692</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos33>ParseCommand</MethodPos33>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>683</LineBeg>
-      <LineEnd>749</LineEnd>
+      <LineBeg>693</LineBeg>
+      <LineEnd>759</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos34>RecvChar</MethodPos34>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>750</LineBeg>
-      <LineEnd>768</LineEnd>
+      <LineBeg>760</LineBeg>
+      <LineEnd>778</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos35>SendChar</MethodPos35>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>769</LineBeg>
-      <LineEnd>787</LineEnd>
+      <LineBeg>779</LineBeg>
+      <LineEnd>797</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos36>GetCharsInRxBuf</MethodPos36>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>788</LineBeg>
-      <LineEnd>804</LineEnd>
+      <LineBeg>798</LineBeg>
+      <LineEnd>814</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos37>StdIOKeyPressed</MethodPos37>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>805</LineBeg>
-      <LineEnd>820</LineEnd>
+      <LineBeg>815</LineBeg>
+      <LineEnd>830</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos38>StdIOReadChar</MethodPos38>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>821</LineBeg>
-      <LineEnd>840</LineEnd>
+      <LineBeg>831</LineBeg>
+      <LineEnd>850</LineEnd>
     </MethodPos>
     <MethodPos>
       <MethodPos39>StdIOSendChar</MethodPos39>
       <MethodType>method</MethodType>
       <ModuleType>Code</ModuleType>
-      <LineBeg>841</LineBeg>
-      <LineEnd>856</LineEnd>
+      <LineBeg>851</LineBeg>
+      <LineEnd>866</LineEnd>
     </MethodPos>
     <GenExtraFilesCount>0</GenExtraFilesCount>
-    <InhrCompID_94>
+    <InhrCompID_96>
       <Generated>false</Generated>
       <GenCompName />
       <GenComponentVersion>??.???</GenComponentVersion>
@@ -3886,15 +3886,15 @@
       <GenSmartUserChangesDetected_Asembl>false</GenSmartUserChangesDetected_Asembl>
       <GenMethodPos>0</GenMethodPos>
       <GenExtraFilesCount>0</GenExtraFilesCount>
-    </InhrCompID_94>
+    </InhrCompID_96>
     <InhrCompID_75>
       <Generated>true</Generated>
       <GenCompName>Serial1</GenCompName>
       <GenComponentVersion>02.611</GenComponentVersion>
       <GenDriverVersion>01.01</GenDriverVersion>
       <GenEventModule>Events</GenEventModule>
-      <HeaderAge>1368631002</HeaderAge>
-      <CodeAge>1368631002</CodeAge>
+      <HeaderAge>1368685437</HeaderAge>
+      <CodeAge>1368685437</CodeAge>
       <AsemblAge>-1</AsemblAge>
       <GenNumMethods>24</GenNumMethods>
       <Enable>false</Enable>
@@ -4166,8 +4166,8 @@
         <GenComponentVersion>01.188</GenComponentVersion>
         <GenDriverVersion>01.12</GenDriverVersion>
         <GenEventModule>Events</GenEventModule>
-        <HeaderAge>1368631002</HeaderAge>
-        <CodeAge>1368631003</CodeAge>
+        <HeaderAge>1368685437</HeaderAge>
+        <CodeAge>1368685437</CodeAge>
         <AsemblAge>-1</AsemblAge>
         <GenNumMethods>36</GenNumMethods>
         <Init>true</Init>

@@ -597,7 +597,10 @@
       <Response_timeout__ms_ v="650" />
       <boolgroup name="CMD Pin" v="Disabled" />
       <boolgroup name="State Pin" v="Disabled" />
-      <boolgroup name="Rx Pull-Up" v="Disabled" />
+      <boolgroup name="Rx Pull-Up" v="Enabled">
+        <Pin_Name v="C" />
+        <Pin_Number v="14" />
+      </boolgroup>
       <group name="Interfaces">
         <Shell v="CLS1" />
         <Utility v="UTIL1" />

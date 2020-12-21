@@ -58,7 +58,7 @@
 #include "MAX30102.h"
 
 #define MAX_BRIGHTNESS	255
-#define BAUD_RATE 		38400
+#define BAUD_RATE 		9600
 
 /* declare function prototypes */
 void initBT(void) ;
@@ -85,18 +85,26 @@ void Delay(unsigned long delay){
 
 /*
  *	Function name: initBT
- *	Purpose: Initializes the BT module
+ *	Purpose: Initializes and tests the BT module
+ *
+ *	Problems: Not sending correct data to BT module's terminal (e.g. terminal only gets <?> character)
+ *	Possible Solutions: Change baud rate, test on another BT module, analyze on logic analyzer
+ *	Road-blocks: Baud rate does not seem to fix problem (tested 9600, 19200, 38400, 115200),
+ *				only have one (1) HC-06 module, don't have access to logic analyzer. Maybe
+ *				get rid of BT functionality and replace with SH1106 OLED panel functionality.
  *
  *	Parameters: None
  *	Return values: None
 */
 void initBT(void){
-	/* init the BT module */
-	//BT1_Init() ;
+	/* test UART for errors */
+	BT1_btTestUART() ;
+	/* Retrieve last error ... no errors found */
+	unsigned char btError = BT1_GetLastError() ;
 	/* declare baud rate for BT module */
 	BT1_btSetBaud(BAUD_RATE) ;
 	/* send char to BT module */
-	BT1_SendChar('C') ;
+	BT1_SendChar(0x43) ;
 }
 
 
@@ -159,16 +167,20 @@ void PORTB_ISR(void){
 
 /*
  *	///////////////////////////////
+ *
+ *	Priority: 0 - low	5 - medium	10 - high
+ *
  *	TODO:
- *		1. fix IRQ functions
+ *		1. fix IRQ functions		(Priority: 5)
  *			a. fix for INT pin on max30102
  *				i. INT pin from MAX30102 always outputting ~3.1 [V]
 *			b. DIP switch
-*				i. pin always entering ISR
- *		2. fix algorithm function to correctly display HR and SpO2
+*				i. pin always entering ISR and not exiting
+*				ii. when SW is 1, BT module loses power (related??)
+ *		2. fix algorithm function to correctly display HR and SpO2	(Priority: 3)
  *			a. Displays incorrect values when finger is placed
- *		3. connect hc-06 to phone for bluetooth connection
- *			a. connects but doesn't send data
+ *		3. connect hc-06 to phone for BT connection	(Priority: 7)
+ *			a. connects but sends incorrect data
  *  ///////////////////////////////
 */
 

@@ -597,7 +597,10 @@
       <Response_timeout__ms_ v="650" />
       <boolgroup name="CMD Pin" v="Disabled" />
       <boolgroup name="State Pin" v="Disabled" />
-      <boolgroup name="Rx Pull-Up" v="Disabled" />
+      <boolgroup name="Rx Pull-Up" v="Enabled">
+        <Pin_Name v="C" />
+        <Pin_Number v="14" />
+      </boolgroup>
       <group name="Interfaces">
         <Shell v="CLS1" />
         <Utility v="UTIL1" />
@@ -632,7 +635,7 @@
               <boolgroup name="Transmitter" v="Enabled">
                 <TxD v="J199_4" />
               </boolgroup>
-              <Baud_rate v="38400 baud" />
+              <Baud_rate v="115200 baud" />
               <Break_signal v="Disabled" />
               <Wakeup_condition v="Idle line wakeup" />
               <Transmitter_output v="Not inverted" />
@@ -669,7 +672,7 @@
                     <Parity v="None" />
                     <Stop_bits v="1" />
                     <Loop_mode v="Normal" />
-                    <Baud_rate v="38400 baud" />
+                    <Baud_rate v="115200 baud" />
                     <Wakeup_condition v="Idle line wakeup" />
                     <Stop_in_wait_mode v="no" />
                     <Idle_line_mode v="Starts after start bit" />
