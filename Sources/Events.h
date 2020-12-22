@@ -49,6 +49,7 @@
 #include "ASerialLdd1.h"
 #include "EInt1.h"
 #include "ExtIntLdd1.h"
+#include "LCD1.h"
 
 #ifdef __cplusplus
 extern "C" {

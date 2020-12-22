@@ -65,6 +65,7 @@
 #include "ASerialLdd1.h"
 #include "EInt1.h"
 #include "ExtIntLdd1.h"
+#include "LCD1.h"
 #include "Events.h"
 
 #ifdef __cplusplus

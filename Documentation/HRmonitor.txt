@@ -13,6 +13,7 @@ Module "GI2C1"     (component GenericI2C)
    - GI2C1_ReleaseBus -Finishes a critical section for accessing the bus.
    - GI2C1_WriteBlock -Write a block to the device.
    - GI2C1_ReadBlock -Read from the device a block.
+   - GI2C1_ReadBlockGeneric -Read from the device a block with using additional control and flags.
    - GI2C1_ReadAddressWait -Same as ReadAddress, but with an optional wait between the address and read. Read from the device. 
                 This writes (S+i2cAddr+0), (memAddr), (Sr+i2cAddr+1), (data)...(data+P)
    - GI2C1_ReadAddress -Read from the device. This writes (S+i2cAddr+0), (memAddr), (Sr+i2cAddr+1), (data)...(data+P)
@@ -240,6 +241,28 @@ Module "BT1"       (component Bluetooth_EGBT)
 
 Module "EInt1"     (component ExtInt)
    - EInt1_GetVal -Returns the actual value of the input pin of the component.
+
+Module "LCD1"      (component SSD1306)
+   - LCD1_GetWidth -Returns the width of the display in pixels (in x direction)
+   - LCD1_GetHeight -Returns the height of the display in pixels (in y direction)
+   - LCD1_GetLongerSide -Returns the size of the longer side of the display
+   - LCD1_GetShorterSide -Returns the size of the shorter side of the display
+   - LCD1_PutPixel -Draws a pixel into the display buffer (not on the display).
+   - LCD1_Clear -Clears the whole display memory.
+   - LCD1_UpdateFull -Updates the whole display from the microcontroller RAM display buffer.
+   - LCD1_InitCommChannel -Method to initialize communication to the LCD. Needed if the bus to the LCD is shared with other 
+                components and settings are different.
+   - LCD1_SetContrast -Sets the display contrast level (default:0x7F)
+   - LCD1_DisplayOn -Turns the display on or off (sleep)
+   - LCD1_DisplayInvert -Used to inverse the display. In normal mode, 1 one in the display RAM is a pixel set and a 0 means 
+                pixel clear.
+   - LCD1_GetLCD -Method to be called for mutual exclusive access to the LCD
+   - LCD1_GiveLCD -Method to be called for mutual exclusive access to the LCD
+   - LCD1_SetRowCol -Sets the column and row position, useful for start writing text with PrintString()
+   - LCD1_PrintString -Simple low level method printing text to the display. Newline is supported.
+   - LCD1_ClearLine -Clear a text line on the display
+   - LCD1_Deinit -Driver de-initialization
+   - LCD1_Init -Display driver initialization
 
 Module "Cpu"       (component MK64FN1M0LL12)
    - Cpu_SetClockConfiguration -Calling of this method will cause the clock configuration change and reconfiguration of all 

@@ -116,7 +116,7 @@
       <ReleaseBus v="generate code" />
       <WriteBlock v="generate code" />
       <ReadBlock v="generate code" />
-      <ReadBlockGeneric v="don&amp;apos;t generate code" />
+      <ReadBlockGeneric v="generate code" />
       <ReadAddressWait v="generate code" />
       <ReadAddress v="generate code" />
       <WriteAddress v="generate code" />
@@ -929,6 +929,68 @@ rising or falling edge
         <Event_procedure_name v="EInt1_OnInterrupt" />
         <Priority v="same as interrupt" />
       </event>
+    </Events>
+  </Bean>
+  <Bean name="LCD1" type="SSD1306">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="LCD1" />
+      <Type v="128x64" />
+      <Driver v="SSD1306" />
+      <Start_Column_Offset v="0" />
+      <Orientation v="landscape" />
+      <Width v="128" />
+      <Height v="64" />
+      <Bytes_in_rows v="no" />
+      <Bytes_in_x_direction v="yes" />
+      <MSB_first v="no" />
+      <Bits_per_pixel v="1" />
+      <Window_capability v="no" />
+      <Display_Memory_Write v="no" />
+      <Display_Memory_Read v="no" />
+      <Use_RAM_Buffer v="yes" />
+      <Clear_display_in_init v="no" />
+      <Initialize_on_Init v="yes" />
+      <Init_Delay__ms_ v="5" />
+      <group name="HW">
+        <I2C_Device_Address v="60" />
+        <I2C_Transaction_Delay__us_ v="100" />
+        <Bock_Transfer v="yes" />
+        <I2C v="GI2C1" />
+        <boolgroup name="Reset" v="Disabled" />
+      </group>
+      <group name="System">
+        <Wait v="WAIT1" />
+        <SDK v="MCUC1" />
+      </group>
+    </Properties>
+    <Methods>
+      <GetWidth v="generate code" />
+      <GetHeight v="generate code" />
+      <GetLongerSide v="generate code" />
+      <GetShorterSide v="generate code" />
+      <SetDisplayOrientation v="don&amp;apos;t generate code" />
+      <GetDisplayOrientation v="don&amp;apos;t generate code" />
+      <PutPixel v="generate code" />
+      <Clear v="generate code" />
+      <UpdateFull v="generate code" />
+      <UpdateRegion v="don&amp;apos;t generate code" />
+      <InitCommChannel v="generate code" />
+      <SetContrast v="generate code" />
+      <DisplayOn v="generate code" />
+      <DisplayInvert v="generate code" />
+      <GetLCD v="generate code" />
+      <GiveLCD v="generate code" />
+      <SetRowCol v="generate code" />
+      <PrintString v="generate code" />
+      <ClearLine v="generate code" />
+      <Deinit v="generate code" />
+      <Init v="generate code" />
+    </Methods>
+    <Events>
+      <Event_module_name v="Events" />
+      <event name="OnGetLCD" v="don&amp;apos;t generate code" />
+      <event name="OnGiveLCD" v="don&amp;apos;t generate code" />
     </Events>
   </Bean>
 </PE_PROJECT_SETTINGS_DOCUMENTATION>

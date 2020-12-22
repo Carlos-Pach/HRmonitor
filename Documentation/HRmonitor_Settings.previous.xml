@@ -116,7 +116,7 @@
       <ReleaseBus v="generate code" />
       <WriteBlock v="generate code" />
       <ReadBlock v="generate code" />
-      <ReadBlockGeneric v="don&amp;apos;t generate code" />
+      <ReadBlockGeneric v="generate code" />
       <ReadAddressWait v="generate code" />
       <ReadAddress v="generate code" />
       <WriteAddress v="generate code" />
@@ -635,7 +635,7 @@
               <boolgroup name="Transmitter" v="Enabled">
                 <TxD v="J199_4" />
               </boolgroup>
-              <Baud_rate v="115200 baud" />
+              <Baud_rate v="9600 baud" />
               <Break_signal v="Disabled" />
               <Wakeup_condition v="Idle line wakeup" />
               <Transmitter_output v="Not inverted" />
@@ -672,7 +672,7 @@
                     <Parity v="None" />
                     <Stop_bits v="1" />
                     <Loop_mode v="Normal" />
-                    <Baud_rate v="115200 baud" />
+                    <Baud_rate v="9600 baud" />
                     <Wakeup_condition v="Idle line wakeup" />
                     <Stop_in_wait_mode v="no" />
                     <Idle_line_mode v="Starts after start bit" />
@@ -929,6 +929,164 @@ rising or falling edge
         <Event_procedure_name v="EInt1_OnInterrupt" />
         <Priority v="same as interrupt" />
       </event>
+    </Events>
+  </Bean>
+  <Bean name="SM1" type="SPIMaster_LDD">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="SM1" />
+      <Device v="SPI0" />
+      <boolgroup name="Interrupt service/event" v="Enabled">
+        <Input_interrupt v="INT_SPI0" />
+        <Input_interrupt_priority v="medium priority" />
+        <Output_interrupt v="INT_SPI0" />
+        <Output_interrupt_priority v="medium priority" />
+      </boolgroup>
+      <group name="Settings">
+        <boolgroup name="Input pin" v="Disabled" />
+        <boolgroup name="Output pin" v="Enabled">
+          <Pin v="J2_8" />
+        </boolgroup>
+        <group name="Clock pin">
+          <Pin v="J1_15" />
+        </group>
+        <list name="Chip select list" v="1">
+          <group name="Chip select 0">
+            <Pin v="J2_4" />
+            <Active_level v="Low" />
+          </group>
+        </list>
+        <boolgroup name="CS external demultiplexer" v="Disabled" />
+        <list name="Attribute set list" v="1">
+          <group name="Attribute set 0">
+            <Width v="8 bits" />
+            <MSB_first v="yes" />
+            <Clock_polarity v="Low" />
+            <Clock_phase v="Capture on leading edge" />
+            <Parity v="None" />
+            <Chip_select_toggling v="no" />
+            <Clock_rate_index v="0" />
+            <Delay_after_transfer_index v="0" />
+            <CS_to_CLK_delay_index v="0" />
+            <CLK_to_CS_delay_index v="0" />
+          </group>
+        </list>
+        <Clock_rate v="374.49 kHz" />
+        <Delay_after_transfer v="36.62 &amp;#181;s" />
+        <CS_to_CLK_delay v="4.578 &amp;#181;s" />
+        <CLK_to_CS_delay v="4.578 &amp;#181;s" />
+        <HW_input_buffer_size v="1" />
+        <HW_input_watermark v="1" />
+        <HW_output_buffer_size v="1" />
+        <HW_output_watermark v="1" />
+      </group>
+      <group name="Initialization">
+        <Initial_chip_select v="0" />
+        <Initial_attribute_set v="0" />
+        <Enabled_in_init__code v="yes" />
+        <group name="Event mask">
+          <OnBlockSent v="Enabled" />
+          <OnBlockReceived v="Enabled" />
+          <OnError v="Disabled" />
+        </group>
+      </group>
+    </Properties>
+    <Methods>
+      <Init v="generate code" />
+      <Deinit v="don&amp;apos;t generate code" />
+      <Enable v="don&amp;apos;t generate code" />
+      <Disable v="don&amp;apos;t generate code" />
+      <SetEventMask v="don&amp;apos;t generate code" />
+      <GetEventMask v="don&amp;apos;t generate code" />
+      <SendBlock v="generate code" />
+      <ReceiveBlock v="generate code" />
+      <GetSentDataNum v="don&amp;apos;t generate code" />
+      <GetReceivedDataNum v="don&amp;apos;t generate code" />
+      <GetBlockSentStatus v="don&amp;apos;t generate code" />
+      <GetBlockReceivedStatus v="don&amp;apos;t generate code" />
+      <CancelBlockTransmission v="don&amp;apos;t generate code" />
+      <CancelBlockReception v="don&amp;apos;t generate code" />
+      <GetError v="don&amp;apos;t generate code" />
+      <SelectConfiguration v="don&amp;apos;t generate code" />
+      <Main v="don&amp;apos;t generate code" />
+      <ForceReceiver v="don&amp;apos;t generate code" />
+      <GetStats v="don&amp;apos;t generate code" />
+      <ClearStats v="don&amp;apos;t generate code" />
+      <SetOperationMode v="don&amp;apos;t generate code" />
+      <GetDriverState v="don&amp;apos;t generate code" />
+      <ConnectPin v="don&amp;apos;t generate code" />
+    </Methods>
+    <Events>
+      <Event_module_name v="Events" />
+      <event name="OnBlockSent" v="generate code">
+        <Event_procedure_name v="SM1_OnBlockSent" />
+      </event>
+      <event name="OnBlockReceived" v="generate code">
+        <Event_procedure_name v="SM1_OnBlockReceived" />
+      </event>
+      <event name="OnError" v="don&amp;apos;t generate code" />
+    </Events>
+  </Bean>
+  <Bean name="LCD1" type="SSD1306">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="LCD1" />
+      <Type v="128x64" />
+      <Driver v="SSD1306" />
+      <Start_Column_Offset v="0" />
+      <Orientation v="landscape" />
+      <Width v="128" />
+      <Height v="64" />
+      <Bytes_in_rows v="no" />
+      <Bytes_in_x_direction v="yes" />
+      <MSB_first v="no" />
+      <Bits_per_pixel v="1" />
+      <Window_capability v="no" />
+      <Display_Memory_Write v="no" />
+      <Display_Memory_Read v="no" />
+      <Use_RAM_Buffer v="yes" />
+      <Clear_display_in_init v="no" />
+      <Initialize_on_Init v="yes" />
+      <Init_Delay__ms_ v="5" />
+      <group name="HW">
+        <I2C_Device_Address v="60" />
+        <I2C_Transaction_Delay__us_ v="100" />
+        <Bock_Transfer v="yes" />
+        <I2C v="GI2C1" />
+        <boolgroup name="Reset" v="Disabled" />
+      </group>
+      <group name="System">
+        <Wait v="WAIT1" />
+        <SDK v="MCUC1" />
+      </group>
+    </Properties>
+    <Methods>
+      <GetWidth v="generate code" />
+      <GetHeight v="generate code" />
+      <GetLongerSide v="generate code" />
+      <GetShorterSide v="generate code" />
+      <SetDisplayOrientation v="don&amp;apos;t generate code" />
+      <GetDisplayOrientation v="don&amp;apos;t generate code" />
+      <PutPixel v="generate code" />
+      <Clear v="generate code" />
+      <UpdateFull v="generate code" />
+      <UpdateRegion v="don&amp;apos;t generate code" />
+      <InitCommChannel v="generate code" />
+      <SetContrast v="generate code" />
+      <DisplayOn v="generate code" />
+      <DisplayInvert v="generate code" />
+      <GetLCD v="generate code" />
+      <GiveLCD v="generate code" />
+      <SetRowCol v="generate code" />
+      <PrintString v="generate code" />
+      <ClearLine v="generate code" />
+      <Deinit v="generate code" />
+      <Init v="generate code" />
+    </Methods>
+    <Events>
+      <Event_module_name v="Events" />
+      <event name="OnGetLCD" v="don&amp;apos;t generate code" />
+      <event name="OnGiveLCD" v="don&amp;apos;t generate code" />
     </Events>
   </Bean>
 </PE_PROJECT_SETTINGS_DOCUMENTATION>

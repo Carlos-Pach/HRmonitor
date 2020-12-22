@@ -6,7 +6,7 @@
 **     Version     : Component 01.046, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-19, 17:14, # CodeGen: 106
+**     Date/Time   : 2020-12-21, 19:50, # CodeGen: 121
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -71,6 +71,7 @@
 #include "ASerialLdd1.h"
 #include "EInt1.h"
 #include "ExtIntLdd1.h"
+#include "LCD1.h"
 
 
 /*

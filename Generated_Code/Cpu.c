@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K64P144M120SF5RM, Rev.2, January 2014
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-19, 17:14, # CodeGen: 106
+**     Date/Time   : 2020-12-21, 19:50, # CodeGen: 121
 **     Abstract    :
 **
 **     Settings    :
@@ -181,6 +181,9 @@ void Components_Init(void)
   BT1_Init();
   /* ### ExtInt_LDD "ExtIntLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)ExtIntLdd1_Init(NULL);
+#if LCD1_CONFIG_INITIALIZE_IN_INIT
+  LCD1_Init(); /* ### SSD1306 "LCD1" init code ... */
+#endif
 }
 #endif /* CPU_COMPONENTS_INIT */
 

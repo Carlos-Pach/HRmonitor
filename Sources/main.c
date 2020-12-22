@@ -46,6 +46,7 @@
 #include "ASerialLdd1.h"
 #include "EInt1.h"
 #include "ExtIntLdd1.h"
+#include "LCD1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -181,6 +182,7 @@ void PORTB_ISR(void){
  *			a. Displays incorrect values when finger is placed
  *		3. connect hc-06 to phone for BT connection	(Priority: 7)
  *			a. connects but sends incorrect data
+ *
  *  ///////////////////////////////
 */
 
