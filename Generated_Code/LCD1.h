@@ -6,7 +6,7 @@
 **     Component   : SSD1306
 **     Version     : Component 01.044, Driver 01.00, CPU db: 3.00.000
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-21, 19:29, # CodeGen: 120
+**     Date/Time   : 2020-12-23, 20:12, # CodeGen: 138
 **     Abstract    :
 **         Display driver for the SSD1306 OLED module
 **     Settings    :
@@ -24,14 +24,14 @@
 **          Display Memory Write                           : no
 **          Display Memory Read                            : no
 **          Use RAM Buffer                                 : yes
-**          Clear display in init                          : no
+**          Clear display in init                          : yes
 **          Initialize on Init                             : yes
 **          Init Delay (ms)                                : 5
 **          HW                                             : 
 **            I2C Device Address                           : 0x3C
 **            I2C Transaction Delay (us)                   : 100
 **            Bock Transfer                                : yes
-**            I2C                                          : GI2C1
+**            I2C                                          : GI2C2
 **            Reset                                        : Disabled
 **          System                                         : 
 **            Wait                                         : WAIT1
@@ -44,6 +44,7 @@
 **         PutPixel        - void LCD1_PutPixel(LCD1_PixelDim x, LCD1_PixelDim y, LCD1_PixelColor color);
 **         Clear           - void LCD1_Clear(void);
 **         UpdateFull      - void LCD1_UpdateFull(void);
+**         UpdateRegion    - void LCD1_UpdateRegion(LCD1_PixelDim x, LCD1_PixelDim y, LCD1_PixelDim w,...
 **         InitCommChannel - void LCD1_InitCommChannel(void);
 **         SetContrast     - uint8_t LCD1_SetContrast(uint8_t contrast);
 **         DisplayOn       - uint8_t LCD1_DisplayOn(bool on);
@@ -198,6 +199,23 @@ void LCD1_UpdateFull(void);
 **         Updates the whole display from the microcontroller RAM
 **         display buffer.
 **     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+void LCD1_UpdateRegion(LCD1_PixelDim x, LCD1_PixelDim y, LCD1_PixelDim w, LCD1_PixelDim h);
+/*
+** ===================================================================
+**     Method      :  LCD1_UpdateRegion (component SSD1306)
+**     Description :
+**         Updates a region of the display. This is only a stub for
+**         this display as we are using windowing.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         x               - x coordinate
+**         y               - y coordinate
+**         w               - width of the region
+**         h               - Height of the region
 **     Returns     : Nothing
 ** ===================================================================
 */

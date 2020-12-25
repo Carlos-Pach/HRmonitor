@@ -6,18 +6,21 @@
 C_SRCS += \
 ../Sources/Events.c \
 ../Sources/MAX30102.c \
+../Sources/OLED.c \
 ../Sources/algorithm.c \
 ../Sources/main.c 
 
 OBJS += \
 ./Sources/Events.o \
 ./Sources/MAX30102.o \
+./Sources/OLED.o \
 ./Sources/algorithm.o \
 ./Sources/main.o 
 
 C_DEPS += \
 ./Sources/Events.d \
 ./Sources/MAX30102.d \
+./Sources/OLED.d \
 ./Sources/algorithm.d \
 ./Sources/main.d 
 

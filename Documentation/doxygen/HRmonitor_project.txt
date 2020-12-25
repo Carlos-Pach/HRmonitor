@@ -30,6 +30,7 @@
 - \subpage IO1
 - \subpage ASerialLdd1
 - \subpage ExtIntLdd1
+- \subpage CI2C2
 
 */
 
@@ -66,6 +67,7 @@
 - \subpage IO1
 - \subpage ASerialLdd1
 - \subpage ExtIntLdd1
+- \subpage CI2C2
 
 */
 

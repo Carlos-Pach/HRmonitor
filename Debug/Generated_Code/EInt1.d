@@ -51,6 +51,12 @@ Generated_Code/EInt1.o: ../Generated_Code/EInt1.c \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PDD_Types.h \
  //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h \
  //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C2.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C2config.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C2.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C2.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/LCD1.h \
+ //Mac/Home/workspace.kds/HRmonitor/Generated_Code/LCD1config.h \
  ../Generated_Code/EInt1.h
 
 //Mac/Home/workspace.kds/HRmonitor/Sources/Events.h:
@@ -156,5 +162,17 @@ Generated_Code/EInt1.o: ../Generated_Code/EInt1.c \
 //Mac/Home/workspace.kds/HRmonitor/Static_Code/PDD/PORT_PDD.h:
 
 //Mac/Home/workspace.kds/HRmonitor/Generated_Code/ExtIntLdd1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C2.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/GI2C2config.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C2.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/CI2C2.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/LCD1.h:
+
+//Mac/Home/workspace.kds/HRmonitor/Generated_Code/LCD1config.h:
 
 ../Generated_Code/EInt1.h:

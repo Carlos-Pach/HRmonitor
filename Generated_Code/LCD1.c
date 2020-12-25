@@ -7,7 +7,7 @@
 **     Version     : Component 01.044, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-21, 19:29, # CodeGen: 120
+**     Date/Time   : 2020-12-23, 20:12, # CodeGen: 138
 **     Abstract    :
 **         Display driver for the SSD1306 OLED module
 **     Settings    :
@@ -26,14 +26,14 @@
 **          Display Memory Write                           : no
 **          Display Memory Read                            : no
 **          Use RAM Buffer                                 : yes
-**          Clear display in init                          : no
+**          Clear display in init                          : yes
 **          Initialize on Init                             : yes
 **          Init Delay (ms)                                : 5
 **          HW                                             : 
 **            I2C Device Address                           : 0x3C
 **            I2C Transaction Delay (us)                   : 100
 **            Bock Transfer                                : yes
-**            I2C                                          : GI2C1
+**            I2C                                          : GI2C2
 **            Reset                                        : Disabled
 **          System                                         : 
 **            Wait                                         : WAIT1
@@ -46,6 +46,7 @@
 **         PutPixel        - void LCD1_PutPixel(LCD1_PixelDim x, LCD1_PixelDim y, LCD1_PixelColor color);
 **         Clear           - void LCD1_Clear(void);
 **         UpdateFull      - void LCD1_UpdateFull(void);
+**         UpdateRegion    - void LCD1_UpdateRegion(LCD1_PixelDim x, LCD1_PixelDim y, LCD1_PixelDim w,...
 **         InitCommChannel - void LCD1_InitCommChannel(void);
 **         SetContrast     - uint8_t LCD1_SetContrast(uint8_t contrast);
 **         DisplayOn       - uint8_t LCD1_DisplayOn(bool on);
@@ -270,14 +271,14 @@ static unsigned char font[] = {
 #define SSD1306_VERTICAL_AND_LEFT_HORIZONTAL_SCROLL 0x2A
 
 static void SSD1306_WriteCommand(uint8_t cmd) {
-  GI2C1_WriteByteAddress8(LCD1_CONFIG_SSD1306_I2C_ADDR, SSD1306_CMD_REG, cmd);
+  GI2C2_WriteByteAddress8(LCD1_CONFIG_SSD1306_I2C_ADDR, SSD1306_CMD_REG, cmd);
 #if LCD1_CONFIG_SSD1306_I2C_DELAY_US>0
   WAIT1_Waitus(LCD1_CONFIG_SSD1306_I2C_DELAY_US);
 #endif
 }
 
 static void SSD1306_WriteData(uint8_t data) {
-  GI2C1_WriteByteAddress8(LCD1_CONFIG_SSD1306_I2C_ADDR, SSD1306_DATA_REG, data);
+  GI2C2_WriteByteAddress8(LCD1_CONFIG_SSD1306_I2C_ADDR, SSD1306_DATA_REG, data);
 #if LCD1_CONFIG_SSD1306_I2C_DELAY_US>0
   WAIT1_Waitus(LCD1_CONFIG_SSD1306_I2C_DELAY_US);
 #endif
@@ -285,7 +286,7 @@ static void SSD1306_WriteData(uint8_t data) {
 
 static void SSD1306_WriteDataBlock(uint8_t *data, size_t size) {
 #if LCD1_CONFIG_USE_I2C_BLOCK_TRANSFER
-  #define SSD1306_I2C_BLOCK_SIZE   GI2C1_WRITE_BUFFER_SIZE
+  #define SSD1306_I2C_BLOCK_SIZE   GI2C2_WRITE_BUFFER_SIZE
   uint8_t memAddr = SSD1306_DATA_REG;
   uint16_t txSize;
 
@@ -295,7 +296,7 @@ static void SSD1306_WriteDataBlock(uint8_t *data, size_t size) {
     } else {
       txSize = size;
     }
-    GI2C1_WriteAddress(LCD1_CONFIG_SSD1306_I2C_ADDR, &memAddr, sizeof(memAddr), data, txSize);
+    GI2C2_WriteAddress(LCD1_CONFIG_SSD1306_I2C_ADDR, &memAddr, sizeof(memAddr), data, txSize);
     data += txSize;
     size -= txSize;
   }
@@ -416,6 +417,35 @@ void LCD1_Clear(void)
     p++;
   }
   LCD1_UpdateFull();
+}
+
+/*
+** ===================================================================
+**     Method      :  LCD1_UpdateRegion (component SSD1306)
+**     Description :
+**         Updates a region of the display. This is only a stub for
+**         this display as we are using windowing.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         x               - x coordinate
+**         y               - y coordinate
+**         w               - width of the region
+**         h               - Height of the region
+**     Returns     : Nothing
+** ===================================================================
+*/
+void LCD1_UpdateRegion(LCD1_PixelDim x, LCD1_PixelDim y, LCD1_PixelDim w, LCD1_PixelDim h)
+{
+  int page, pageBeg, pageEnd, colStart;
+
+  pageBeg = y/8;
+  pageEnd = (y+h-1)/8;
+  colStart = x;
+  for(page = pageBeg; page<=pageEnd; page++) {
+    (void)SSD1306_SetPageStartAddr(page);
+    (void)SSD1306_SetColStartAddr(colStart);
+    SSD1306_WriteDataBlock(&LCD1_DisplayBuf[0][0]+(page*LCD1_DISPLAY_HW_NOF_COLUMNS+colStart), w);
+  }
 }
 
 /*

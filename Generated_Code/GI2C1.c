@@ -7,7 +7,7 @@
 **     Version     : Component 01.048, Driver 01.00, CPU db: 3.00.000
 **     Repository  : My Components
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-21, 19:29, # CodeGen: 120
+**     Date/Time   : 2020-12-22, 15:52, # CodeGen: 123
 **     Abstract    :
 **         This component implements a generic I2C driver wrapper to work both with LDD and non-LDD I2C components.
 **     Settings    :
@@ -29,7 +29,6 @@
 **         ReleaseBus        - void GI2C1_ReleaseBus(void);
 **         WriteBlock        - uint8_t GI2C1_WriteBlock(void* data, uint16_t dataSize, GI2C1_EnumSendFlags...
 **         ReadBlock         - uint8_t GI2C1_ReadBlock(void* data, uint16_t dataSize, GI2C1_EnumSendFlags...
-**         ReadBlockGeneric  - uint8_t GI2C1_ReadBlockGeneric(void* data, uint16_t dataSize,...
 **         ReadAddressWait   - uint8_t GI2C1_ReadAddressWait(uint8_t i2cAddr, uint8_t *memAddr, uint8_t...
 **         ReadAddress       - uint8_t GI2C1_ReadAddress(uint8_t i2cAddr, uint8_t *memAddr, uint8_t...
 **         WriteAddress      - uint8_t GI2C1_WriteAddress(uint8_t i2cAddr, uint8_t *memAddr, uint8_t...
@@ -186,44 +185,6 @@ uint8_t GI2C1_UnselectSlave(void)
 {
   GI2C1_ReleaseBus();
   return ERR_OK;
-}
-
-/*
-** ===================================================================
-**     Method      :  GI2C1_ReadBlockGeneric (component GenericI2C)
-**     Description :
-**         Read from the device a block with using additional control
-**         and flags.
-**     Parameters  :
-**         NAME            - DESCRIPTION
-**       * data            - Read buffer
-**         dataSize        - Size of read buffer
-**         flagsSend       - flags for the send transaction
-**         flagsStart      - Start flags
-**         flagsAck        - Acknowledge flags
-**     Returns     :
-**         ---             - Error code
-** ===================================================================
-*/
-uint8_t GI2C1_ReadBlockGeneric(void* data, uint16_t dataSize, GI2C1_EnumSendFlags flags, GI2C1_EnumStartFlags flagsStart, GI2C1_EnumAckFlags flagsAck)
-{
-  uint8_t res = ERR_OK;
-
-  #warning "functionality not implemented yet for I2C LDD. Disable this function to disable warning."
-  for(;;) { /* breaks */
-    GI2C1_deviceData.dataReceivedFlg = FALSE;
-    res = CI2C1_MasterReceiveBlock(GI2C1_deviceData.handle, data, dataSize, flags==GI2C1_SEND_STOP?LDD_I2C_SEND_STOP:LDD_I2C_NO_SEND_STOP);
-    if (res!=ERR_OK) {
-    #if GI2C1_CONFIG_USE_ON_ERROR_EVENT
-      GI2C1_CONFIG_ON_ERROR_EVENT();
-    #endif
-      break; /* break for(;;) */
-    }
-    do { /* Wait until data is received */
-    } while (!GI2C1_deviceData.dataReceivedFlg);
-    break; /* break for(;;) */
-  } /* for(;;) */
-  return res;
 }
 
 /*

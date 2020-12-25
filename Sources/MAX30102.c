@@ -41,7 +41,7 @@ Bool maxim_max30102_init(){
     	return false;
     }
     // 0x02 --> 0x07 --> 0x02 --> 0x07
-    if(!maxim_max30102_write_reg(REG_MODE_CONFIG, 0x03)){  //0x02 for Red only, 0x03 for SpO2 mode 0x07 multimode LED
+    if(!maxim_max30102_write_reg(REG_MODE_CONFIG, 0x02)){  //0x02 for Red only, 0x03 for SpO2 mode 0x07 multimode LED
     	return false;
     }
     // 0x27 --> 0x2B (ADC: 4096 [nA], SPO2: 200 [samples/s], LED pulse width: [400 us]) --> 0x27
@@ -50,13 +50,15 @@ Bool maxim_max30102_init(){
     }
 
     // 0x24 --> 0x2C --> 0x24 --> 0x3F (~12.6 mA) --> 0x24
+    // 0x24 --> 0x1F	(~6.2 [mA])
     if(!maxim_max30102_write_reg(REG_LED1_PA, 0x24)){   //Choose value for ~ 7mA for LED1
     	return false;
     }
-    // 0x24 --> 0x2C --> 0x24
+    // 0x24 --> 0x2C --> 0x24 --> 0x1F (~ 6.2 [mA])
     if(!maxim_max30102_write_reg(REG_LED2_PA, 0x24)){   // Choose value for ~ 7mA for LED2
 	  	return false;
     }
+    /* this function does not work because MAX30102 lacks Pilot LED */
     if(!maxim_max30102_write_reg(REG_PILOT_PA, 0x7F)){   // Choose value for ~ 25mA for Pilot LED
     	return false;
     }
@@ -171,6 +173,26 @@ void maxim_max30102_mode_change(uint8_t maxim_addr, uint8_t maxim_data){
 	maxim_max30102_write_reg(maxim_addr, maxim_data) ;
 }
 
+/*
+ * ==========================================================
+ * Function name: sleepMode
+ * Purpose: Switches MAX30102 to sleep/wake-up
+ * Details: This function either puts the MAX30102 to sleep or
+ * 			wakes up the MAX30102
+ *
+ * Parameters:
+ * 		NAME					DESCRIPTION
+ * 		[In] maxim_addr		- register address
+ * 		[In] maxim_data		- register data
+ *
+ * 	Return value:
+ * 		none
+ * 	==========================================================
+*/
+void sleepMode(uint8_t maxim_addr, uint8_t maxim_data){
+	/* write to maxim_max30102_write_reg */
+	maxim_max30102_write_reg(maxim_addr, maxim_data) ;
+}
 /*
  *  ========================================================
  *  Function Name: maxim_max30102_read_fifo

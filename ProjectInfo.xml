@@ -56,6 +56,7 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\ASerialLdd1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\BT1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CI2C1.c</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CI2C2.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CLS1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CS1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Cpu.c</PathName>
@@ -63,6 +64,7 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\EInt1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\ExtIntLdd1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C1.c</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C2.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\IO1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\LCD1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\MCUC1.c</PathName>
@@ -75,6 +77,7 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Project_Settings\Startup_Code\startup.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\Events.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\MAX30102.c</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\OLED.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\algorithm.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\main.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\System\CPU_Init.c</PathName>
@@ -85,6 +88,7 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\ASerialLdd1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\BT1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CI2C1.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CI2C2.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CLS1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CLS1config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\CPU_Config.h</PathName>
@@ -96,6 +100,8 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\ExtIntLdd1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C1config.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C2.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\GI2C2config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\IO1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\IO_Map.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\Init_Config.h</PathName>
@@ -118,6 +124,7 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\XF1config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\Events.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\MAX30102.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\OLED.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\algorithm.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\IO_Map\MK64F12.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Static_Code\PDD\ADC_PDD.h</PathName>

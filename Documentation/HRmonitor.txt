@@ -13,7 +13,6 @@ Module "GI2C1"     (component GenericI2C)
    - GI2C1_ReleaseBus -Finishes a critical section for accessing the bus.
    - GI2C1_WriteBlock -Write a block to the device.
    - GI2C1_ReadBlock -Read from the device a block.
-   - GI2C1_ReadBlockGeneric -Read from the device a block with using additional control and flags.
    - GI2C1_ReadAddressWait -Same as ReadAddress, but with an optional wait between the address and read. Read from the device. 
                 This writes (S+i2cAddr+0), (memAddr), (Sr+i2cAddr+1), (data)...(data+P)
    - GI2C1_ReadAddress -Read from the device. This writes (S+i2cAddr+0), (memAddr), (Sr+i2cAddr+1), (data)...(data+P)
@@ -242,6 +241,62 @@ Module "BT1"       (component Bluetooth_EGBT)
 Module "EInt1"     (component ExtInt)
    - EInt1_GetVal -Returns the actual value of the input pin of the component.
 
+Module "GI2C2"     (component GenericI2C)
+   - GI2C2_SelectSlave -Selects the slave device on the bus. Method might use a semaphore to protect bus access.
+   - GI2C2_UnselectSlave -Unselects the device. Method will release a used a semaphore.
+   - GI2C2_RequestBus -Starts a critical section for accessing the bus.
+   - GI2C2_ReleaseBus -Finishes a critical section for accessing the bus.
+   - GI2C2_WriteBlock -Write a block to the device.
+   - GI2C2_ReadBlock -Read from the device a block.
+   - GI2C2_ReadBlockGeneric -Read from the device a block with using additional control and flags.
+   - GI2C2_ReadAddressWait -Same as ReadAddress, but with an optional wait between the address and read. Read from the device. 
+                This writes (S+i2cAddr+0), (memAddr), (Sr+i2cAddr+1), (data)...(data+P)
+   - GI2C2_ReadAddress -Read from the device. This writes (S+i2cAddr+0), (memAddr), (Sr+i2cAddr+1), (data)...(data+P)
+   - GI2C2_WriteAddress -Write to the device: (S+i2cAddr+0), (memAddr), (data)...(data+P)
+   - GI2C2_ReadByte -Read a byte from the device. This writes (S+i2cAddr+0), (Sr+i2cAddr+1),(data+P)
+   - GI2C2_WriteByte -Write a byte to the device: (S+i2cAddr+0).(data+P)
+   - GI2C2_ReadByteAddress8 -Read a byte from the device using an 8bit memory address. This writes (S+i2cAddr+0), (memAddr), 
+                (Sr+i2cAddr+1), (data)...(data+P)
+   - GI2C2_WriteByteAddress8 -Write a byte to the device using an 8bit memory address: (S+i2cAddr+0), (memAddr), (data)...
+                (data+P)
+   - GI2C2_ReadWordAddress8 -Read a word from the device using an 8bit memory address. This writes (S+i2cAddr+0), (memAddr), 
+                (Sr+i2cAddr+1), (data)...(data+P)
+   - GI2C2_WriteWordAddress8 -Write a word to the device using an 8bit memory address: (S+i2cAddr+0), (memAddr), (data)...
+                (data+P)
+   - GI2C2_ProbeACK -Accesses the bus to check if the device responds with an ACK (ACK polling).
+   - GI2C2_GetSemaphore -Returns the currently allocated semaphore.
+   - GI2C2_ScanDevice -Checks if a device responds on the bus with an ACK.
+   - GI2C2_Deinit -Deinitializes the driver.
+   - GI2C2_Init -Initializes the driver.
+
+Module "CI2C2"     (component I2C_LDD)
+   - CI2C2_Init -Initializes the device. Allocates memory for the device data structure, allocates interrupt vectors and sets 
+                interrupt priority, sets pin routing, sets timing, etc.   If the "Enable in init. code" is set to "yes" value 
+                then the device is also enabled(see the description of the Enable() method). In this case the Enable() method 
+                is not necessary and needn't to be generated.    This method can be called only once. Before the second call of 
+                Init() the Deinit() must be called first.
+   - CI2C2_Deinit -Deinitializes the device. Switches off the device, frees the device data structure memory, interrupts 
+                vectors, etc.
+   - CI2C2_MasterSendBlock -This method writes one (7-bit addressing) or two (10-bit addressing) slave address bytes inclusive 
+                of R/W bit = 0 to the I2C bus and then writes the block of characters to the bus. The slave address must be 
+                specified before, by the "SelectSlaveDevice" method or in component initialization section, "Target slave 
+                address init" property. If the method returns ERR_OK, it doesn't mean that transmission was successful. The 
+                state of transmission is detectable by means of events (OnMasterSendComplete or OnError). Data to be sent are 
+                not copied to an internal buffer and remains in the original location. Therefore the content of the buffer 
+                should not be changed until the transmission is complete. Event "OnMasterBlockSent"can be used to detect the 
+                end of the transmission. This method is available only for the MASTER or MASTER - SLAVE mode.
+   - CI2C2_MasterReceiveBlock -This method writes one (7-bit addressing) or two (10-bit addressing) slave address bytes 
+                inclusive of R/W bit = 1 to the I2C bus and then receives the block of characters from the bus. The slave 
+                address must be specified before, by the "SelectSlaveDevice" method or in component initialization section, 
+                "Target slave address init" property. If the method returns ERR_OK, it doesn't mean that reception was 
+                successful. The state of reception is detectable by means of events (OnMasterSendComplete  or OnError). Data to 
+                be received are not copied to an internal buffer and remains in the original location. Therefore the content of 
+                the buffer should not be changed until the transmission is complete. Event "OnMasterBlockReceived"can be used 
+                to detect the end of the reception. This method is available only for the MASTER or MASTER - SLAVE mode.
+   - CI2C2_SelectSlaveDevice -This method selects a new slave for communication by its 7-bit slave, 10-bit address or general 
+                call value. Any send or receive method directs to or from selected device, until a new slave device is selected 
+                by this method. This method is available for the MASTER mode.
+
 Module "LCD1"      (component SSD1306)
    - LCD1_GetWidth -Returns the width of the display in pixels (in x direction)
    - LCD1_GetHeight -Returns the height of the display in pixels (in y direction)
@@ -250,6 +305,7 @@ Module "LCD1"      (component SSD1306)
    - LCD1_PutPixel -Draws a pixel into the display buffer (not on the display).
    - LCD1_Clear -Clears the whole display memory.
    - LCD1_UpdateFull -Updates the whole display from the microcontroller RAM display buffer.
+   - LCD1_UpdateRegion -Updates a region of the display. This is only a stub for this display as we are using windowing.
    - LCD1_InitCommChannel -Method to initialize communication to the LCD. Needed if the bus to the LCD is shared with other 
                 components and settings are different.
    - LCD1_SetContrast -Sets the display contrast level (default:0x7F)

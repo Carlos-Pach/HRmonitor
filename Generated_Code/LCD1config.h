@@ -10,7 +10,7 @@
 #define __LCD1_CONFIG_H
 
 #ifndef LCD1_CONFIG_I2C_HEADER_FILE
-  #define LCD1_CONFIG_I2C_HEADER_FILE   "GI2C1.h"
+  #define LCD1_CONFIG_I2C_HEADER_FILE   "GI2C2.h"
     /*!< Header file to be included for the SPI driver */
 #endif
 
@@ -81,7 +81,7 @@
 
 
 #ifndef LCD1_CONFIG_CLEAR_DISPLAY_IN_INIT
-  #define LCD1_CONFIG_CLEAR_DISPLAY_IN_INIT (0)
+  #define LCD1_CONFIG_CLEAR_DISPLAY_IN_INIT (1)
   /*!< 1: Clear display at the end of Init(); 0: Do not clear display at the end of Init() */
 #endif
 

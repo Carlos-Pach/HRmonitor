@@ -7,6 +7,7 @@ C_SRCS += \
 ../Generated_Code/ASerialLdd1.c \
 ../Generated_Code/BT1.c \
 ../Generated_Code/CI2C1.c \
+../Generated_Code/CI2C2.c \
 ../Generated_Code/CLS1.c \
 ../Generated_Code/CS1.c \
 ../Generated_Code/Cpu.c \
@@ -14,7 +15,9 @@ C_SRCS += \
 ../Generated_Code/EInt1.c \
 ../Generated_Code/ExtIntLdd1.c \
 ../Generated_Code/GI2C1.c \
+../Generated_Code/GI2C2.c \
 ../Generated_Code/IO1.c \
+../Generated_Code/LCD1.c \
 ../Generated_Code/MCUC1.c \
 ../Generated_Code/PE_LDD.c \
 ../Generated_Code/Pins1.c \
@@ -27,6 +30,7 @@ OBJS += \
 ./Generated_Code/ASerialLdd1.o \
 ./Generated_Code/BT1.o \
 ./Generated_Code/CI2C1.o \
+./Generated_Code/CI2C2.o \
 ./Generated_Code/CLS1.o \
 ./Generated_Code/CS1.o \
 ./Generated_Code/Cpu.o \
@@ -34,7 +38,9 @@ OBJS += \
 ./Generated_Code/EInt1.o \
 ./Generated_Code/ExtIntLdd1.o \
 ./Generated_Code/GI2C1.o \
+./Generated_Code/GI2C2.o \
 ./Generated_Code/IO1.o \
+./Generated_Code/LCD1.o \
 ./Generated_Code/MCUC1.o \
 ./Generated_Code/PE_LDD.o \
 ./Generated_Code/Pins1.o \
@@ -47,6 +53,7 @@ C_DEPS += \
 ./Generated_Code/ASerialLdd1.d \
 ./Generated_Code/BT1.d \
 ./Generated_Code/CI2C1.d \
+./Generated_Code/CI2C2.d \
 ./Generated_Code/CLS1.d \
 ./Generated_Code/CS1.d \
 ./Generated_Code/Cpu.d \
@@ -54,7 +61,9 @@ C_DEPS += \
 ./Generated_Code/EInt1.d \
 ./Generated_Code/ExtIntLdd1.d \
 ./Generated_Code/GI2C1.d \
+./Generated_Code/GI2C2.d \
 ./Generated_Code/IO1.d \
+./Generated_Code/LCD1.d \
 ./Generated_Code/MCUC1.d \
 ./Generated_Code/PE_LDD.d \
 ./Generated_Code/Pins1.d \

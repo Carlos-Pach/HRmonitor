@@ -46,6 +46,8 @@
 #include "ASerialLdd1.h"
 #include "EInt1.h"
 #include "ExtIntLdd1.h"
+#include "GI2C2.h"
+#include "CI2C2.h"
 #include "LCD1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
@@ -57,6 +59,7 @@
 /* User includes (#include below this line is not maintained by Processor Expert) */
 #include "algorithm.h"
 #include "MAX30102.h"
+#include "OLED.h"
 
 #define MAX_BRIGHTNESS	255
 #define BAUD_RATE 		9600
@@ -74,6 +77,7 @@ int8_t ch_spo2_valid ;				// indicator to show if SPO02 calculation is valid
 int32_t n_heart_rate ;				// heart rate value
 int8_t ch_hr_valid ;				// indicator to show if heart rate calculation is valid
 uint8_t uch_dummy ;					// char used to get keyboard input ... might remove
+unsigned char currentMode ; 		/* current mode to keep track when entering sleep */
 
 volatile unsigned char readPortD ;
 
@@ -145,31 +149,45 @@ void PORTB_ISR(void){
 
 	/* 		Switch statement conditions:
 	 * 			a. DIP switch is an open circuit/off: output red-LED on console
-	 * 			b. DIP switch is a closed circuit/on: output multi-LED on console
+	 * 			b. DIP switch is a closed circuit/on: output SpO2 on console
 	 * 			c. default it to off
 	 */
+
 	switch(readPortB){
 		case 0x04:	/* turn on LED mode */
-			maxim_max30102_mode_change(0x09, 0x02) ;	// 0x02 red only
+			maxim_max30102_mode_change(REG_MODE_CONFIG, 0x02) ;	// 0x02 red only
+			currentMode = 0x02 ;
+			LCD1_PrintString(0, 0, "Red-LED: On") ;	/* Red LED turned on (OLED) */
+			LCD1_PrintString(1, 0, "SpO2: Off") ;	/* SpO2 turned off (OLED) */
 			printf("Switch mode: red-LED\n") ;
 			break ;
 		case 0x00 :	/* turn on SpO2 mode */
-			maxim_max30102_mode_change(0x09, 0x03) ;	// 0x03 SpO2 only
+			maxim_max30102_mode_change(REG_MODE_CONFIG, 0x03) ;	// 0x03 SpO2 only
+			currentMode = 0x03 ;
+			LCD1_PrintString(0, 0, "Red-LED: Off") ;	/* Red LED turned off (OLED) */
+			LCD1_PrintString(1, 0, "SpO2: On") ;		/* SpO2 turned on (OLED) */
 			printf("Switch mode: SpO2\n") ;
 			break ;
 		default:	/* turn on LED mode */
-			maxim_max30102_mode_change(0x09, 0x02) ;	// 0x02 red only
+			maxim_max30102_mode_change(REG_MODE_CONFIG, 0x02) ;	// 0x02 red only
+			currentMode = 0x02 ;
+			LCD1_PrintString(0, 0, "Red-LED: On") ;	/* Red LED turn on (OLED) */
+			LCD1_PrintString(1, 0, "SpO2: Off") ;	/* SpO2 turned off (OLED) */
 			printf("Switch mode: red-LED\n") ;
 			break ;
 	}
-	for(int i = 0; i < 10; i++) ;	// simple debounce code
+	/* clear interrupt flag */
+	PORTD_ISFR = (1 << 4) ;
 }
 
 
 /*
  *	///////////////////////////////
  *
- *	Priority: 0 - low	5 - medium	10 - high
+ *	Priority:
+ *		(0 - low)
+ *		(5 - medium)
+ *		(10 - high)
  *
  *	TODO:
  *		1. fix IRQ functions		(Priority: 5)
@@ -177,11 +195,12 @@ void PORTB_ISR(void){
  *				i. INT pin from MAX30102 always outputting ~3.1 [V]
 *			b. DIP switch
 *				i. pin always entering ISR and not exiting
-*				ii. when SW is 1, BT module loses power (related??)
  *		2. fix algorithm function to correctly display HR and SpO2	(Priority: 3)
  *			a. Displays incorrect values when finger is placed
  *		3. connect hc-06 to phone for BT connection	(Priority: 7)
  *			a. connects but sends incorrect data
+ *		4. finish sleep function	(Priority: 3)
+ *		5. start custom chars for OLED display (Priority: 2)
  *
  *  ///////////////////////////////
 */
@@ -196,6 +215,7 @@ int main(void)
   int i ;
   float f_temp ;
   int len ;		// length of string
+  unsigned char sleepMode = SLEEP_CMMD ;
 
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
@@ -204,15 +224,26 @@ int main(void)
   /* Write your code here */
   /* For example: for(;;) { } */
 
+
   /* begin initialization of peripherals */
   initLED() ;	/* initialize on board LED and GPIO pins */
+  initOLED() ;
   initBT() ;	/* initialize the BT module */
+  LCD1_Clear() ; 	/* clear the display */
 
   maxim_max30102_reset() ; /* restart the max30102 */
   Delay(delay) ;	/* wait ~1 [s] */
   maxim_max30102_read_reg(0, &uch_dummy) ; /* read and clear status register */
 
   maxim_max30102_init() ;	/* initialize max30102 */
+
+  /* test all 8 lines of OLED display */
+  for(unsigned char i = 0; i < 8; i++){	/* print to all rows on display */
+	  LCD1_PrintString(i, 0, "Hello there") ;
+  }
+  Delay(delay) ;	/* wait until string fully prints */
+  LCD1_Clear() ;	/* clear display */
+  Delay(delay) ;
   /* end initialization of peripherals */
 
 
@@ -223,6 +254,11 @@ int main(void)
   n_ir_buffer_length = 500 ;		// stores 100 values per second for 5 seconds
 
   printf("\nHello ... test\n") ;	/* test output to console */
+
+  /* By default, SpO2 is off, Red LED is on */
+  LCD1_PrintString(0, 0, "Red-LED: On") ;
+  LCD1_PrintString(1, 0, "SpO2: Off") ;
+  Delay(delay) ;
 
   // read first 500 samples
   for(i = 0; i < n_ir_buffer_length; i++){

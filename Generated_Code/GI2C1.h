@@ -6,7 +6,7 @@
 **     Component   : GenericI2C
 **     Version     : Component 01.048, Driver 01.00, CPU db: 3.00.000
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-21, 19:29, # CodeGen: 120
+**     Date/Time   : 2020-12-22, 15:52, # CodeGen: 123
 **     Abstract    :
 **         This component implements a generic I2C driver wrapper to work both with LDD and non-LDD I2C components.
 **     Settings    :
@@ -27,7 +27,6 @@
 **         ReleaseBus        - void GI2C1_ReleaseBus(void);
 **         WriteBlock        - uint8_t GI2C1_WriteBlock(void* data, uint16_t dataSize, GI2C1_EnumSendFlags...
 **         ReadBlock         - uint8_t GI2C1_ReadBlock(void* data, uint16_t dataSize, GI2C1_EnumSendFlags...
-**         ReadBlockGeneric  - uint8_t GI2C1_ReadBlockGeneric(void* data, uint16_t dataSize,...
 **         ReadAddressWait   - uint8_t GI2C1_ReadAddressWait(uint8_t i2cAddr, uint8_t *memAddr, uint8_t...
 **         ReadAddress       - uint8_t GI2C1_ReadAddress(uint8_t i2cAddr, uint8_t *memAddr, uint8_t...
 **         WriteAddress      - uint8_t GI2C1_WriteAddress(uint8_t i2cAddr, uint8_t *memAddr, uint8_t...
@@ -335,25 +334,6 @@ uint8_t GI2C1_ProbeACK(void* data, uint16_t dataSize, GI2C1_EnumSendFlags flags,
 **         flags           - flags for the transaction
 **         WaitTimeUS      - Waiting time in microseconds
 **                           to wait for the ACK on the bus.
-**     Returns     :
-**         ---             - Error code
-** ===================================================================
-*/
-
-uint8_t GI2C1_ReadBlockGeneric(void* data, uint16_t dataSize, GI2C1_EnumSendFlags flags, GI2C1_EnumStartFlags flagsStart, GI2C1_EnumAckFlags flagsAck);
-/*
-** ===================================================================
-**     Method      :  GI2C1_ReadBlockGeneric (component GenericI2C)
-**     Description :
-**         Read from the device a block with using additional control
-**         and flags.
-**     Parameters  :
-**         NAME            - DESCRIPTION
-**       * data            - Read buffer
-**         dataSize        - Size of read buffer
-**         flagsSend       - flags for the send transaction
-**         flagsStart      - Start flags
-**         flagsAck        - Acknowledge flags
 **     Returns     :
 **         ---             - Error code
 ** ===================================================================

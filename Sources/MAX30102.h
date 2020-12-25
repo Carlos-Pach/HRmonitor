@@ -52,8 +52,12 @@ Bool maxim_max30102_read_fifo(uint32_t *pun_red_led, uint32_t *pun_ir_led) ;
 // create user defined functions
 void initLED(void) ;
 void lightUpLED(void) ;
+void sleepMode(uint8_t maxim_addr, uint8_t maxim_data) ;
 // create ISR function
 void readIRQ(void) ;
 void maxim_max30102_mode_change(uint8_t maxim_addr, uint8_t maxim_data) ;
+
+/* sleep command for MAX30102 */
+#define SLEEP_CMMD	0x80
 
 #endif

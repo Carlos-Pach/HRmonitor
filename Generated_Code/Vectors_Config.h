@@ -65,6 +65,8 @@
 #include "ASerialLdd1.h"
 #include "EInt1.h"
 #include "ExtIntLdd1.h"
+#include "GI2C2.h"
+#include "CI2C2.h"
 #include "LCD1.h"
 #include "Events.h"
 
@@ -116,7 +118,7 @@ extern "C" {
 #define VECTOR_38         (tIsrFunc)&Unhandled_ivINT_WDOG_EWM   /* 0x26 -    ivINT_WDOG_EWM                 unused by PE */
 #define VECTOR_39         (tIsrFunc)&Unhandled_ivINT_RNG        /* 0x27 -    ivINT_RNG                      unused by PE */
 #define VECTOR_40         (tIsrFunc)&CI2C1_Interrupt            /* 0x28 112  ivINT_I2C0                     used by PE */
-#define VECTOR_41         (tIsrFunc)&Unhandled_ivINT_I2C1       /* 0x29 -    ivINT_I2C1                     unused by PE */
+#define VECTOR_41         (tIsrFunc)&CI2C2_Interrupt            /* 0x29 112  ivINT_I2C1                     used by PE */
 #define VECTOR_42         (tIsrFunc)&Unhandled_ivINT_SPI0       /* 0x2A -    ivINT_SPI0                     unused by PE */
 #define VECTOR_43         (tIsrFunc)&Unhandled_ivINT_SPI1       /* 0x2B -    ivINT_SPI1                     unused by PE */
 #define VECTOR_44         (tIsrFunc)&Unhandled_ivINT_I2S0_Tx    /* 0x2C -    ivINT_I2S0_Tx                  unused by PE */
