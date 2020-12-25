@@ -48,7 +48,7 @@
       <File Name="Static_Code/PDD/UART_PDD.h" FileDate="2020-07-24, 16:09:06" FileAge="1595632146420" FileType="1048576" />
       <File Name="Generated_Code/Pins1.c" FileDate="2020-12-21, 19:50:31" FileAge="1608609031263" FileType="45637" CompNumb="2" />
       <File Name="Generated_Code/PE_Error.h" FileDate="2020-07-24, 16:09:06" FileAge="1595632146916" FileType="45637" />
-      <File Name="Generated_Code/CPU_Config.h" FileDate="2020-12-24, 16:28:33" FileAge="1608856113904" FileType="45637" CompNumb="1" />
+      <File Name="Generated_Code/CPU_Config.h" FileDate="2020-12-24, 23:38:53" FileAge="1608881933792" FileType="45637" CompNumb="1" />
       <File Name="Generated_Code/EInt1.h" FileDate="2020-12-19, 17:39:11" FileAge="1608428351572" FileType="45637" CompNumb="92" />
       <File Name="Generated_Code/EInt1.c" FileDate="2020-12-19, 17:39:11" FileAge="1608428351548" FileType="45637" CompNumb="92" />
       <File Name="Generated_Code/PE_LDD.h" FileDate="2020-12-23, 16:07:31" FileAge="1608768451195" FileType="45637" CompNumb="1" />
@@ -153,5 +153,5 @@
       <File Name="Generated_Code/Serial1.h" FileDate="2020-12-22, 16:19:19" FileAge="1608682759094" FileType="45637" CompNumb="125" />
     </GeneratedByPE>
   </GeneratedFilesList>
-  <CodeGenReference>143</CodeGenReference>
+  <CodeGenReference>145</CodeGenReference>
 </CodeGenerationInfo>

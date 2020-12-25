@@ -146,6 +146,7 @@ void PORTB_ISR(void){
 	// create var to read from PORTB[1]
 	uint8_t readPortB ;
 	readPortB = 0x0F & GPIOB_PDIR ;	// 0x04 --> 0x0F
+	unsigned char i ;	// used to clear line on OLED
 
 	/* 		Switch statement conditions:
 	 * 			a. DIP switch is an open circuit/off: output red-LED on console
@@ -157,6 +158,7 @@ void PORTB_ISR(void){
 		case 0x04:	/* turn on LED mode */
 			maxim_max30102_mode_change(REG_MODE_CONFIG, 0x02) ;	// 0x02 red only
 			currentMode = 0x02 ;
+			for(i = 0; i < 16; i++){LCD1_ClearLine(i) ;}
 			LCD1_PrintString(0, 0, "Red-LED: On") ;	/* Red LED turned on (OLED) */
 			LCD1_PrintString(1, 0, "SpO2: Off") ;	/* SpO2 turned off (OLED) */
 			printf("Switch mode: red-LED\n") ;
@@ -164,6 +166,7 @@ void PORTB_ISR(void){
 		case 0x00 :	/* turn on SpO2 mode */
 			maxim_max30102_mode_change(REG_MODE_CONFIG, 0x03) ;	// 0x03 SpO2 only
 			currentMode = 0x03 ;
+			for(i = 0; i < 16; i++){LCD1_ClearLine(i) ;}
 			LCD1_PrintString(0, 0, "Red-LED: Off") ;	/* Red LED turned off (OLED) */
 			LCD1_PrintString(1, 0, "SpO2: On") ;		/* SpO2 turned on (OLED) */
 			printf("Switch mode: SpO2\n") ;
@@ -171,6 +174,7 @@ void PORTB_ISR(void){
 		default:	/* turn on LED mode */
 			maxim_max30102_mode_change(REG_MODE_CONFIG, 0x02) ;	// 0x02 red only
 			currentMode = 0x02 ;
+			for(i = 0; i < 16; i++){LCD1_ClearLine(i) ;}
 			LCD1_PrintString(0, 0, "Red-LED: On") ;	/* Red LED turn on (OLED) */
 			LCD1_PrintString(1, 0, "SpO2: Off") ;	/* SpO2 turned off (OLED) */
 			printf("Switch mode: red-LED\n") ;
@@ -199,8 +203,7 @@ void PORTB_ISR(void){
  *			a. Displays incorrect values when finger is placed
  *		3. connect hc-06 to phone for BT connection	(Priority: 7)
  *			a. connects but sends incorrect data
- *		4. finish sleep function	(Priority: 3)
- *		5. start custom chars for OLED display (Priority: 2)
+ *		4. finish sleep function for MAX30102	(Priority: 3)
  *
  *  ///////////////////////////////
 */
@@ -256,8 +259,10 @@ int main(void)
   printf("\nHello ... test\n") ;	/* test output to console */
 
   /* By default, SpO2 is off, Red LED is on */
+  LCD1_Clear() ;
   LCD1_PrintString(0, 0, "Red-LED: On") ;
   LCD1_PrintString(1, 0, "SpO2: Off") ;
+  setUpHeartO2(PAGE, COLUMN) ;
   Delay(delay) ;
 
   // read first 500 samples

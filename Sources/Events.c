@@ -54,8 +54,9 @@ extern "C" {
 void Cpu_OnNMI(void)
 {
 	/* If interrupt is entered, stay here until rising edge */
-	__asm("nop") ;
-	printf("Interrupt on\n") ;
+	//__asm("nop") ;
+	//printf("Interrupt on\n") ;
+	PORTB_ISR() ;
 }
 
 /*
