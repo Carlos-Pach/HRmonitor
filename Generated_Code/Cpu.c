@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K64P144M120SF5RM, Rev.2, January 2014
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-23, 16:07, # CodeGen: 131
+**     Date/Time   : 2020-12-26, 14:54, # CodeGen: 147
 **     Abstract    :
 **
 **     Settings    :
@@ -97,9 +97,10 @@ void Common_Init(void)
      Optimizations\Utilize after reset values property or enabled processor 
      component Common settings\Utilize after reset values property) */
   /* Enable clock gate of peripherals initialized in Common_Init() */
-  /* SIM_SCGC5: PORTE=1,PORTD=1,PORTB=1 */
+  /* SIM_SCGC5: PORTE=1,PORTD=1,PORTC=1,PORTB=1 */
   SIM_SCGC5 |= SIM_SCGC5_PORTE_MASK |
                SIM_SCGC5_PORTD_MASK |
+               SIM_SCGC5_PORTC_MASK |
                SIM_SCGC5_PORTB_MASK;
 
   /* PORTB_PCR2: ISF=0,MUX=1 */
@@ -109,6 +110,20 @@ void Common_Init(void)
                )) | (uint32_t)(
                 PORT_PCR_MUX(0x01)
                ));
+  /* PORTC_PCR16: ISF=0,MUX=3 */
+  PORTC_PCR16 = (uint32_t)((PORTC_PCR16 & (uint32_t)~(uint32_t)(
+                 PORT_PCR_ISF_MASK |
+                 PORT_PCR_MUX(0x04)
+                )) | (uint32_t)(
+                 PORT_PCR_MUX(0x03)
+                ));
+  /* PORTC_PCR17: ISF=0,MUX=3 */
+  PORTC_PCR17 = (uint32_t)((PORTC_PCR17 & (uint32_t)~(uint32_t)(
+                 PORT_PCR_ISF_MASK |
+                 PORT_PCR_MUX(0x04)
+                )) | (uint32_t)(
+                 PORT_PCR_MUX(0x03)
+                ));
   /* PORTD_PCR1: ISF=0,MUX=1 */
   PORTD_PCR1 = (uint32_t)((PORTD_PCR1 & (uint32_t)~(uint32_t)(
                 PORT_PCR_ISF_MASK |
@@ -139,10 +154,11 @@ void Common_Init(void)
                 ));
 
   /* Disable clock gate of peripherals initialized in Common_Init() */
-  /* SIM_SCGC5: PORTE=0,PORTD=0,PORTB=0 */
+  /* SIM_SCGC5: PORTE=0,PORTD=0,PORTC=0,PORTB=0 */
   SIM_SCGC5 &= (uint32_t)~(uint32_t)(
                 SIM_SCGC5_PORTE_MASK |
                 SIM_SCGC5_PORTD_MASK |
+                SIM_SCGC5_PORTC_MASK |
                 SIM_SCGC5_PORTB_MASK
                );
 }

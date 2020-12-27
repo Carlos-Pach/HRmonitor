@@ -51,7 +51,7 @@ Bool maxim_max30102_init(){
 
     // 0x24 --> 0x2C --> 0x24 --> 0x3F (~12.6 mA) --> 0x24
     // 0x24 --> 0x1F	(~6.2 [mA])
-    if(!maxim_max30102_write_reg(REG_LED1_PA, 0x24)){   //Choose value for ~ 7mA for LED1
+    if(!maxim_max30102_write_reg(REG_LED1_PA, currentHex[0x24])){   //Choose value for ~ 7mA for LED1
     	return false;
     }
     // 0x24 --> 0x2C --> 0x24 --> 0x1F (~ 6.2 [mA])

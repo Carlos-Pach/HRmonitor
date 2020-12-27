@@ -6,7 +6,7 @@
 **     Version     : Component 01.046, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-23, 14:24, # CodeGen: 130
+**     Date/Time   : 2020-12-26, 14:54, # CodeGen: 147
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -194,8 +194,8 @@ bool PE_PeripheralUsed(uint32_t PrphBaseAddress)
     case 0x40066000UL:
     /* Base address allocated by peripheral(s) UART0 */
     case 0x4006A000UL:
-    /* Base address allocated by peripheral(s) UART4 */
-    case 0x400EA000UL:
+    /* Base address allocated by peripheral(s) UART3 */
+    case 0x4006D000UL:
     /* Base address allocated by peripheral(s) PTD */
     case 0x400FF0C0UL:
     /* Base address allocated by peripheral(s) I2C1 */

@@ -463,11 +463,11 @@
 			</tr>
 			<tr>
 				<td>86</td><td>PTC14/UART4_RX/FB_AD25</td><td>J199_3</td>
-				<td bgcolor='#90EE67'>UART4</td><td bgcolor='#90EE67'>uart_rx</td><td bgcolor='#90EE67'>alt3</td><td bgcolor='#90EE67'>Input</td>
+				<td></td><td></td><td></td><td></td>
 			</tr>
 			<tr>
 				<td>87</td><td>PTC15/UART4_TX/FB_AD24</td><td>J199_4</td>
-				<td bgcolor='#90EE67'>UART4</td><td bgcolor='#90EE67'>uart_tx</td><td bgcolor='#90EE67'>alt3</td><td bgcolor='#90EE67'>Output</td>
+				<td></td><td></td><td></td><td></td>
 			</tr>
 			<tr>
 				<td>88</td><td>VSS131</td><td><small><i>same</i></small></td>
@@ -479,11 +479,11 @@
 			</tr>
 			<tr>
 				<td>90</td><td>PTC16/UART3_RX/ENET0_1588_TMR0/FB_CS5_b/FB_TSIZ1/FB_BE23_16_BLS15_8_b</td><td>J1_2</td>
-				<td></td><td></td><td></td><td></td>
+				<td bgcolor='#90EE67'>UART3</td><td bgcolor='#90EE67'>uart_rx</td><td bgcolor='#90EE67'>alt3</td><td bgcolor='#90EE67'>Input</td>
 			</tr>
 			<tr>
 				<td>91</td><td>PTC17/UART3_TX/ENET0_1588_TMR1/FB_CS4_b/FB_TSIZ0/FB_BE31_24_BLS7_0_b</td><td>J1_4</td>
-				<td></td><td></td><td></td><td></td>
+				<td bgcolor='#90EE67'>UART3</td><td bgcolor='#90EE67'>uart_tx</td><td bgcolor='#90EE67'>alt3</td><td bgcolor='#90EE67'>Output</td>
 			</tr>
 			<tr>
 				<td>92</td><td>PTC18/UART3_RTS_b/ENET0_1588_TMR2/FB_TBST_b/FB_CS2_b/FB_BE15_8_BLS23_16_b</td><td>J6_8</td>
@@ -2206,11 +2206,11 @@
 			</tr>
 			<tr>
 				<td>86</td><td>PTC14/UART4_RX/FB_AD25</td><td>J199_3</td>
-				<td bgcolor='#90EE67'>UART4</td><td bgcolor='#90EE67'>uart_rx</td><td bgcolor='#90EE67'>alt3</td><td bgcolor='#90EE67'>Input</td>
+				<td></td><td></td><td></td><td></td>
 			</tr>
 			<tr>
 				<td>87</td><td>PTC15/UART4_TX/FB_AD24</td><td>J199_4</td>
-				<td bgcolor='#90EE67'>UART4</td><td bgcolor='#90EE67'>uart_tx</td><td bgcolor='#90EE67'>alt3</td><td bgcolor='#90EE67'>Output</td>
+				<td></td><td></td><td></td><td></td>
 			</tr>
 			<tr>
 				<td>88</td><td>VSS131</td><td><small><i>same</i></small></td>
@@ -2222,11 +2222,11 @@
 			</tr>
 			<tr>
 				<td>90</td><td>PTC16/UART3_RX/ENET0_1588_TMR0/FB_CS5_b/FB_TSIZ1/FB_BE23_16_BLS15_8_b</td><td>J1_2</td>
-				<td></td><td></td><td></td><td></td>
+				<td bgcolor='#90EE67'>UART3</td><td bgcolor='#90EE67'>uart_rx</td><td bgcolor='#90EE67'>alt3</td><td bgcolor='#90EE67'>Input</td>
 			</tr>
 			<tr>
 				<td>91</td><td>PTC17/UART3_TX/ENET0_1588_TMR1/FB_CS4_b/FB_TSIZ0/FB_BE31_24_BLS7_0_b</td><td>J1_4</td>
-				<td></td><td></td><td></td><td></td>
+				<td bgcolor='#90EE67'>UART3</td><td bgcolor='#90EE67'>uart_tx</td><td bgcolor='#90EE67'>alt3</td><td bgcolor='#90EE67'>Output</td>
 			</tr>
 			<tr>
 				<td>92</td><td>PTC18/UART3_RTS_b/ENET0_1588_TMR2/FB_TBST_b/FB_CS2_b/FB_BE15_8_BLS23_16_b</td><td>J6_8</td>

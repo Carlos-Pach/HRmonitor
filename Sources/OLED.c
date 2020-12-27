@@ -42,18 +42,6 @@ uint8_t printHeart(unsigned char page, unsigned char column){
 		LCD1_WriteData(customChars[ch]) ;
 		ch++ ;
 	}
-
-	ch = 0 ;
-	LCD1_Clear() ;
-	/* print first custom char to PAGE, then second custom char to PAGE+1 */
-	for(i = page; i < (page + 2); i++){
-		if(LCD1_SetRowCol(i, column) != 0x00){ return ERR_NOT_ROW_NOT_COL ; }
-		for(j = 0; j < 8; j++){		/* using small font, therefore max custom char is 8 columns per page */
-			LCD1_WriteData(customChars[ch]) ;
-			ch++ ;		/* keep track of ch in between for loops to print correct character */
-		}
-	}
-
 	/* return ok */
 	return err_ok ;
 }
@@ -72,12 +60,21 @@ uint8_t printHeart(unsigned char page, unsigned char column){
  *  ///////////////////////////////////////////
 */
 void initOLED(void){
-	LCD1_PrintString(0, 0, "Hello there") ;
+	/* test all 8 lines of OLED display */
+    for(unsigned char i = 0; i < 8; i++){	/* print to all rows on display */
+	  LCD1_PrintString(i, 0, "Hello there") ;
+    }
 	LCD1_Clear() ;
 
 	/* PAGE and COLUMN set as macro on OLED.h */
-	printHeart(PAGE, COLUMN) ;
-	setUpHeartO2(PAGE, COLUMN) ;
+	if(printHeart(PAGE, COLUMN) != err_ok){
+		LCD1_PrintString(0, 0, "Error in printHeart") ;
+		return ;
+	}
+	if(setUpHeartO2(PAGE, COLUMN) != err_ok){
+		LCD1_PrintString(1, 0, "Error in O2") ;
+		return ;
+	}
 }
 
 
@@ -97,8 +94,8 @@ void initOLED(void){
  *  */
 uint8_t setUpHeartO2(unsigned char page, unsigned char column){
 	static unsigned char i, j, ch, n, hyp ;
-	ch = 0 ;
-	n = sizeof(customChars)/sizeof(customChars[0]) ;
+	ch = 0 ;	/* keeps track of where char is inside array */
+	n = sizeof(customChars)/sizeof(customChars[0]) ;	/* array size */
 
 	/* print first custom char to PAGE, then second custom char to PAGE+1 */
 	for(i = page; i < (page + 2); i++){
@@ -116,3 +113,4 @@ uint8_t setUpHeartO2(unsigned char page, unsigned char column){
 	/* return ok */
 	return err_ok ;
 }
+

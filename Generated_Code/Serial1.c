@@ -7,7 +7,7 @@
 **     Version     : Component 02.611, Driver 01.01, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-22, 16:18, # CodeGen: 127
+**     Date/Time   : 2020-12-26, 14:59, # CodeGen: 148
 **     Abstract    :
 **         This component "AsynchroSerial" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -17,13 +17,13 @@
 **         The component requires one on-chip asynchronous serial channel.
 **     Settings    :
 **          Component name                                 : Serial1
-**          Channel                                        : UART4
+**          Channel                                        : UART3
 **          Interrupt service/event                        : Enabled
-**            Interrupt RxD                                : INT_UART4_RX_TX
+**            Interrupt RxD                                : INT_UART3_RX_TX
 **            Interrupt RxD priority                       : medium priority
-**            Interrupt TxD                                : INT_UART4_RX_TX
+**            Interrupt TxD                                : INT_UART3_RX_TX
 **            Interrupt TxD priority                       : medium priority
-**            Interrupt Error                              : INT_UART4_ERR
+**            Interrupt Error                              : INT_UART3_ERR
 **            Interrupt Error priority                     : medium priority
 **            Input buffer size                            : 64
 **            Output buffer size                           : 64
@@ -35,10 +35,10 @@
 **            Width                                        : 8 bits
 **            Stop bit                                     : 1
 **            Receiver                                     : Enabled
-**              RxD                                        : J199_3
+**              RxD                                        : J1_2
 **            Transmitter                                  : Enabled
-**              TxD                                        : J199_4
-**            Baud rate                                    : 9600 baud
+**              TxD                                        : J1_4
+**            Baud rate                                    : 38400 baud
 **            Break signal                                 : Disabled
 **            Wakeup condition                             : Idle line wakeup
 **            Transmitter output                           : Not inverted

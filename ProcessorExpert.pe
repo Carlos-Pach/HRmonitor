@@ -3,7 +3,7 @@
   <Header>
     <Name>HRmonitor</Name>
     <SavedBy>CarlosPach</SavedBy>
-    <ModificationStamp>112</ModificationStamp>
+    <ModificationStamp>114</ModificationStamp>
     <Date>2020-07-24</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.2.RT7_b1550-0615</PEversion>
@@ -29,7 +29,7 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
-    <ProjectCompNumb>133</ProjectCompNumb>
+    <ProjectCompNumb>135</ProjectCompNumb>
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -11542,14 +11542,14 @@
         <ItemSymbol>UART3_uart_rx</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>&lt;Automatic&gt;</Value>
+        <Value>J1_2</Value>
         <SharedPrphMode>false</SharedPrphMode>
       </ItemState>
       <ItemState>
         <ItemSymbol>UART3_uart_tx</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>&lt;Automatic&gt;</Value>
+        <Value>J1_4</Value>
         <SharedPrphMode>false</SharedPrphMode>
       </ItemState>
       <ItemState>
@@ -20987,7 +20987,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>14</Value>
+        <Value>16</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -21046,7 +21046,7 @@
               <ItemSymbol>Ser</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>UART4</Value>
+              <Value>UART3</Value>
               <SharedPrphMode>false</SharedPrphMode>
             </ItemState>
             <ItemState>
@@ -21068,7 +21068,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>InpInt</ItemSymbol>
-              <Value>INT_UART4_RX_TX</Value>
+              <Value>INT_UART3_RX_TX</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>InitPriority</ItemSymbol>
@@ -21092,7 +21092,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>OutInt</ItemSymbol>
-              <Value>INT_UART4_RX_TX</Value>
+              <Value>INT_UART3_RX_TX</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>IntTxDPriority</ItemSymbol>
@@ -21121,7 +21121,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>ErrInt</ItemSymbol>
-              <Value>INT_UART4_ERR</Value>
+              <Value>INT_UART3_ERR</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>IntErrorPriority</ItemSymbol>
@@ -21413,7 +21413,7 @@
               <ItemSymbol>Inp</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>J199_3</Value>
+              <Value>J1_2</Value>
               <SharedPrphMode>false</SharedPrphMode>
             </ItemState>
             <ItemState>
@@ -21453,7 +21453,7 @@
               <ItemSymbol>Out</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>J199_4</Value>
+              <Value>J1_4</Value>
               <SharedPrphMode>false</SharedPrphMode>
             </ItemState>
             <ItemState>
@@ -21485,7 +21485,7 @@
               <ItemSymbol>_BdRate</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>9600 baud</Value>
+              <Value>38400 baud</Value>
               <RuntimeSetting>0</RuntimeSetting>
               <ReqDevPrescHigh>-1</ReqDevPrescHigh>
               <ReqDevPrescLow>-1</ReqDevPrescLow>
@@ -21516,7 +21516,7 @@
               <ReqStrSrcClkPrescSpeedMode6>Auto select</ReqStrSrcClkPrescSpeedMode6>
               <ReqSrcClkPrescSpeedMode7>25483472622</ReqSrcClkPrescSpeedMode7>
               <ReqStrSrcClkPrescSpeedMode7>Auto select</ReqStrSrcClkPrescSpeedMode7>
-              <InitValue>9600 baud</InitValue>
+              <InitValue>38400 baud</InitValue>
               <Precision>1.5</Precision>
               <PrecInProc>true</PrecInProc>
               <LowLimit />
@@ -21892,7 +21892,7 @@
                     <ItemSymbol>Device</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>UART4</Value>
+                    <Value>UART3</Value>
                     <SharedPrphMode>false</SharedPrphMode>
                   </ItemState>
                   <ItemState>
@@ -21913,7 +21913,7 @@
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>InpInt</ItemSymbol>
-                    <Value>INT_UART4_RX_TX</Value>
+                    <Value>INT_UART3_RX_TX</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>InitPriority</ItemSymbol>
@@ -21948,7 +21948,7 @@
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OutInt</ItemSymbol>
-                    <Value>INT_UART4_RX_TX</Value>
+                    <Value>INT_UART3_RX_TX</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>IntTxDPriority</ItemSymbol>
@@ -21983,7 +21983,7 @@
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>ErrInt</ItemSymbol>
-                    <Value>INT_UART4_ERR</Value>
+                    <Value>INT_UART3_ERR</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>IntErrorPriority</ItemSymbol>
@@ -22128,7 +22128,7 @@
                     <ReqSrcClkPrescSpeedMode5>-1</ReqSrcClkPrescSpeedMode5>
                     <ReqSrcClkPrescSpeedMode6>-1</ReqSrcClkPrescSpeedMode6>
                     <ReqSrcClkPrescSpeedMode7>-1</ReqSrcClkPrescSpeedMode7>
-                    <InitValue>9600 baud</InitValue>
+                    <InitValue>38400 baud</InitValue>
                     <Precision>1.5</Precision>
                     <PrecInProc>true</PrecInProc>
                     <LowLimit />
@@ -22214,7 +22214,7 @@
                     <ItemSymbol>Inp</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>J199_3</Value>
+                    <Value>J1_2</Value>
                     <SharedPrphMode>false</SharedPrphMode>
                   </ItemState>
                   <ItemState>
@@ -22235,7 +22235,7 @@
                     <ItemSymbol>Out</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>J199_4</Value>
+                    <Value>J1_4</Value>
                     <SharedPrphMode>false</SharedPrphMode>
                   </ItemState>
                   <ItemState>

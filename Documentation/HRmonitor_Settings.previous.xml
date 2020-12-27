@@ -216,11 +216,11 @@
         </group>
         <Internal_frequency__multiplier_factor_ v="20.97152 MHz" />
         <Bits_0_2_of_Frequency_divider_register v="111" />
-        <Bits_3_5_of_Frequency_divider_register v="100" />
-        <SCL_frequency v="43.691 kHz" />
-        <SDA_Hold v="3.099 us" />
-        <SCL_start_Hold v="11.349 us" />
-        <SCL_stop_Hold v="11.492 us" />
+        <Bits_3_5_of_Frequency_divider_register v="011" />
+        <SCL_frequency v="87.381 kHz" />
+        <SDA_Hold v="1.574 us" />
+        <SCL_start_Hold v="5.627 us" />
+        <SCL_stop_Hold v="5.77 us" />
         <boolgroup name="Control acknowledge bit" v="Disabled" />
         <boolgroup name="Low timeout" v="Disabled" />
       </group>
@@ -599,7 +599,7 @@
       <boolgroup name="State Pin" v="Disabled" />
       <boolgroup name="Rx Pull-Up" v="Enabled">
         <Pin_Name v="C" />
-        <Pin_Number v="14" />
+        <Pin_Number v="16" />
       </boolgroup>
       <group name="Interfaces">
         <Shell v="CLS1" />
@@ -610,13 +610,13 @@
           <Template v="Serial" />
           <Properties>
             <Component_name v="Serial1" />
-            <Channel v="UART4" />
+            <Channel v="UART3" />
             <boolgroup name="Interrupt service/event" v="Enabled">
-              <Interrupt_RxD v="INT_UART4_RX_TX" />
+              <Interrupt_RxD v="INT_UART3_RX_TX" />
               <Interrupt_RxD_priority v="medium priority" />
-              <Interrupt_TxD v="INT_UART4_RX_TX" />
+              <Interrupt_TxD v="INT_UART3_RX_TX" />
               <Interrupt_TxD_priority v="medium priority" />
-              <Interrupt_Error v="INT_UART4_ERR" />
+              <Interrupt_Error v="INT_UART3_ERR" />
               <Interrupt_Error_priority v="medium priority" />
               <Input_buffer_size v="64" />
               <Output_buffer_size v="64" />
@@ -630,10 +630,10 @@
               <Width v="8 bits" />
               <Stop_bit v="1" />
               <boolgroup name="Receiver" v="Enabled">
-                <RxD v="J199_3" />
+                <RxD v="J1_2" />
               </boolgroup>
               <boolgroup name="Transmitter" v="Enabled">
-                <TxD v="J199_4" />
+                <TxD v="J1_4" />
               </boolgroup>
               <Baud_rate v="9600 baud" />
               <Break_signal v="Disabled" />
@@ -658,13 +658,13 @@
                 <Enabled v="Y" />
                 <Properties>
                   <Component_name v="ASerialLdd1" />
-                  <Device v="UART4" />
+                  <Device v="UART3" />
                   <boolgroup name="Interrupt service/event" v="Enabled">
-                    <Interrupt_RxD v="INT_UART4_RX_TX" />
+                    <Interrupt_RxD v="INT_UART3_RX_TX" />
                     <Interrupt_RxD_priority v="medium priority" />
-                    <Interrupt_TxD v="INT_UART4_RX_TX" />
+                    <Interrupt_TxD v="INT_UART3_RX_TX" />
                     <Interrupt_TxD_priority v="medium priority" />
-                    <Interrupt_Error v="INT_UART4_ERR" />
+                    <Interrupt_Error v="INT_UART3_ERR" />
                     <Interrupt_Error_priority v="medium priority" />
                   </boolgroup>
                   <group name="Settings">
@@ -680,10 +680,10 @@
                     <Receiver_input v="Not inverted" />
                     <Break_generation_length v="10/11 bits" />
                     <boolgroup name="Receiver" v="Enabled">
-                      <RxD v="J199_3" />
+                      <RxD v="J1_2" />
                     </boolgroup>
                     <boolgroup name="Transmitter" v="Enabled">
-                      <TxD v="J199_4" />
+                      <TxD v="J1_4" />
                     </boolgroup>
                     <enumgroup name="Flow control" v="None">
                       <EmptySection_DummyValue />
@@ -1136,7 +1136,7 @@ rising or falling edge
       <PutPixel v="generate code" />
       <Clear v="generate code" />
       <UpdateFull v="generate code" />
-      <UpdateRegion v="don&amp;apos;t generate code" />
+      <UpdateRegion v="generate code" />
       <InitCommChannel v="generate code" />
       <SetContrast v="generate code" />
       <DisplayOn v="generate code" />

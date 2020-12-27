@@ -7,7 +7,7 @@
 **     Version     : Component 01.188, Driver 01.12, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-22, 16:18, # CodeGen: 127
+**     Date/Time   : 2020-12-26, 14:59, # CodeGen: 148
 **     Abstract    :
 **         This component "Serial_LDD" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -17,20 +17,20 @@
 **         The component requires one on-chip asynchronous serial communication channel.
 **     Settings    :
 **          Component name                                 : ASerialLdd1
-**          Device                                         : UART4
+**          Device                                         : UART3
 **          Interrupt service/event                        : Enabled
-**            Interrupt RxD                                : INT_UART4_RX_TX
+**            Interrupt RxD                                : INT_UART3_RX_TX
 **            Interrupt RxD priority                       : medium priority
-**            Interrupt TxD                                : INT_UART4_RX_TX
+**            Interrupt TxD                                : INT_UART3_RX_TX
 **            Interrupt TxD priority                       : medium priority
-**            Interrupt Error                              : INT_UART4_ERR
+**            Interrupt Error                              : INT_UART3_ERR
 **            Interrupt Error priority                     : medium priority
 **          Settings                                       : 
 **            Data width                                   : 8 bits
 **            Parity                                       : None
 **            Stop bits                                    : 1
 **            Loop mode                                    : Normal
-**            Baud rate                                    : 9600 baud
+**            Baud rate                                    : 38400 baud
 **            Wakeup condition                             : Idle line wakeup
 **            Stop in wait mode                            : no
 **            Idle line mode                               : Starts after start bit
@@ -38,9 +38,9 @@
 **            Receiver input                               : Not inverted
 **            Break generation length                      : 10/11 bits
 **            Receiver                                     : Enabled
-**              RxD                                        : J199_3
+**              RxD                                        : J1_2
 **            Transmitter                                  : Enabled
-**              TxD                                        : J199_4
+**              TxD                                        : J1_4
 **            Flow control                                 : None
 **          Initialization                                 : 
 **            Enabled in init. code                        : yes
@@ -134,9 +134,9 @@ extern "C" {
 /* {Default RTOS Adapter} Static object used for simulation of dynamic driver memory allocation */
 static ASerialLdd1_TDeviceData DeviceDataPrv__DEFAULT_RTOS_ALLOC;
 /* {Default RTOS Adapter} Global variable used for passing a parameter into ISR */
-static ASerialLdd1_TDeviceDataPtr INT_UART4_RX_TX__DEFAULT_RTOS_ISRPARAM;
+static ASerialLdd1_TDeviceDataPtr INT_UART3_RX_TX__DEFAULT_RTOS_ISRPARAM;
 /* {Default RTOS Adapter} Global variable used for passing a parameter into ISR */
-static ASerialLdd1_TDeviceDataPtr INT_UART4_ERR__DEFAULT_RTOS_ISRPARAM;
+static ASerialLdd1_TDeviceDataPtr INT_UART3_ERR__DEFAULT_RTOS_ISRPARAM;
 /* Internal method prototypes */
 static void HWEnDi(LDD_TDeviceData *DeviceDataPtr);
 
@@ -179,50 +179,50 @@ LDD_TDeviceData* ASerialLdd1_Init(LDD_TUserData *UserDataPtr)
   DeviceDataPrv->UserDataPtr = UserDataPtr; /* Store the RTOS device structure */
   /* Allocate interrupt vectors */
   /* {Default RTOS Adapter} Set interrupt vector: IVT is static, ISR parameter is passed by the global variable */
-  INT_UART4_RX_TX__DEFAULT_RTOS_ISRPARAM = DeviceDataPrv;
+  INT_UART3_RX_TX__DEFAULT_RTOS_ISRPARAM = DeviceDataPrv;
   /* {Default RTOS Adapter} Set interrupt vector: IVT is static, ISR parameter is passed by the global variable */
-  INT_UART4_ERR__DEFAULT_RTOS_ISRPARAM = DeviceDataPrv;
-  /* SIM_SCGC1: UART4=1 */
-  SIM_SCGC1 |= SIM_SCGC1_UART4_MASK;
+  INT_UART3_ERR__DEFAULT_RTOS_ISRPARAM = DeviceDataPrv;
+  /* SIM_SCGC4: UART3=1 */
+  SIM_SCGC4 |= SIM_SCGC4_UART3_MASK;
   /* SIM_SCGC5: PORTC=1 */
   SIM_SCGC5 |= SIM_SCGC5_PORTC_MASK;
-  /* PORTC_PCR14: ISF=0,MUX=3 */
-  PORTC_PCR14 = (uint32_t)((PORTC_PCR14 & (uint32_t)~(uint32_t)(
+  /* PORTC_PCR16: ISF=0,MUX=3 */
+  PORTC_PCR16 = (uint32_t)((PORTC_PCR16 & (uint32_t)~(uint32_t)(
                  PORT_PCR_ISF_MASK |
                  PORT_PCR_MUX(0x04)
                 )) | (uint32_t)(
                  PORT_PCR_MUX(0x03)
                 ));
-  /* PORTC_PCR15: ISF=0,MUX=3 */
-  PORTC_PCR15 = (uint32_t)((PORTC_PCR15 & (uint32_t)~(uint32_t)(
+  /* PORTC_PCR17: ISF=0,MUX=3 */
+  PORTC_PCR17 = (uint32_t)((PORTC_PCR17 & (uint32_t)~(uint32_t)(
                  PORT_PCR_ISF_MASK |
                  PORT_PCR_MUX(0x04)
                 )) | (uint32_t)(
                  PORT_PCR_MUX(0x03)
                 ));
-  /* NVICIP66: PRI66=0x70 */
-  NVICIP66 = NVIC_IP_PRI66(0x70);
-  /* NVICISER2: SETENA|=4 */
-  NVICISER2 |= NVIC_ISER_SETENA(0x04);
-  /* NVICIP67: PRI67=0x70 */
-  NVICIP67 = NVIC_IP_PRI67(0x70);
-  /* NVICISER2: SETENA|=8 */
-  NVICISER2 |= NVIC_ISER_SETENA(0x08);
-  UART_PDD_EnableTransmitter(UART4_BASE_PTR, PDD_DISABLE); /* Disable transmitter. */
-  UART_PDD_EnableReceiver(UART4_BASE_PTR, PDD_DISABLE); /* Disable receiver. */
+  /* NVICIP37: PRI37=0x70 */
+  NVICIP37 = NVIC_IP_PRI37(0x70);
+  /* NVICISER1: SETENA|=0x20 */
+  NVICISER1 |= NVIC_ISER_SETENA(0x20);
+  /* NVICIP38: PRI38=0x70 */
+  NVICIP38 = NVIC_IP_PRI38(0x70);
+  /* NVICISER1: SETENA|=0x40 */
+  NVICISER1 |= NVIC_ISER_SETENA(0x40);
+  UART_PDD_EnableTransmitter(UART3_BASE_PTR, PDD_DISABLE); /* Disable transmitter. */
+  UART_PDD_EnableReceiver(UART3_BASE_PTR, PDD_DISABLE); /* Disable receiver. */
   DeviceDataPrv->SerFlag = 0x00U;      /* Reset flags */
   DeviceDataPrv->ErrFlag = 0x00U;      /* Reset error flags */
   DeviceDataPrv->EnUser = TRUE;        /* Enable device */
-  /* UART4_C1: LOOPS=0,UARTSWAI=0,RSRC=0,M=0,WAKE=0,ILT=0,PE=0,PT=0 */
-  UART4_C1 = 0x00U;                    /*  Set the C1 register */
-  /* UART4_C3: R8=0,T8=0,TXDIR=0,TXINV=0,ORIE=0,NEIE=0,FEIE=0,PEIE=0 */
-  UART4_C3 = 0x00U;                    /*  Set the C3 register */
-  /* UART4_C4: MAEN1=0,MAEN2=0,M10=0,BRFA=0 */
-  UART4_C4 = UART_C4_BRFA(0x00);       /*  Set the C4 register */
-  /* UART4_S2: LBKDIF=0,RXEDGIF=0,MSBF=0,RXINV=0,RWUID=0,BRK13=0,LBKDE=0,RAF=0 */
-  UART4_S2 = 0x00U;                    /*  Set the S2 register */
-  /* UART4_MODEM: ??=0,??=0,??=0,??=0,RXRTSE=0,TXRTSPOL=0,TXRTSE=0,TXCTSE=0 */
-  UART4_MODEM = 0x00U;                 /*  Set the MODEM register */
+  /* UART3_C1: LOOPS=0,UARTSWAI=0,RSRC=0,M=0,WAKE=0,ILT=0,PE=0,PT=0 */
+  UART3_C1 = 0x00U;                    /*  Set the C1 register */
+  /* UART3_C3: R8=0,T8=0,TXDIR=0,TXINV=0,ORIE=0,NEIE=0,FEIE=0,PEIE=0 */
+  UART3_C3 = 0x00U;                    /*  Set the C3 register */
+  /* UART3_C4: MAEN1=0,MAEN2=0,M10=0,BRFA=0 */
+  UART3_C4 = UART_C4_BRFA(0x00);       /*  Set the C4 register */
+  /* UART3_S2: LBKDIF=0,RXEDGIF=0,MSBF=0,RXINV=0,RWUID=0,BRK13=0,LBKDE=0,RAF=0 */
+  UART3_S2 = 0x00U;                    /*  Set the S2 register */
+  /* UART3_MODEM: ??=0,??=0,??=0,??=0,RXRTSE=0,TXRTSPOL=0,TXRTSE=0,TXCTSE=0 */
+  UART3_MODEM = 0x00U;                 /*  Set the MODEM register */
   ASerialLdd1_SetClockConfiguration(DeviceDataPrv, Cpu_GetClockConfiguration()); /* Initial speed CPU mode is high */
   /* Registration of the device structure */
   PE_LDD_RegisterDeviceStructure(PE_LDD_COMPONENT_ASerialLdd1_ID,DeviceDataPrv);
@@ -423,7 +423,7 @@ LDD_TError ASerialLdd1_SendBlock(LDD_TDeviceData *DeviceDataPtr, LDD_TData *Buff
   DeviceDataPrv->OutDataNumReq = Size; /* Set the counter of characters to be sent. */
   DeviceDataPrv->OutSentDataNum = 0x00U; /* Clear the counter of sent characters. */
   DeviceDataPrv->SerFlag |= ENABLED_TX_INT; /* Set the flag ENABLED_TX_INT */
-  UART_PDD_EnableInterrupt(UART4_BASE_PTR, UART_PDD_INTERRUPT_TRANSMITTER); /* Enable TX interrupt */
+  UART_PDD_EnableInterrupt(UART3_BASE_PTR, UART_PDD_INTERRUPT_TRANSMITTER); /* Enable TX interrupt */
   /* {Default RTOS Adapter} Critical section end, general PE function is used */
   ExitCritical();
   return ERR_OK;                       /* OK */
@@ -447,15 +447,15 @@ static void HWEnDi(LDD_TDeviceData *DeviceDataPtr)
   /* {Default RTOS Adapter} Critical section begin, general PE function is used */
   EnterCritical();
   if (DeviceDataPrv->EnMode && DeviceDataPrv->EnUser) { /* Enable device? */
-    UART_PDD_EnableFifo(UART4_BASE_PTR, (UART_PDD_TX_FIFO_ENABLE | UART_PDD_RX_FIFO_ENABLE)); /* Enable RX and TX FIFO */
-    UART_PDD_FlushFifo(UART4_BASE_PTR, (UART_PDD_TX_FIFO_FLUSH | UART_PDD_RX_FIFO_FLUSH)); /* Flush RX and TX FIFO */
-    UART_PDD_EnableTransmitter(UART4_BASE_PTR, PDD_ENABLE); /* Enable transmitter */
-    UART_PDD_EnableReceiver(UART4_BASE_PTR, PDD_ENABLE); /* Enable receiver */
-    UART_PDD_EnableInterrupt(UART4_BASE_PTR, ( UART_PDD_INTERRUPT_RECEIVER | UART_PDD_INTERRUPT_PARITY_ERROR | UART_PDD_INTERRUPT_FRAMING_ERROR | UART_PDD_INTERRUPT_NOISE_ERROR | UART_PDD_INTERRUPT_OVERRUN_ERROR )); /* Enable interrupts */
+    UART_PDD_EnableFifo(UART3_BASE_PTR, (UART_PDD_TX_FIFO_ENABLE | UART_PDD_RX_FIFO_ENABLE)); /* Enable RX and TX FIFO */
+    UART_PDD_FlushFifo(UART3_BASE_PTR, (UART_PDD_TX_FIFO_FLUSH | UART_PDD_RX_FIFO_FLUSH)); /* Flush RX and TX FIFO */
+    UART_PDD_EnableTransmitter(UART3_BASE_PTR, PDD_ENABLE); /* Enable transmitter */
+    UART_PDD_EnableReceiver(UART3_BASE_PTR, PDD_ENABLE); /* Enable receiver */
+    UART_PDD_EnableInterrupt(UART3_BASE_PTR, ( UART_PDD_INTERRUPT_RECEIVER | UART_PDD_INTERRUPT_PARITY_ERROR | UART_PDD_INTERRUPT_FRAMING_ERROR | UART_PDD_INTERRUPT_NOISE_ERROR | UART_PDD_INTERRUPT_OVERRUN_ERROR )); /* Enable interrupts */
   } else {
-    UART_PDD_DisableInterrupt(UART4_BASE_PTR, ( UART_PDD_INTERRUPT_RECEIVER | UART_PDD_INTERRUPT_TRANSMITTER | UART_PDD_INTERRUPT_PARITY_ERROR | UART_PDD_INTERRUPT_FRAMING_ERROR | UART_PDD_INTERRUPT_NOISE_ERROR | UART_PDD_INTERRUPT_OVERRUN_ERROR )); /* Disable interrupts */
-    UART_PDD_EnableTransmitter(UART4_BASE_PTR, PDD_DISABLE); /* Disable transmitter. */
-    UART_PDD_EnableReceiver(UART4_BASE_PTR, PDD_DISABLE); /* Disable receiver. */
+    UART_PDD_DisableInterrupt(UART3_BASE_PTR, ( UART_PDD_INTERRUPT_RECEIVER | UART_PDD_INTERRUPT_TRANSMITTER | UART_PDD_INTERRUPT_PARITY_ERROR | UART_PDD_INTERRUPT_FRAMING_ERROR | UART_PDD_INTERRUPT_NOISE_ERROR | UART_PDD_INTERRUPT_OVERRUN_ERROR )); /* Disable interrupts */
+    UART_PDD_EnableTransmitter(UART3_BASE_PTR, PDD_DISABLE); /* Disable transmitter. */
+    UART_PDD_EnableReceiver(UART3_BASE_PTR, PDD_DISABLE); /* Disable receiver. */
   }
   /* {Default RTOS Adapter} Critical section end, general PE function is used */
   ExitCritical();
@@ -474,7 +474,7 @@ static void InterruptRx(ASerialLdd1_TDeviceDataPtr DeviceDataPrv)
 {
   register uint16_t Data;              /* Temporary variable for data */
 
-  Data = (uint16_t)UART_PDD_GetChar8(UART4_BASE_PTR); /* Read an 8-bit character from the receiver */
+  Data = (uint16_t)UART_PDD_GetChar8(UART3_BASE_PTR); /* Read an 8-bit character from the receiver */
   if (DeviceDataPrv->InpDataNumReq != 0x00U) { /* Is the receive block operation pending? */
     *(DeviceDataPrv->InpDataPtr++) = (uint8_t)Data; /* Put an 8-bit character to the receive buffer */
     DeviceDataPrv->InpRecvDataNum++;   /* Increment received char. counter */
@@ -499,14 +499,14 @@ static void InterruptTx(ASerialLdd1_TDeviceDataPtr DeviceDataPrv)
 {
 
   if (DeviceDataPrv->OutSentDataNum < DeviceDataPrv->OutDataNumReq) { /* Is number of sent characters less than the number of requested incoming characters? */
-    UART_PDD_PutChar8(UART4_BASE_PTR, *(DeviceDataPrv->OutDataPtr++)); /* Put a 8-bit character to the transmit register */
+    UART_PDD_PutChar8(UART3_BASE_PTR, *(DeviceDataPrv->OutDataPtr++)); /* Put a 8-bit character to the transmit register */
     DeviceDataPrv->OutSentDataNum++;   /* Increment the counter of sent characters. */
     if (DeviceDataPrv->OutSentDataNum == DeviceDataPrv->OutDataNumReq) {
       DeviceDataPrv->OutDataNumReq = 0x00U; /* Clear the counter of characters to be send by SendBlock() */
       ASerialLdd1_OnBlockSent(DeviceDataPrv->UserDataPtr);
     }
   } else {
-    UART_PDD_DisableInterrupt(UART4_BASE_PTR, UART_PDD_INTERRUPT_TRANSMITTER); /* Disable TX interrupt */
+    UART_PDD_DisableInterrupt(UART3_BASE_PTR, UART_PDD_INTERRUPT_TRANSMITTER); /* Disable TX interrupt */
     DeviceDataPrv->SerFlag &= (uint16_t)(~(uint16_t)ENABLED_TX_INT); /* Clear the flag ENABLED_TX_INT */
   }
 }
@@ -524,14 +524,14 @@ static void InterruptTx(ASerialLdd1_TDeviceDataPtr DeviceDataPrv)
 PE_ISR(ASerialLdd1_Interrupt)
 {
   /* {Default RTOS Adapter} ISR parameter is passed through the global variable */
-  ASerialLdd1_TDeviceDataPtr DeviceDataPrv = INT_UART4_RX_TX__DEFAULT_RTOS_ISRPARAM;
-  register uint32_t StatReg = UART_PDD_ReadInterruptStatusReg(UART4_BASE_PTR); /* Read status register */
+  ASerialLdd1_TDeviceDataPtr DeviceDataPrv = INT_UART3_RX_TX__DEFAULT_RTOS_ISRPARAM;
+  register uint32_t StatReg = UART_PDD_ReadInterruptStatusReg(UART3_BASE_PTR); /* Read status register */
   register uint16_t OnErrorFlags = 0U; /* Temporary variable for flags */
   register uint8_t  OnBreakFlag = 0U;  /* Temporary variable flag for OnBreak event */
   register uint16_t Data;              /* Temporary variable for data */
 
   if (StatReg & (UART_S1_NF_MASK | UART_S1_OR_MASK | UART_S1_FE_MASK | UART_S1_PF_MASK)) { /* Is any error flag set? */
-    Data = (uint16_t)UART_PDD_GetChar8(UART4_BASE_PTR); /* Read an 8-bit character from receiver */
+    Data = (uint16_t)UART_PDD_GetChar8(UART3_BASE_PTR); /* Read an 8-bit character from receiver */
     if ((StatReg & UART_S1_FE_MASK) != 0U) { /* Is the framing error detected? */
       if (((StatReg & UART_S1_RDRF_MASK) != 0U) && (Data == 0U)) { /* Is the zero character in the receiver? */
         OnBreakFlag++;
@@ -584,8 +584,8 @@ void ASerialLdd1_SetClockConfiguration(LDD_TDeviceData *DeviceDataPtr, LDD_TCloc
 
   switch (ClockConfiguration) {
     case CPU_CLOCK_CONFIG_0:
-      UART_PDD_SetBaudRateFineAdjust(UART4_BASE_PTR, 17u); /* Set baud rate fine adjust */
-      UART_PDD_SetBaudRate(UART4_BASE_PTR, 136U); /* Set the baud rate register. */
+      UART_PDD_SetBaudRateFineAdjust(UART3_BASE_PTR, 4u); /* Set baud rate fine adjust */
+      UART_PDD_SetBaudRate(UART3_BASE_PTR, 34U); /* Set the baud rate register. */
       DeviceDataPrv->EnMode = TRUE;    /* Set the flag "device enabled" in the actual speed CPU mode */
       break;
     default:

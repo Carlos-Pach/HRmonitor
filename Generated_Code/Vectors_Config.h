@@ -130,8 +130,8 @@ extern "C" {
 #define VECTOR_50         (tIsrFunc)&Unhandled_ivINT_UART1_ERR  /* 0x32 -    ivINT_UART1_ERR                unused by PE */
 #define VECTOR_51         (tIsrFunc)&Unhandled_ivINT_UART2_RX_TX /* 0x33 -   ivINT_UART2_RX_TX              unused by PE */
 #define VECTOR_52         (tIsrFunc)&Unhandled_ivINT_UART2_ERR  /* 0x34 -    ivINT_UART2_ERR                unused by PE */
-#define VECTOR_53         (tIsrFunc)&Unhandled_ivINT_UART3_RX_TX /* 0x35 -   ivINT_UART3_RX_TX              unused by PE */
-#define VECTOR_54         (tIsrFunc)&Unhandled_ivINT_UART3_ERR  /* 0x36 -    ivINT_UART3_ERR                unused by PE */
+#define VECTOR_53         (tIsrFunc)&ASerialLdd1_Interrupt      /* 0x35 112  ivINT_UART3_RX_TX              used by PE */
+#define VECTOR_54         (tIsrFunc)&ASerialLdd1_Interrupt      /* 0x36 112  ivINT_UART3_ERR                used by PE */
 #define VECTOR_55         (tIsrFunc)&Unhandled_ivINT_ADC0       /* 0x37 -    ivINT_ADC0                     unused by PE */
 #define VECTOR_56         (tIsrFunc)&Unhandled_ivINT_CMP0       /* 0x38 -    ivINT_CMP0                     unused by PE */
 #define VECTOR_57         (tIsrFunc)&Unhandled_ivINT_CMP1       /* 0x39 -    ivINT_CMP1                     unused by PE */
@@ -159,8 +159,8 @@ extern "C" {
 #define VECTOR_79         (tIsrFunc)&Unhandled_ivINT_PORTE      /* 0x4F -    ivINT_PORTE                    unused by PE */
 #define VECTOR_80         (tIsrFunc)&Unhandled_ivINT_SWI        /* 0x50 -    ivINT_SWI                      unused by PE */
 #define VECTOR_81         (tIsrFunc)&Unhandled_ivINT_SPI2       /* 0x51 -    ivINT_SPI2                     unused by PE */
-#define VECTOR_82         (tIsrFunc)&ASerialLdd1_Interrupt      /* 0x52 112  ivINT_UART4_RX_TX              used by PE */
-#define VECTOR_83         (tIsrFunc)&ASerialLdd1_Interrupt      /* 0x53 112  ivINT_UART4_ERR                used by PE */
+#define VECTOR_82         (tIsrFunc)&Unhandled_ivINT_UART4_RX_TX /* 0x52 -   ivINT_UART4_RX_TX              unused by PE */
+#define VECTOR_83         (tIsrFunc)&Unhandled_ivINT_UART4_ERR  /* 0x53 -    ivINT_UART4_ERR                unused by PE */
 #define VECTOR_84         (tIsrFunc)&Unhandled_ivINT_UART5_RX_TX /* 0x54 -   ivINT_UART5_RX_TX              unused by PE */
 #define VECTOR_85         (tIsrFunc)&Unhandled_ivINT_UART5_ERR  /* 0x55 -    ivINT_UART5_ERR                unused by PE */
 #define VECTOR_86         (tIsrFunc)&Unhandled_ivINT_CMP2       /* 0x56 -    ivINT_CMP2                     unused by PE */

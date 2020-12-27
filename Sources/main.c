@@ -62,12 +62,13 @@
 #include "OLED.h"
 
 #define MAX_BRIGHTNESS	255
-#define BAUD_RATE 		9600
+#define BAUD_RATE 		38400
 
 /* declare function prototypes */
 void initBT(void) ;
 void Delay(unsigned long delay) ;
 void initLED(void) ;
+void turnOffLED(void) ;
 
 uint32_t aun_ir_buffer[BUFFER_SIZE] ;	// IR LED sensor data
 int32_t n_ir_buffer_length ;		// data length
@@ -87,6 +88,11 @@ void Delay(unsigned long delay){
 	while(delay > 0) delay-- ;
 }
 
+void turnOffLED(void){
+	// turn off LEDs
+	GPIOB_PDOR |= (1 << 22);
+	GPIOB_PDOR |= (1 << 21) ;
+}
 
 /*
  *	Function name: initBT
@@ -104,12 +110,10 @@ void Delay(unsigned long delay){
 void initBT(void){
 	/* test UART for errors */
 	BT1_btTestUART() ;
-	/* Retrieve last error ... no errors found */
-	unsigned char btError = BT1_GetLastError() ;
 	/* declare baud rate for BT module */
 	BT1_btSetBaud(BAUD_RATE) ;
 	/* send char to BT module */
-	BT1_SendChar(0x43) ;
+	BT1_SendChar('\n') ; BT1_SendChar('C') ; BT1_SendChar('\n') ;
 }
 
 
@@ -118,18 +122,6 @@ void initLED(void){
   // set up on-board LED for testing
   SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK; /*Enable Port B Clock Gate Control*/
   SIM_SCGC5 |= SIM_SCGC5_PORTD_MASK ; /* Enable Port D Clock Gate Control*/
-
-  /* set up PORTD[3, 1] as GPIO */
-  /* set up in processor expert done */
-  /* set up PORTD[3, 1] as input */
-  /* set up in processor expert done */
-  /* configure PD3, PD1 to trigger interrupt on falling edge */
-  //PORTD_PCR1 = 0xA100 ;
-  //PORTD_PCR3 = 0xA100 ;
-  /* clear ISFR on PD1 and PD3 */
-  //PORTD_ISFR = 0xFFFFFFFF ;
-  /* enable interrupts */
-
 
   // set up PORTB[22:21, 1] for GPIO
   PORTB_GPCLR = 0x00040100 ; 	// set up PORTB[2] as GPIO
@@ -140,13 +132,12 @@ void initLED(void){
 
 
 void PORTB_ISR(void){
-	// turn off LEDs
-	GPIOB_PDOR |= (1 << 22);
-	GPIOB_PDOR |= (1 << 21) ;
 	// create var to read from PORTB[1]
-	uint8_t readPortB ;
+	static uint8_t readPortB ;
+	static unsigned char i ;	// used to clear line on OLED
+	// read from PORTB
 	readPortB = 0x0F & GPIOB_PDIR ;	// 0x04 --> 0x0F
-	unsigned char i ;	// used to clear line on OLED
+
 
 	/* 		Switch statement conditions:
 	 * 			a. DIP switch is an open circuit/off: output red-LED on console
@@ -180,8 +171,6 @@ void PORTB_ISR(void){
 			printf("Switch mode: red-LED\n") ;
 			break ;
 	}
-	/* clear interrupt flag */
-	PORTD_ISFR = (1 << 4) ;
 }
 
 
@@ -198,11 +187,10 @@ void PORTB_ISR(void){
  *			a. fix for INT pin on max30102
  *				i. INT pin from MAX30102 always outputting ~3.1 [V]
 *			b. DIP switch
-*				i. pin always entering ISR and not exiting
+*				i. pin always entering ISR but not exiting
  *		2. fix algorithm function to correctly display HR and SpO2	(Priority: 3)
  *			a. Displays incorrect values when finger is placed
- *		3. connect hc-06 to phone for BT connection	(Priority: 7)
- *			a. connects but sends incorrect data
+ *		3. create sleep mode for HC-06	(Priority: 3)
  *		4. finish sleep function for MAX30102	(Priority: 3)
  *
  *  ///////////////////////////////
@@ -239,14 +227,8 @@ int main(void)
   maxim_max30102_read_reg(0, &uch_dummy) ; /* read and clear status register */
 
   maxim_max30102_init() ;	/* initialize max30102 */
-
-  /* test all 8 lines of OLED display */
-  for(unsigned char i = 0; i < 8; i++){	/* print to all rows on display */
-	  LCD1_PrintString(i, 0, "Hello there") ;
-  }
-  Delay(delay) ;	/* wait until string fully prints */
-  LCD1_Clear() ;	/* clear display */
   Delay(delay) ;
+  turnOffLED() ;
   /* end initialization of peripherals */
 
 
@@ -259,7 +241,6 @@ int main(void)
   printf("\nHello ... test\n") ;	/* test output to console */
 
   /* By default, SpO2 is off, Red LED is on */
-  LCD1_Clear() ;
   LCD1_PrintString(0, 0, "Red-LED: On") ;
   LCD1_PrintString(1, 0, "SpO2: Off") ;
   setUpHeartO2(PAGE, COLUMN) ;
@@ -291,6 +272,7 @@ int main(void)
   // continuously take samples from MAX30102. Heart rate and SpO2 calculated every second
   while(1){
 	  BT1_SendChar('C') ;	/* test BT module */
+	  BT1_SendChar('\n') ;
 
 	  i = 0 ;
 	  un_min = 0x3FFFF ;

@@ -6,7 +6,7 @@
 **     Component   : Bluetooth_EGBT
 **     Version     : Component 01.053, Driver 01.00, CPU db: 3.00.000
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-20, 14:30, # CodeGen: 115
+**     Date/Time   : 2020-12-26, 14:54, # CodeGen: 147
 **     Abstract    :
 **          Driver for e-Gizmo Bluetooth module
 **     Settings    :
@@ -17,7 +17,7 @@
 **          State Pin                                      : Disabled
 **          Rx Pull-Up                                     : Enabled
 **            Pin Name                                     : C
-**            Pin Number                                   : 14
+**            Pin Number                                   : 16
 **          Interfaces                                     : 
 **            Shell                                        : CLS1
 **            Utility                                      : UTIL1

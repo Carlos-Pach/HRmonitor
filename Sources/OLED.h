@@ -25,12 +25,21 @@ static unsigned char customChars[] = {
 
 } ;
 
-typedef enum{
+/* create error code chart for OLED */
+typedef enum {
 	err_ok,
 	ERR_OUT_OF_RANGE,
 	ERR_NOT_ROW_NOT_COL ,
 	ERR_UNKNOWN
-} tOLED_ERR ;
+} tOLED_ERR;
+
+
+/* create struct for maxim values */
+typedef struct {
+	unsigned char *valueHR[10] ;
+	unsigned char *valueO2[10] ;
+} maximVals ;
+
 
 uint8_t printHeart(unsigned char page, unsigned char column) ;	/* prints heart on OLED display */
 void initOLED(void) ;

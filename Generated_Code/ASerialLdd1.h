@@ -7,7 +7,7 @@
 **     Version     : Component 01.188, Driver 01.12, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-22, 16:18, # CodeGen: 127
+**     Date/Time   : 2020-12-26, 14:59, # CodeGen: 148
 **     Abstract    :
 **         This component "Serial_LDD" implements an asynchronous serial
 **         communication. The component supports different settings of
@@ -17,20 +17,20 @@
 **         The component requires one on-chip asynchronous serial communication channel.
 **     Settings    :
 **          Component name                                 : ASerialLdd1
-**          Device                                         : UART4
+**          Device                                         : UART3
 **          Interrupt service/event                        : Enabled
-**            Interrupt RxD                                : INT_UART4_RX_TX
+**            Interrupt RxD                                : INT_UART3_RX_TX
 **            Interrupt RxD priority                       : medium priority
-**            Interrupt TxD                                : INT_UART4_RX_TX
+**            Interrupt TxD                                : INT_UART3_RX_TX
 **            Interrupt TxD priority                       : medium priority
-**            Interrupt Error                              : INT_UART4_ERR
+**            Interrupt Error                              : INT_UART3_ERR
 **            Interrupt Error priority                     : medium priority
 **          Settings                                       : 
 **            Data width                                   : 8 bits
 **            Parity                                       : None
 **            Stop bits                                    : 1
 **            Loop mode                                    : Normal
-**            Baud rate                                    : 9600 baud
+**            Baud rate                                    : 38400 baud
 **            Wakeup condition                             : Idle line wakeup
 **            Stop in wait mode                            : no
 **            Idle line mode                               : Starts after start bit
@@ -38,9 +38,9 @@
 **            Receiver input                               : Not inverted
 **            Break generation length                      : 10/11 bits
 **            Receiver                                     : Enabled
-**              RxD                                        : J199_3
+**              RxD                                        : J1_2
 **            Transmitter                                  : Enabled
-**              TxD                                        : J199_4
+**              TxD                                        : J1_4
 **            Flow control                                 : None
 **          Initialization                                 : 
 **            Enabled in init. code                        : yes
@@ -129,7 +129,7 @@ extern "C" {
 
 
 /*! Peripheral base address of a device allocated by the component. This constant can be used directly in PDD macros. */
-#define ASerialLdd1_PRPH_BASE_ADDRESS  0x400EA000U
+#define ASerialLdd1_PRPH_BASE_ADDRESS  0x4006D000U
   
 /* Methods configuration constants - generated for all enabled component's methods */
 #define ASerialLdd1_Init_METHOD_ENABLED /*!< Init method of the component ASerialLdd1 is enabled (generated) */

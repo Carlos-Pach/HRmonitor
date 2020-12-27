@@ -7,7 +7,7 @@
 **     Version     : Component 01.100, Driver 1.1, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2020-12-21, 19:50, # CodeGen: 121
+**     Date/Time   : 2020-12-26, 14:54, # CodeGen: 147
 **     Abstract    :
 **
 **     Settings    :
@@ -696,8 +696,8 @@
 **                UART3                                    : 
 **                  CTS - Clear to send                    : <Automatic>
 **                  RTS - Request to send                  : <Automatic>
-**                  RX - Receive data                      : <Automatic>
-**                  TX - Transmit data                     : <Automatic>
+**                  RX - Receive data                      : J1_2
+**                  TX - Transmit data                     : J1_4
 **                Custom name                              : UART4
 **                UART4                                    : 
 **                  CTS - Clear to send                    : <Automatic>
