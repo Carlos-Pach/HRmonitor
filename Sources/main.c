@@ -79,6 +79,7 @@ int32_t n_heart_rate ;				// heart rate value
 int8_t ch_hr_valid ;				// indicator to show if heart rate calculation is valid
 uint8_t uch_dummy ;					// char used to get keyboard input ... might remove
 unsigned char currentMode ; 		/* current mode to keep track when entering sleep */
+unsigned char msg[] = "hello there" ;
 
 volatile unsigned char readPortD ;
 
@@ -95,25 +96,32 @@ void turnOffLED(void){
 }
 
 /*
+ *	//////////////////////////////////////////////////////
  *	Function name: initBT
  *	Purpose: Initializes and tests the BT module
- *
- *	Problems: Not sending correct data to BT module's terminal (e.g. terminal only gets <?> character)
- *	Possible Solutions: Change baud rate, test on another BT module, analyze on logic analyzer
- *	Road-blocks: Baud rate does not seem to fix problem (tested 9600, 19200, 38400, 115200),
- *				only have one (1) HC-06 module, don't have access to logic analyzer. Maybe
- *				get rid of BT functionality and replace with SH1106 OLED panel functionality.
+ *	Details: Sends test messages to the BT module to check
+ *			 functionality.
  *
  *	Parameters: None
  *	Return values: None
+ *	//////////////////////////////////////////////////////
 */
 void initBT(void){
-	/* test UART for errors */
-	BT1_btTestUART() ;
+	static char msg[] = "hello there\n" ;	/* test message to send */
+
 	/* declare baud rate for BT module */
-	BT1_btSetBaud(BAUD_RATE) ;
+	BT1_btSetBaud(BAUD_RATE) ; BT1_SendChar('\n') ;
+
 	/* send char to BT module */
-	BT1_SendChar('\n') ; BT1_SendChar('C') ; BT1_SendChar('\n') ;
+	/*
+	 *		TEST				EXPECTED RESULT
+	 *	1.  \n as first char	BT_ERR_NO_MSG
+	 *	2.	string as uc arr	BT_NO_ERR
+	 *	3. 	string as param		BT_NO_ERR
+	*/
+	if(printStringHC06("\nHello") != 2){ return ; }	/* test newline as first char */
+	if(printStringHC06(&msg[0]) != 0){ return ; }	/* send address of first char in msg */
+	if(printStringHC06("hello there\n") != 0){ return ; }/* test if string written works */
 }
 
 
@@ -149,6 +157,7 @@ void PORTB_ISR(void){
 		case 0x04:	/* turn on LED mode */
 			maxim_max30102_mode_change(REG_MODE_CONFIG, 0x02) ;	// 0x02 red only
 			currentMode = 0x02 ;
+			printStringHC06("Red-LED: On\n") ;
 			for(i = 0; i < 16; i++){LCD1_ClearLine(i) ;}
 			LCD1_PrintString(0, 0, "Red-LED: On") ;	/* Red LED turned on (OLED) */
 			LCD1_PrintString(1, 0, "SpO2: Off") ;	/* SpO2 turned off (OLED) */
@@ -157,6 +166,7 @@ void PORTB_ISR(void){
 		case 0x00 :	/* turn on SpO2 mode */
 			maxim_max30102_mode_change(REG_MODE_CONFIG, 0x03) ;	// 0x03 SpO2 only
 			currentMode = 0x03 ;
+			printStringHC06("SpO2: On\n") ;
 			for(i = 0; i < 16; i++){LCD1_ClearLine(i) ;}
 			LCD1_PrintString(0, 0, "Red-LED: Off") ;	/* Red LED turned off (OLED) */
 			LCD1_PrintString(1, 0, "SpO2: On") ;		/* SpO2 turned on (OLED) */
@@ -165,6 +175,7 @@ void PORTB_ISR(void){
 		default:	/* turn on LED mode */
 			maxim_max30102_mode_change(REG_MODE_CONFIG, 0x02) ;	// 0x02 red only
 			currentMode = 0x02 ;
+			printStringHC06("Red-LED: On\n") ;
 			for(i = 0; i < 16; i++){LCD1_ClearLine(i) ;}
 			LCD1_PrintString(0, 0, "Red-LED: On") ;	/* Red LED turn on (OLED) */
 			LCD1_PrintString(1, 0, "SpO2: Off") ;	/* SpO2 turned off (OLED) */
@@ -190,7 +201,10 @@ void PORTB_ISR(void){
 *				i. pin always entering ISR but not exiting
  *		2. fix algorithm function to correctly display HR and SpO2	(Priority: 3)
  *			a. Displays incorrect values when finger is placed
- *		3. create sleep mode for HC-06	(Priority: 3)
+ *		3. finish HC-06 functions	(Priority: 3)
+ *			a. int2str conversion
+ *			b. recv string from RX buffer
+ *			  i. potentially control MAX30102 from BT module's terminal
  *		4. finish sleep function for MAX30102	(Priority: 3)
  *
  *  ///////////////////////////////
@@ -220,7 +234,7 @@ int main(void)
   initLED() ;	/* initialize on board LED and GPIO pins */
   initOLED() ;
   initBT() ;	/* initialize the BT module */
-  LCD1_Clear() ; 	/* clear the display */
+  //LCD1_Clear() ; 	/* clear the display */
 
   maxim_max30102_reset() ; /* restart the max30102 */
   Delay(delay) ;	/* wait ~1 [s] */
@@ -271,9 +285,6 @@ int main(void)
 
   // continuously take samples from MAX30102. Heart rate and SpO2 calculated every second
   while(1){
-	  BT1_SendChar('C') ;	/* test BT module */
-	  BT1_SendChar('\n') ;
-
 	  i = 0 ;
 	  un_min = 0x3FFFF ;
 	  un_max = 0 ;

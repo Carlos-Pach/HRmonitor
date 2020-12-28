@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Sources/Events.c \
+../Sources/HC06.c \
 ../Sources/MAX30102.c \
 ../Sources/OLED.c \
 ../Sources/algorithm.c \
@@ -12,6 +13,7 @@ C_SRCS += \
 
 OBJS += \
 ./Sources/Events.o \
+./Sources/HC06.o \
 ./Sources/MAX30102.o \
 ./Sources/OLED.o \
 ./Sources/algorithm.o \
@@ -19,6 +21,7 @@ OBJS += \
 
 C_DEPS += \
 ./Sources/Events.d \
+./Sources/HC06.d \
 ./Sources/MAX30102.d \
 ./Sources/OLED.d \
 ./Sources/algorithm.d \

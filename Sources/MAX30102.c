@@ -40,7 +40,7 @@ Bool maxim_max30102_init(){
     if(!maxim_max30102_write_reg(REG_FIFO_CONFIG, 0x0F)){  //sample avg = 1, fifo rollover=false, fifo almost full = 17
     	return false;
     }
-    // 0x02 --> 0x07 --> 0x02 --> 0x07
+    // 0x02 --> 0x07 (does not work)
     if(!maxim_max30102_write_reg(REG_MODE_CONFIG, 0x02)){  //0x02 for Red only, 0x03 for SpO2 mode 0x07 multimode LED
     	return false;
     }
@@ -49,13 +49,10 @@ Bool maxim_max30102_init(){
     	return false;
     }
 
-    // 0x24 --> 0x2C --> 0x24 --> 0x3F (~12.6 mA) --> 0x24
-    // 0x24 --> 0x1F	(~6.2 [mA])
     if(!maxim_max30102_write_reg(REG_LED1_PA, currentHex[0x24])){   //Choose value for ~ 7mA for LED1
     	return false;
     }
-    // 0x24 --> 0x2C --> 0x24 --> 0x1F (~ 6.2 [mA])
-    if(!maxim_max30102_write_reg(REG_LED2_PA, 0x24)){   // Choose value for ~ 7mA for LED2
+    if(!maxim_max30102_write_reg(REG_LED2_PA, currentHex[0x24])){   // Choose value for ~ 7mA for LED2
 	  	return false;
     }
     /* this function does not work because MAX30102 lacks Pilot LED */

@@ -16,9 +16,11 @@
  * 				 Page starts off at (2) and ends at (7). Column
  * 				 starts off at (0) and ends at (127).
  *
- * 	Parameters:	 page, column
+ * 	Parameters:
+ * 		[in] page		- page number from 0 to 7 (inclusive)
+ * 		[in] column		- column number from 0 to 127 (inclusive)
  *
- * 	Return Value: ERROR CODES
+ * 	Return Value: Error code
  *
  *	///////////////////////////////////////////
 */
@@ -71,10 +73,12 @@ void initOLED(void){
 		LCD1_PrintString(0, 0, "Error in printHeart") ;
 		return ;
 	}
+	LCD1_Clear() ;
 	if(setUpHeartO2(PAGE, COLUMN) != err_ok){
 		LCD1_PrintString(1, 0, "Error in O2") ;
 		return ;
 	}
+	LCD1_Clear() ;
 }
 
 

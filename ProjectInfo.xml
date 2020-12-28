@@ -76,6 +76,7 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\XF1.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Project_Settings\Startup_Code\startup.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\Events.c</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\HC06.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\MAX30102.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\OLED.c</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\algorithm.c</PathName>
@@ -123,6 +124,7 @@
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\XF1.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Generated_Code\XF1config.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\Events.h</PathName>
+      <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\HC06.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\MAX30102.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\OLED.h</PathName>
       <PathName>\\Mac\Home\workspace.kds\HRmonitor\Sources\algorithm.h</PathName>
