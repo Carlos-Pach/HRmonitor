@@ -40,8 +40,3 @@ uint8_t printStringHC06(unsigned char *msgPtr){
 	return BT_NO_ERR ;
 }
 
-/* solve recursively */
-/* solve later */
-uint8_t convertToStrHC06(int32_t val){
-	return BT_NO_ERR ;
-}

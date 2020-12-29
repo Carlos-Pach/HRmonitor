@@ -55,8 +55,8 @@ void Cpu_OnNMI(void)
 {
 	/* If interrupt is entered, stay here until rising edge */
 	//__asm("nop") ;
-	//printf("Interrupt on\n") ;
-	PORTB_ISR() ;
+	printf("Interrupt on\n") ;
+	//PORTB_ISR() ;
 }
 
 /*
@@ -77,7 +77,8 @@ void EInt1_OnInterrupt(void)
 	printf("test\n\n") ;
 	/* check if mode switch is flipped */
 	WAIT1_Waitms(500) ;
-	PORTB_ISR() ;
+	//PORTB_ISR() ;
+	PORTD_ISFR = (1 << 3) ; // clear interrupt flag
 }
 
 /* END Events */

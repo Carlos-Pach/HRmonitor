@@ -9,11 +9,13 @@
 #define SOURCES_HC06_H_
 
 #define TEST_BT_VAL		120
+#define ASCII_MASK		48
 
 #include "Cpu.h"
 #include "BT1.h"
 
-unsigned char numToStr[] ;	/* store number to convert to str */
+unsigned char arrConvFlag = 0 ;	/* flip to 1 when first number is converted */
+uint8_t heartRateArr[4] = {'\n'} ;
 
 typedef enum{	/* error codes for HC-06 */
 	BT_NO_ERR = 0,
@@ -24,6 +26,6 @@ typedef enum{	/* error codes for HC-06 */
 } BT_ERR;
 
 uint8_t printStringHC06(unsigned char *msgPtr) ;
-uint8_t convertToStrHC06(int32_t val) ;
+uint8_t convertToStrHC06(int32_t val) ;	/* may use instead of sprintf() */
 
 #endif /* SOURCES_HC06_H_ */

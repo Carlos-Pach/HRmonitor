@@ -80,6 +80,7 @@ int8_t ch_hr_valid ;				// indicator to show if heart rate calculation is valid
 uint8_t uch_dummy ;					// char used to get keyboard input ... might remove
 unsigned char currentMode ; 		/* current mode to keep track when entering sleep */
 unsigned char msg[] = "hello there" ;
+static unsigned char hrArr[20] ;
 
 volatile unsigned char readPortD ;
 
@@ -182,6 +183,7 @@ void PORTB_ISR(void){
 			printf("Switch mode: red-LED\n") ;
 			break ;
 	}
+	return ;
 }
 
 
@@ -202,7 +204,7 @@ void PORTB_ISR(void){
  *		2. fix algorithm function to correctly display HR and SpO2	(Priority: 3)
  *			a. Displays incorrect values when finger is placed
  *		3. finish HC-06 functions	(Priority: 3)
- *			a. int2str conversion
+ *			a. used sprintf instead of custom function
  *			b. recv string from RX buffer
  *			  i. potentially control MAX30102 from BT module's terminal
  *		4. finish sleep function for MAX30102	(Priority: 3)
@@ -283,6 +285,10 @@ int main(void)
   maxim_heart_rate_and_oxygen_saturation(aun_ir_buffer, n_ir_buffer_length, aun_red_buffer,
 		  	  	  	  	  	  	  	  	 &n_sp02, &ch_spo2_valid, &n_heart_rate, &ch_hr_valid) ;
 
+  sprintf(hrArr, "%d", n_heart_rate) ;
+  printStringHC06("HR: ") ;
+  printStringHC06(&hrArr[0]) ;	BT1_SendChar('\n') ;
+
   // continuously take samples from MAX30102. Heart rate and SpO2 calculated every second
   while(1){
 	  i = 0 ;
@@ -345,6 +351,10 @@ int main(void)
 			  	  	  	  	  	  	  	  	 &n_sp02, &ch_spo2_valid, &n_heart_rate, &ch_hr_valid) ;
 	  printf("HR valid: %i SpO2 valid: %i ", ch_hr_valid, ch_spo2_valid) ;
 	  printf("Heart rate: %i SpO2: %i\n", n_heart_rate, n_sp02) ;
+
+	  sprintf(hrArr, "%d", n_heart_rate) ;
+	  printStringHC06("HR: ") ;
+	  printStringHC06(&hrArr[0]) ; BT1_SendChar('\n') ;
   }
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
